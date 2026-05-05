@@ -1,9 +1,0 @@
-SELECT
-  id,
-  identifier,
-  name,
-  specialty,
-  telecom,
-  active,
-  created_at
-FROM "postgres"."public"."Practitioner"

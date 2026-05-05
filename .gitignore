@@ -9,3 +9,6 @@ __pycache__
 .idea
 .idea/
 .DS_Store
+dbt_packages/
+target/
+logs/
