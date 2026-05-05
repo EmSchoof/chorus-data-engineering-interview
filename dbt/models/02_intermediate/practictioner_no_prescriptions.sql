@@ -11,5 +11,5 @@ SELECT
     id AS practitioner_id,
     name,
     specialty
-FROM {{ source('fhir', 'Practitioner') }}
+FROM {{ source('fake_data', 'Practitioner') }}
 WHERE id NOT IN (SELECT practitioner_id FROM prescribing_practitioners)
