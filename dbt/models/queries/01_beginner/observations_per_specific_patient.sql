@@ -10,7 +10,7 @@ SELECT
   unit,
   recorded_at
 FROM {{ source('fake_data', 'Observation') }}
-WHERE {{ source('fake_data', 'Observation') }}.id = {var('patient_id')}
+WHERE {{ source('fake_data', 'Observation') }}.patient_id = {var('patient_id')}
 */
 
 SELECT
