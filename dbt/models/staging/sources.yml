@@ -1,0 +1,71 @@
+version: 2
+
+sources:
+  - name: task_tracking
+    description: Source for task tracking data
+    database: postgres
+    schema: public
+    tables:
+      - name: Task
+        description: Task definitions with recurrence patterns
+        columns:
+          - name: task_id
+            description: Unique task identifier
+            tests:
+              - unique
+              - not_null
+          - name: task_name
+            description: Task name
+            tests:
+              - not_null
+          - name: cadence
+            description: Recurrence pattern (daily, weekly, monthly)
+            tests:
+              - not_null
+          - name: start_date
+            description: Task start date
+            tests:
+              - not_null
+          - name: max_occurrences
+            description: Maximum number of occurrences
+            tests:
+              - not_null
+
+      - name: Person
+        description: People assigned to tasks
+        columns:
+          - name: person_id
+            description: Unique person identifier
+            tests:
+              - unique
+              - not_null
+          - name: person_name
+            description: Person full name
+            tests:
+              - not_null
+
+      - name: TaskAssignment
+        description: Assignment of tasks to people
+        columns:
+          - name: task_id
+            description: Reference to Task
+            tests:
+              - not_null
+          - name: person_id
+            description: Reference to Person
+            tests:
+              - not_null
+
+      - name: TaskOccurrenceStatus
+        description: Status tracking for task occurrences
+        columns:
+          - name: task_occurrence_id
+            description: Reference to task occurrence
+            tests:
+              - not_null
+          - name: status
+            description: Current status of the task occurrence
+            tests:
+              - not_null
+          - name: updated_at
+            description: When the status was last updated
