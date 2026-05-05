@@ -10,5 +10,8 @@ __pycache__
 .idea/
 .DS_Store
 dbt_packages/
-target/
+dbt/target/
+dbt/logs/
+Pipfile.lock
+Pipfile
 logs/
