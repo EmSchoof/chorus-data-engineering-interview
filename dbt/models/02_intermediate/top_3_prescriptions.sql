@@ -6,7 +6,7 @@
      SELECT
          medication_name,
          COUNT(*) AS prescription_count
-     FROM {{ source('fhir', 'MedicationRequest') }}
+     FROM {{ source('fake_data', 'MedicationRequest') }}
      GROUP BY medication_name
  )
 

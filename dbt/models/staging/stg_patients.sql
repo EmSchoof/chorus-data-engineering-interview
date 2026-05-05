@@ -8,4 +8,4 @@ SELECT
   telecom,
   active,
   created_at
-FROM {{ source('fhir', 'Patient') }}
+FROM {{ source('fake_data', 'Patient') }}

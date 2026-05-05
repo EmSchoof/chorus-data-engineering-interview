@@ -6,7 +6,7 @@ SELECT
   id,
   status,
   encounter_date
-FROM {{ source('fhir', 'Patient') }}
-JOIN {{ source('fhir', 'Encounter') }}
-    ON {{ source('fhir', 'Patient') }}.id = {{ source('fhir', 'Encounter') }}.patient_id
-WHERE {{ source('fhir', 'Patient') }}.id = {var('patient_id')}
+FROM {{ source('fake_data', 'Patient') }}
+JOIN {{ source('fake_data', 'Encounter') }}
+    ON {{ source('fake_data', 'Patient') }}.id = {{ source('fake_data', 'Encounter') }}.patient_id
+WHERE {{ source('fake_data', 'Patient') }}.id = {var('patient_id')}

@@ -8,7 +8,7 @@ SELECT
   value,
   unit,
   recorded_at
-FROM {{ source('fhir', 'Patient') }}
-JOIN {{ source('fhir', 'Observation') }}
-    ON {{ source('fhir', 'Patient') }}.id = {{ source('fhir', 'Observation') }}.patient_id
-WHERE {{ source('fhir', 'Patient') }}.id = {{ var('id') }}
+FROM {{ source('fake_data', 'Patient') }}
+JOIN {{ source('fake_data', 'Observation') }}
+    ON {{ source('fake_data', 'Patient') }}.id = {{ source('fake_data', 'Observation') }}.patient_id
+WHERE {{ source('fake_data', 'Patient') }}.id = {{ var('id') }}

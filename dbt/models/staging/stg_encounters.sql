@@ -6,4 +6,4 @@ SELECT
   encounter_date,
   reason,
   created_at
-FROM {{ source('fhir', 'Encounter') }}
+FROM {{ source('fake_data', 'Encounter') }}

@@ -1,7 +1,8 @@
 version: 2
 
 sources:
-  - name: fhir
+  - name: fake_data
+    description: Source of synthetic healthcare data
     database: postgres
     schema: public
     tables:

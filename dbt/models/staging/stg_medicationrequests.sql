@@ -6,4 +6,4 @@ SELECT
     dosage,
     status,
     created_at
-FROM {{ source('fhir', 'MedicationRequest') }}
+FROM {{ source('fake_data', 'MedicationRequest') }}

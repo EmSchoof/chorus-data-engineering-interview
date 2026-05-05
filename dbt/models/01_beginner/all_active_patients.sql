@@ -4,5 +4,5 @@ SELECT
   id,
   identifier,
   gender
-FROM {{ source('fhir', 'Patient') }}
+FROM {{ source('fake_data', 'Patient') }}
 WHERE active = true

@@ -6,4 +6,4 @@ SELECT
   telecom,
   active,
   created_at
-FROM {{ source('fhir', 'Practitioner') }}
+FROM {{ source('fake_data', 'Practitioner') }}

@@ -8,7 +8,7 @@ WITH ranked_encounters AS (
         encounter_date,
         status,
         ROW_NUMBER() OVER (PARTITION BY patient_id ORDER BY encounter_date DESC) AS rn
-    FROM {{ source('fhir', 'Encounter') }}
+    FROM {{ source('fake_data', 'Encounter') }}
 )
 
 SELECT

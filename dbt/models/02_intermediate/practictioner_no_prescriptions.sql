@@ -4,7 +4,7 @@
 
 WITH prescribing_practitioners AS (
     SELECT DISTINCT practitioner_id
-    FROM {{ source('fhir', 'MedicationRequest') }}
+    FROM {{ source('fake_data', 'MedicationRequest') }}
 )
 
 SELECT

@@ -6,4 +6,4 @@ SELECT
   value,
   unit,
   recorded_at
-FROM {{ source('fhir', 'Observation') }}
+FROM {{ source('fake_data', 'Observation') }}
