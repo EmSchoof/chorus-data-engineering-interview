@@ -6,7 +6,7 @@ Output Columns:
 task_occurrence_id
 task_id
 occurrence_number
-scheduled_date
+occurrence_date
 status
  */
 
@@ -17,7 +17,7 @@ SELECT
   task_occur.person_id,
   task_occur.person_name,
   task_occur.occurrence_number,
-  task_occur.scheduled_date,
+  task_occur.occurrence_date,
   COALESCE(task_stat.status, 'Not Started') AS status,
   COALESCE(task_stat.updated_at, task_occur.created_at) AS last_updated,
   CASE 

@@ -19,12 +19,12 @@ WITH task_dates AS (
         (t.start_date + (n.n || ' months')::interval)
     END AS occurrence_date,
     n.n AS occurrence_number
-  FROM {{ source('task_tracking', 'Task') }} t
-  CROSS JOIN {{ source('task_tracking', 'Person') }} p
+  FROM {{ ref('stg_tasks') }} t
+  CROSS JOIN {{ ref('stg_people') }} p
   CROSS JOIN LATERAL (
     SELECT generate_series(0, t.max_occurrences - 1) AS n
   ) n
-  INNER JOIN {{ source('task_tracking', 'TaskAssignment') }} ta 
+  INNER JOIN {{ ref('stg_task_assignments') }} ta
     ON t.task_id = ta.task_id 
     AND p.person_id = ta.person_id
   WHERE n.n < t.max_occurrences
