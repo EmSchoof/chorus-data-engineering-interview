@@ -11,4 +11,4 @@ SELECT
 FROM {{ source('fake_data', 'Patient') }}
 JOIN {{ source('fake_data', 'Observation') }}
     ON {{ source('fake_data', 'Patient') }}.id = {{ source('fake_data', 'Observation') }}.patient_id
-WHERE {{ source('fake_data', 'Patient') }}.id = {{ var('id') }}
+WHERE {{ source('fake_data', 'Patient') }}.id = {var('patient_id')}

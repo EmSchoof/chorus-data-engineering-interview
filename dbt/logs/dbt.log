@@ -4576,3 +4576,1834 @@ drop view if exists "postgres"."public"."all_active_patients__dbt_backup" cascad
 [0m19:04:00.746359 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b8c4a50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b8c4a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x102495e90>]}
 [0m19:04:00.746609 [debug] [MainThread]: Flushing usage events
 [0m19:04:01.088740 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:17:44.010052 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a412a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a4d78d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a4f1050>]}
+
+
+============================== 19:17:44.013904 | 748d5450-abbe-4c6b-84ef-471434747ef8 ==============================
+[0m19:17:44.013904 [info ] [MainThread]: Running with dbt=1.11.8
+[0m19:17:44.014393 [debug] [MainThread]: running dbt with arguments {'debug': 'False', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'indirect_selection': 'eager', 'introspect': 'True', 'invocation_command': 'dbt run', 'use_experimental_parser': 'False', 'log_path': '/Users/home/PycharmProjects/chorusinnovations/chorus-data-engineering-interview/dbt/logs', 'use_colors': 'True', 'no_print': 'None', 'static_parser': 'True', 'write_json': 'True', 'log_cache_events': 'False', 'profiles_dir': '/Users/home/.dbt', 'empty': 'False', 'cache_selected_only': 'False', 'printer_width': '80', 'partial_parse': 'True', 'quiet': 'False', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'log_format': 'default'}
+[0m19:17:44.219938 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a4e0210>]}
+[0m19:17:44.271064 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1076cc950>]}
+[0m19:17:44.271940 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m19:17:44.363862 [debug] [MainThread]: checksum: 7d524ac048c2100769df89d592e662e060a73ca564e31bd9c2a37efdfe8d8ab6, vars: {}, profile: , target: , version: 1.11.8
+[0m19:17:44.495097 [debug] [MainThread]: Partial parsing enabled: 2 files deleted, 2 files added, 14 files changed.
+[0m19:17:44.495606 [debug] [MainThread]: Partial parsing: added file: chorus_data_engineer_interview://models/01_beginner/encounters_per_specific_patient.sql
+[0m19:17:44.495877 [debug] [MainThread]: Partial parsing: added file: chorus_data_engineer_interview://models/01_beginner/observations_per_specific_patient.sql
+[0m19:17:44.496903 [debug] [MainThread]: Partial parsing: updated file: chorus_data_engineer_interview://models/schema.yml
+[0m19:17:44.497134 [debug] [MainThread]: Partial parsing: deleted file: chorus_data_engineer_interview://models/01_beginner/all_patient_observations.sql
+[0m19:17:44.497335 [debug] [MainThread]: Partial parsing: deleted file: chorus_data_engineer_interview://models/01_beginner/all_patient_encounters.sql
+[0m19:17:44.497563 [debug] [MainThread]: Partial parsing: updated file: chorus_data_engineer_interview://models/staging/stg_medicationrequests.sql
+[0m19:17:44.497783 [debug] [MainThread]: Partial parsing: updated file: chorus_data_engineer_interview://models/02_intermediate/top_3_prescriptions.sql
+[0m19:17:44.498004 [debug] [MainThread]: Partial parsing: updated file: chorus_data_engineer_interview://models/staging/stg_observations.sql
+[0m19:17:44.498223 [debug] [MainThread]: Partial parsing: updated file: chorus_data_engineer_interview://models/03_advanced/patient_prescription_wo_encounter.sql
+[0m19:17:44.498440 [debug] [MainThread]: Partial parsing: updated file: chorus_data_engineer_interview://models/02_intermediate/patient_multi_practitioners.sql
+[0m19:17:44.498654 [debug] [MainThread]: Partial parsing: updated file: chorus_data_engineer_interview://models/staging/stg_practitioners.sql
+[0m19:17:44.498872 [debug] [MainThread]: Partial parsing: updated file: chorus_data_engineer_interview://models/02_intermediate/practictioner_no_prescriptions.sql
+[0m19:17:44.499090 [debug] [MainThread]: Partial parsing: updated file: chorus_data_engineer_interview://models/03_advanced/avg_encounter_per_patient.sql
+[0m19:17:44.499301 [debug] [MainThread]: Partial parsing: updated file: chorus_data_engineer_interview://models/01_beginner/all_active_patients.sql
+[0m19:17:44.499508 [debug] [MainThread]: Partial parsing: updated file: chorus_data_engineer_interview://models/staging/stg_patients.sql
+[0m19:17:44.499714 [debug] [MainThread]: Partial parsing: updated file: chorus_data_engineer_interview://models/02_intermediate/recent_patient_encounters.sql
+[0m19:17:44.499921 [debug] [MainThread]: Partial parsing: updated file: chorus_data_engineer_interview://models/03_advanced/patient_retention_per_cohort.sql
+[0m19:17:44.500127 [debug] [MainThread]: Partial parsing: updated file: chorus_data_engineer_interview://models/staging/stg_encounters.sql
+[0m19:17:45.010620 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109ea2d10>]}
+[0m19:17:45.089364 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/home/PycharmProjects/chorusinnovations/chorus-data-engineering-interview/dbt/target/manifest.json
+[0m19:17:45.091088 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/home/PycharmProjects/chorusinnovations/chorus-data-engineering-interview/dbt/target/semantic_manifest.json
+[0m19:17:45.101830 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b70d6d0>]}
+[0m19:17:45.102226 [info ] [MainThread]: Found 15 models, 21 data tests, 5 sources, 465 macros
+[0m19:17:45.102491 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b133cd0>]}
+[0m19:17:45.104664 [info ] [MainThread]: 
+[0m19:17:45.104933 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m19:17:45.105145 [info ] [MainThread]: 
+[0m19:17:45.105485 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m19:17:45.109326 [debug] [ThreadPool]: Acquiring new postgres connection 'list_postgres'
+[0m19:17:45.156937 [debug] [ThreadPool]: Using postgres connection "list_postgres"
+[0m19:17:45.157247 [debug] [ThreadPool]: On list_postgres: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "connection_name": "list_postgres"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m19:17:45.157462 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m19:17:45.287454 [debug] [ThreadPool]: SQL status: SELECT 4 in 0.130 seconds
+[0m19:17:45.288635 [debug] [ThreadPool]: On list_postgres: Close
+[0m19:17:45.290367 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_postgres, now list_postgres_public)
+[0m19:17:45.295551 [debug] [ThreadPool]: Using postgres connection "list_postgres_public"
+[0m19:17:45.295912 [debug] [ThreadPool]: On list_postgres_public: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "connection_name": "list_postgres_public"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'postgres' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m19:17:45.296164 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m19:17:45.310170 [debug] [ThreadPool]: SQL status: SELECT 18 in 0.014 seconds
+[0m19:17:45.311594 [debug] [ThreadPool]: On list_postgres_public: ROLLBACK
+[0m19:17:45.312911 [debug] [ThreadPool]: On list_postgres_public: Close
+[0m19:17:45.318718 [debug] [MainThread]: Using postgres connection "master"
+[0m19:17:45.319071 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m19:17:45.319366 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m19:17:45.332136 [debug] [MainThread]: SQL status: SELECT 14 in 0.013 seconds
+[0m19:17:45.335160 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bb321d0>]}
+[0m19:17:45.335529 [debug] [MainThread]: On master: ROLLBACK
+[0m19:17:45.336709 [debug] [MainThread]: On master: COMMIT
+[0m19:17:45.336935 [debug] [MainThread]: Using postgres connection "master"
+[0m19:17:45.337135 [debug] [MainThread]: On master: COMMIT
+[0m19:17:45.339115 [debug] [MainThread]: SQL status: COMMIT in 0.002 seconds
+[0m19:17:45.339486 [debug] [MainThread]: On master: Close
+[0m19:17:45.342682 [debug] [Thread-1 (]: Began running node model.chorus_data_engineer_interview.all_active_patients
+[0m19:17:45.343043 [debug] [Thread-2 (]: Began running node model.chorus_data_engineer_interview.avg_encounter_per_patient
+[0m19:17:45.343447 [info ] [Thread-1 (]: 1 of 15 START sql view model public.all_active_patients ........................ [RUN]
+[0m19:17:45.343760 [debug] [Thread-3 (]: Began running node model.chorus_data_engineer_interview.encounters_per_specific_patient
+[0m19:17:45.344000 [debug] [Thread-4 (]: Began running node model.chorus_data_engineer_interview.observations_per_specific_patient
+[0m19:17:45.344366 [info ] [Thread-2 (]: 2 of 15 START sql view model public.avg_encounter_per_patient .................. [RUN]
+[0m19:17:45.344763 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_postgres_public, now model.chorus_data_engineer_interview.all_active_patients)
+[0m19:17:45.345105 [info ] [Thread-3 (]: 3 of 15 START sql view model public.encounters_per_specific_patient ............ [RUN]
+[0m19:17:45.345515 [info ] [Thread-4 (]: 4 of 15 START sql view model public.observations_per_specific_patient .......... [RUN]
+[0m19:17:45.345923 [debug] [Thread-2 (]: Acquiring new postgres connection 'model.chorus_data_engineer_interview.avg_encounter_per_patient'
+[0m19:17:45.346193 [debug] [Thread-1 (]: Began compiling node model.chorus_data_engineer_interview.all_active_patients
+[0m19:17:45.346519 [debug] [Thread-3 (]: Acquiring new postgres connection 'model.chorus_data_engineer_interview.encounters_per_specific_patient'
+[0m19:17:45.346856 [debug] [Thread-4 (]: Acquiring new postgres connection 'model.chorus_data_engineer_interview.observations_per_specific_patient'
+[0m19:17:45.347114 [debug] [Thread-2 (]: Began compiling node model.chorus_data_engineer_interview.avg_encounter_per_patient
+[0m19:17:45.354480 [debug] [Thread-1 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.all_active_patients"
+[0m19:17:45.354839 [debug] [Thread-3 (]: Began compiling node model.chorus_data_engineer_interview.encounters_per_specific_patient
+[0m19:17:45.355224 [debug] [Thread-4 (]: Began compiling node model.chorus_data_engineer_interview.observations_per_specific_patient
+[0m19:17:45.357879 [debug] [Thread-2 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.avg_encounter_per_patient"
+[0m19:17:45.362054 [debug] [Thread-3 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.encounters_per_specific_patient"
+[0m19:17:45.366068 [debug] [Thread-1 (]: Began executing node model.chorus_data_engineer_interview.all_active_patients
+[0m19:17:45.372696 [debug] [Thread-2 (]: Began executing node model.chorus_data_engineer_interview.avg_encounter_per_patient
+[0m19:17:45.385956 [debug] [Thread-3 (]: Began executing node model.chorus_data_engineer_interview.encounters_per_specific_patient
+[0m19:17:45.410176 [debug] [Thread-2 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.avg_encounter_per_patient"
+[0m19:17:45.411635 [debug] [Thread-1 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.all_active_patients"
+[0m19:17:45.415820 [debug] [Thread-3 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.encounters_per_specific_patient"
+[0m19:17:45.417137 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.avg_encounter_per_patient"
+[0m19:17:45.417687 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.encounters_per_specific_patient"
+[0m19:17:45.418482 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.avg_encounter_per_patient: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.avg_encounter_per_patient"} */
+
+  create view "postgres"."public"."avg_encounter_per_patient__dbt_tmp"
+    
+    
+  as (
+    /*
+ Calculate the average number of encounters per patient, rounded to two decimal places.
+ */
+
+WITH encounter_counts AS (
+    SELECT
+        patient_id,
+        COUNT(*) AS encounter_count
+    FROM "postgres"."public"."Encounter"
+    GROUP BY patient_id
+)
+
+SELECT
+    ROUND(AVG(encounter_count), 2) AS avg_encounters_per_patient
+FROM encounter_counts
+  );
+[0m19:17:45.418872 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.all_active_patients"
+[0m19:17:45.419322 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.encounters_per_specific_patient: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.encounters_per_specific_patient"} */
+
+  create view "postgres"."public"."encounters_per_specific_patient__dbt_tmp"
+    
+    
+  as (
+    /*
+Given a patient_id, retrieve all encounters for that patient, including the status and encounter date.
+*/
+
+SELECT
+  id,
+  status,
+  encounter_date
+FROM "postgres"."public"."Patient"
+JOIN "postgres"."public"."Encounter"
+    ON "postgres"."public"."Patient".id = "postgres"."public"."Encounter".patient_id
+WHERE "postgres"."public"."Patient".id = {var('patient_id')}
+  );
+[0m19:17:45.419810 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m19:17:45.420212 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.all_active_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.all_active_patients"} */
+
+  create view "postgres"."public"."all_active_patients__dbt_tmp"
+    
+    
+  as (
+    /* Write a query to return all patients who are active. */
+
+SELECT
+  id,
+  identifier,
+  gender
+FROM "postgres"."public"."Patient"
+WHERE active = true
+  );
+[0m19:17:45.420560 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m19:17:45.421105 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:17:45.424539 [debug] [Thread-4 (]: Compilation Error in model observations_per_specific_patient (models/01_beginner/observations_per_specific_patient.sql)
+  Required var 'id' not found in config:
+  Vars supplied to observations_per_specific_patient = {}
+[0m19:17:45.427335 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b492090>]}
+[0m19:17:45.428245 [error] [Thread-4 (]: 4 of 15 ERROR creating sql view model public.observations_per_specific_patient . [[31mERROR[0m in 0.08s]
+[0m19:17:45.429150 [debug] [Thread-4 (]: Finished running node model.chorus_data_engineer_interview.observations_per_specific_patient
+[0m19:17:45.429828 [debug] [Thread-4 (]: Began running node model.chorus_data_engineer_interview.patient_multi_practitioners
+[0m19:17:45.430264 [info ] [Thread-4 (]: 5 of 15 START sql view model public.patient_multi_practitioners ................ [RUN]
+[0m19:17:45.430712 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.observations_per_specific_patient, now model.chorus_data_engineer_interview.patient_multi_practitioners)
+[0m19:17:45.431049 [debug] [Thread-4 (]: Began compiling node model.chorus_data_engineer_interview.patient_multi_practitioners
+[0m19:17:45.433885 [debug] [Thread-4 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.patient_multi_practitioners"
+[0m19:17:45.434259 [debug] [Thread-7 (]: Marking all children of 'model.chorus_data_engineer_interview.observations_per_specific_patient' to be skipped because of status 'error'.  Reason: Compilation Error in model observations_per_specific_patient (models/01_beginner/observations_per_specific_patient.sql)
+  Required var 'id' not found in config:
+  Vars supplied to observations_per_specific_patient = {}.
+[0m19:17:45.436161 [debug] [Thread-4 (]: Began executing node model.chorus_data_engineer_interview.patient_multi_practitioners
+[0m19:17:45.445639 [debug] [Thread-3 (]: Postgres adapter: Postgres error: syntax error at or near "{"
+LINE 18: WHERE "postgres"."public"."Patient".id = {var('patient_id')}
+                                                  ^
+
+[0m19:17:45.448288 [debug] [Thread-4 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.patient_multi_practitioners"
+[0m19:17:45.448681 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.028 seconds
+[0m19:17:45.449024 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.029 seconds
+[0m19:17:45.449427 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.encounters_per_specific_patient: ROLLBACK
+[0m19:17:45.455793 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.all_active_patients"
+[0m19:17:45.459018 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.avg_encounter_per_patient"
+[0m19:17:45.459598 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_multi_practitioners"
+[0m19:17:45.460634 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.all_active_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.all_active_patients"} */
+alter table "postgres"."public"."all_active_patients" rename to "all_active_patients__dbt_backup"
+[0m19:17:45.461312 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.encounters_per_specific_patient: Close
+[0m19:17:45.461689 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.avg_encounter_per_patient: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.avg_encounter_per_patient"} */
+alter table "postgres"."public"."avg_encounter_per_patient" rename to "avg_encounter_per_patient__dbt_backup"
+[0m19:17:45.462080 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.patient_multi_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_multi_practitioners"} */
+
+  create view "postgres"."public"."patient_multi_practitioners__dbt_tmp"
+    
+    
+  as (
+    /*
+Write a query to return a list of patient IDs who have had encounters with more than one distinct practitioner.
+ */
+
+WITH practitioner_counts AS (
+    SELECT
+        patient_id,
+        COUNT(DISTINCT practitioner_id) AS distinct_practitioners
+    FROM "postgres"."public"."Encounter"
+    GROUP BY patient_id
+)
+
+SELECT
+    patient_id
+FROM practitioner_counts
+WHERE distinct_practitioners > 1
+  );
+[0m19:17:45.463812 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m19:17:45.464704 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:17:45.465300 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m19:17:45.468833 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.all_active_patients"
+[0m19:17:45.471795 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.avg_encounter_per_patient"
+[0m19:17:45.472483 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.all_active_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.all_active_patients"} */
+alter table "postgres"."public"."all_active_patients__dbt_tmp" rename to "all_active_patients"
+[0m19:17:45.472932 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.avg_encounter_per_patient: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.avg_encounter_per_patient"} */
+alter table "postgres"."public"."avg_encounter_per_patient__dbt_tmp" rename to "avg_encounter_per_patient"
+[0m19:17:45.475019 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:17:45.481731 [debug] [Thread-4 (]: SQL status: CREATE VIEW in 0.018 seconds
+[0m19:17:45.482072 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.009 seconds
+[0m19:17:45.493681 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.avg_encounter_per_patient: COMMIT
+[0m19:17:45.496791 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_multi_practitioners"
+[0m19:17:45.498251 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.all_active_patients: COMMIT
+[0m19:17:45.498658 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.avg_encounter_per_patient"
+[0m19:17:45.499093 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.patient_multi_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_multi_practitioners"} */
+alter table "postgres"."public"."patient_multi_practitioners" rename to "patient_multi_practitioners__dbt_backup"
+[0m19:17:45.499550 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.all_active_patients"
+[0m19:17:45.499911 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.avg_encounter_per_patient: COMMIT
+[0m19:17:45.501483 [debug] [Thread-3 (]: Database Error in model encounters_per_specific_patient (models/01_beginner/encounters_per_specific_patient.sql)
+  syntax error at or near "{"
+  LINE 18: WHERE "postgres"."public"."Patient".id = {var('patient_id')}
+                                                    ^
+  compiled code at target/run/chorus_data_engineer_interview/models/01_beginner/encounters_per_specific_patient.sql
+[0m19:17:45.501820 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.all_active_patients: COMMIT
+[0m19:17:45.502324 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10baa9b10>]}
+[0m19:17:45.502780 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:17:45.503626 [error] [Thread-3 (]: 3 of 15 ERROR creating sql view model public.encounters_per_specific_patient ... [[31mERROR[0m in 0.16s]
+[0m19:17:45.511385 [debug] [Thread-1 (]: SQL status: COMMIT in 0.008 seconds
+[0m19:17:45.514257 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_multi_practitioners"
+[0m19:17:45.514860 [debug] [Thread-3 (]: Finished running node model.chorus_data_engineer_interview.encounters_per_specific_patient
+[0m19:17:45.515167 [debug] [Thread-2 (]: SQL status: COMMIT in 0.013 seconds
+[0m19:17:45.521139 [debug] [Thread-1 (]: Applying DROP to: "postgres"."public"."all_active_patients__dbt_backup"
+[0m19:17:45.521516 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.patient_multi_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_multi_practitioners"} */
+alter table "postgres"."public"."patient_multi_practitioners__dbt_tmp" rename to "patient_multi_practitioners"
+[0m19:17:45.521915 [debug] [Thread-3 (]: Began running node model.chorus_data_engineer_interview.patient_prescription_wo_encounter
+[0m19:17:45.522295 [debug] [Thread-7 (]: Marking all children of 'model.chorus_data_engineer_interview.encounters_per_specific_patient' to be skipped because of status 'error'.  Reason: Database Error in model encounters_per_specific_patient (models/01_beginner/encounters_per_specific_patient.sql)
+  syntax error at or near "{"
+  LINE 18: WHERE "postgres"."public"."Patient".id = {var('patient_id')}
+                                                    ^
+  compiled code at target/run/chorus_data_engineer_interview/models/01_beginner/encounters_per_specific_patient.sql.
+[0m19:17:45.524399 [debug] [Thread-2 (]: Applying DROP to: "postgres"."public"."avg_encounter_per_patient__dbt_backup"
+[0m19:17:45.529183 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.all_active_patients"
+[0m19:17:45.529947 [info ] [Thread-3 (]: 6 of 15 START sql view model public.patient_prescription_wo_encounter .......... [RUN]
+[0m19:17:45.530920 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.avg_encounter_per_patient"
+[0m19:17:45.531267 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.all_active_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.all_active_patients"} */
+drop view if exists "postgres"."public"."all_active_patients__dbt_backup" cascade
+[0m19:17:45.531753 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.encounters_per_specific_patient, now model.chorus_data_engineer_interview.patient_prescription_wo_encounter)
+[0m19:17:45.532087 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m19:17:45.532396 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.avg_encounter_per_patient: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.avg_encounter_per_patient"} */
+drop view if exists "postgres"."public"."avg_encounter_per_patient__dbt_backup" cascade
+[0m19:17:45.532809 [debug] [Thread-3 (]: Began compiling node model.chorus_data_engineer_interview.patient_prescription_wo_encounter
+[0m19:17:45.534362 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.patient_multi_practitioners: COMMIT
+[0m19:17:45.538015 [debug] [Thread-3 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"
+[0m19:17:45.538376 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.006 seconds
+[0m19:17:45.538698 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.004 seconds
+[0m19:17:45.539022 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_multi_practitioners"
+[0m19:17:45.541269 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.all_active_patients: Close
+[0m19:17:45.542350 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.avg_encounter_per_patient: Close
+[0m19:17:45.542672 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.patient_multi_practitioners: COMMIT
+[0m19:17:45.542951 [debug] [Thread-3 (]: Began executing node model.chorus_data_engineer_interview.patient_prescription_wo_encounter
+[0m19:17:45.543423 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bb49710>]}
+[0m19:17:45.543930 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bb57890>]}
+[0m19:17:45.547527 [debug] [Thread-3 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"
+[0m19:17:45.547831 [debug] [Thread-4 (]: SQL status: COMMIT in 0.004 seconds
+[0m19:17:45.548344 [info ] [Thread-1 (]: 1 of 15 OK created sql view model public.all_active_patients ................... [[32mCREATE VIEW[0m in 0.20s]
+[0m19:17:45.548890 [info ] [Thread-2 (]: 2 of 15 OK created sql view model public.avg_encounter_per_patient ............. [[32mCREATE VIEW[0m in 0.20s]
+[0m19:17:45.551098 [debug] [Thread-4 (]: Applying DROP to: "postgres"."public"."patient_multi_practitioners__dbt_backup"
+[0m19:17:45.551578 [debug] [Thread-1 (]: Finished running node model.chorus_data_engineer_interview.all_active_patients
+[0m19:17:45.552084 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"
+[0m19:17:45.552482 [debug] [Thread-2 (]: Finished running node model.chorus_data_engineer_interview.avg_encounter_per_patient
+[0m19:17:45.553071 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_multi_practitioners"
+[0m19:17:45.553410 [debug] [Thread-1 (]: Began running node model.chorus_data_engineer_interview.patient_retention_per_cohort
+[0m19:17:45.553824 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.patient_prescription_wo_encounter: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"} */
+
+  create view "postgres"."public"."patient_prescription_wo_encounter__dbt_tmp"
+    
+    
+  as (
+    /*
+ Write a query to find patients who have a record in the MedicationRequest table but no associated encounters in the Encounter table.
+ */
+
+WITH
+
+patients_with_medication_requests AS (
+    SELECT DISTINCT patient_id
+    FROM "postgres"."public"."MedicationRequest"
+),
+
+patients_with_encounters AS (
+    SELECT DISTINCT patient_id
+    FROM "postgres"."public"."Encounter"
+)
+
+SELECT
+    patient_id
+FROM patients_with_medication_requests
+WHERE patient_id NOT IN (SELECT patient_id FROM patients_with_encounters)
+  );
+[0m19:17:45.554187 [debug] [Thread-2 (]: Began running node model.chorus_data_engineer_interview.practictioner_no_prescriptions
+[0m19:17:45.554532 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.patient_multi_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_multi_practitioners"} */
+drop view if exists "postgres"."public"."patient_multi_practitioners__dbt_backup" cascade
+[0m19:17:45.554947 [info ] [Thread-1 (]: 7 of 15 START sql view model public.patient_retention_per_cohort ............... [RUN]
+[0m19:17:45.555327 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m19:17:45.555715 [info ] [Thread-2 (]: 8 of 15 START sql view model public.practictioner_no_prescriptions ............. [RUN]
+[0m19:17:45.556111 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.all_active_patients, now model.chorus_data_engineer_interview.patient_retention_per_cohort)
+[0m19:17:45.556687 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.avg_encounter_per_patient, now model.chorus_data_engineer_interview.practictioner_no_prescriptions)
+[0m19:17:45.557041 [debug] [Thread-1 (]: Began compiling node model.chorus_data_engineer_interview.patient_retention_per_cohort
+[0m19:17:45.557471 [debug] [Thread-2 (]: Began compiling node model.chorus_data_engineer_interview.practictioner_no_prescriptions
+[0m19:17:45.561060 [debug] [Thread-1 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.patient_retention_per_cohort"
+[0m19:17:45.561385 [debug] [Thread-4 (]: SQL status: DROP VIEW in 0.005 seconds
+[0m19:17:45.564239 [debug] [Thread-2 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.practictioner_no_prescriptions"
+[0m19:17:45.565669 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.patient_multi_practitioners: Close
+[0m19:17:45.566289 [debug] [Thread-1 (]: Began executing node model.chorus_data_engineer_interview.patient_retention_per_cohort
+[0m19:17:45.569788 [debug] [Thread-1 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.patient_retention_per_cohort"
+[0m19:17:45.570233 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bb02cd0>]}
+[0m19:17:45.570604 [debug] [Thread-3 (]: SQL status: CREATE VIEW in 0.015 seconds
+[0m19:17:45.571520 [debug] [Thread-2 (]: Began executing node model.chorus_data_engineer_interview.practictioner_no_prescriptions
+[0m19:17:45.571233 [info ] [Thread-4 (]: 5 of 15 OK created sql view model public.patient_multi_practitioners ........... [[32mCREATE VIEW[0m in 0.14s]
+[0m19:17:45.574924 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"
+[0m19:17:45.575257 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_retention_per_cohort"
+[0m19:17:45.580462 [debug] [Thread-2 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.practictioner_no_prescriptions"
+[0m19:17:45.581044 [debug] [Thread-4 (]: Finished running node model.chorus_data_engineer_interview.patient_multi_practitioners
+[0m19:17:45.581411 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.patient_prescription_wo_encounter: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"} */
+alter table "postgres"."public"."patient_prescription_wo_encounter" rename to "patient_prescription_wo_encounter__dbt_backup"
+[0m19:17:45.581791 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.patient_retention_per_cohort: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_retention_per_cohort"} */
+
+  create view "postgres"."public"."patient_retention_per_cohort__dbt_tmp"
+    
+    
+  as (
+    /*
+Write a query to count how many patients had their first encounter in each month (YYYY-MM format) and still had at least one encounter in the following six months.
+*/
+
+WITH
+
+first_encounters AS (
+    SELECT
+        patient_id,
+        MIN(encounter_date) AS first_encounter_date
+    FROM "postgres"."public"."Encounter"
+    GROUP BY patient_id
+),
+
+retained_patients AS (
+    SELECT
+        fe.patient_id,
+        fe.first_encounter_date,
+        DATE_TRUNC('month', fe.first_encounter_date) AS first_encounter_month,
+        MAX(e.encounter_date) AS last_encounter_date
+    FROM first_encounters fe
+    JOIN "postgres"."public"."Encounter" e ON fe.patient_id = e.patient_id
+    WHERE e.encounter_date >= fe.first_encounter_date
+    GROUP BY fe.patient_id, fe.first_encounter_date
+)
+
+SELECT
+    first_encounter_month,
+    COUNT(DISTINCT patient_id) AS retained_patients_count
+FROM retained_patients
+WHERE last_encounter_date >= first_encounter_date + INTERVAL '6 months'
+GROUP BY first_encounter_month
+ORDER BY first_encounter_month
+  );
+[0m19:17:45.582320 [debug] [Thread-4 (]: Began running node model.chorus_data_engineer_interview.recent_patient_encounters
+[0m19:17:45.582827 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.practictioner_no_prescriptions"
+[0m19:17:45.583129 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:17:45.583565 [info ] [Thread-4 (]: 9 of 15 START sql view model public.recent_patient_encounters .................. [RUN]
+[0m19:17:45.584017 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.practictioner_no_prescriptions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.practictioner_no_prescriptions"} */
+
+  create view "postgres"."public"."practictioner_no_prescriptions__dbt_tmp"
+    
+    
+  as (
+    /*
+ Write a query to find all practitioners who do not appear in the MedicationRequest table as a prescribing practitioner.
+ */
+
+WITH prescribing_practitioners AS (
+    SELECT DISTINCT practitioner_id
+    FROM "postgres"."public"."MedicationRequest"
+)
+
+SELECT
+    id AS practitioner_id,
+    name,
+    specialty
+FROM "postgres"."public"."Practitioner"
+WHERE id NOT IN (SELECT practitioner_id FROM prescribing_practitioners)
+  );
+[0m19:17:45.584358 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:17:45.584821 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.patient_multi_practitioners, now model.chorus_data_engineer_interview.recent_patient_encounters)
+[0m19:17:45.585131 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m19:17:45.639558 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"
+[0m19:17:45.640070 [debug] [Thread-4 (]: Began compiling node model.chorus_data_engineer_interview.recent_patient_encounters
+[0m19:17:45.640622 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.patient_prescription_wo_encounter: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"} */
+alter table "postgres"."public"."patient_prescription_wo_encounter__dbt_tmp" rename to "patient_prescription_wo_encounter"
+[0m19:17:45.643551 [debug] [Thread-4 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.recent_patient_encounters"
+[0m19:17:45.645513 [debug] [Thread-4 (]: Began executing node model.chorus_data_engineer_interview.recent_patient_encounters
+[0m19:17:45.649009 [debug] [Thread-4 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.recent_patient_encounters"
+[0m19:17:45.649368 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.005 seconds
+[0m19:17:45.649764 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.067 seconds
+[0m19:17:45.651247 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.patient_prescription_wo_encounter: COMMIT
+[0m19:17:45.654167 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_retention_per_cohort"
+[0m19:17:45.654481 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.recent_patient_encounters"
+[0m19:17:45.654764 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.070 seconds
+[0m19:17:45.655111 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"
+[0m19:17:45.655464 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.patient_retention_per_cohort: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_retention_per_cohort"} */
+alter table "postgres"."public"."patient_retention_per_cohort" rename to "patient_retention_per_cohort__dbt_backup"
+[0m19:17:45.655821 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.recent_patient_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.recent_patient_encounters"} */
+
+  create view "postgres"."public"."recent_patient_encounters__dbt_tmp"
+    
+    
+  as (
+    /*
+Retrieve each patient’s most recent encounter (based on encounter_date). Return the patient_id, encounter_date, and status.
+*/
+
+WITH ranked_encounters AS (
+    SELECT
+        patient_id,
+        encounter_date,
+        status,
+        ROW_NUMBER() OVER (PARTITION BY patient_id ORDER BY encounter_date DESC) AS rn
+    FROM "postgres"."public"."Encounter"
+)
+
+SELECT
+    patient_id,
+    encounter_date,
+    status
+FROM ranked_encounters
+WHERE rn = 1
+  );
+[0m19:17:45.658821 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.practictioner_no_prescriptions"
+[0m19:17:45.659136 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.patient_prescription_wo_encounter: COMMIT
+[0m19:17:45.659475 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m19:17:45.659800 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.practictioner_no_prescriptions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.practictioner_no_prescriptions"} */
+alter table "postgres"."public"."practictioner_no_prescriptions" rename to "practictioner_no_prescriptions__dbt_backup"
+[0m19:17:45.661061 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:17:45.663813 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_retention_per_cohort"
+[0m19:17:45.664116 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.004 seconds
+[0m19:17:45.664411 [debug] [Thread-3 (]: SQL status: COMMIT in 0.004 seconds
+[0m19:17:45.664729 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.patient_retention_per_cohort: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_retention_per_cohort"} */
+alter table "postgres"."public"."patient_retention_per_cohort__dbt_tmp" rename to "patient_retention_per_cohort"
+[0m19:17:45.667278 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.practictioner_no_prescriptions"
+[0m19:17:45.669303 [debug] [Thread-3 (]: Applying DROP to: "postgres"."public"."patient_prescription_wo_encounter__dbt_backup"
+[0m19:17:45.669703 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.practictioner_no_prescriptions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.practictioner_no_prescriptions"} */
+alter table "postgres"."public"."practictioner_no_prescriptions__dbt_tmp" rename to "practictioner_no_prescriptions"
+[0m19:17:45.670354 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"
+[0m19:17:45.670825 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.patient_prescription_wo_encounter: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"} */
+drop view if exists "postgres"."public"."patient_prescription_wo_encounter__dbt_backup" cascade
+[0m19:17:45.671271 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:17:45.672642 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.patient_retention_per_cohort: COMMIT
+[0m19:17:45.672975 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:17:45.673258 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_retention_per_cohort"
+[0m19:17:45.673533 [debug] [Thread-4 (]: SQL status: CREATE VIEW in 0.014 seconds
+[0m19:17:45.674758 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.practictioner_no_prescriptions: COMMIT
+[0m19:17:45.675040 [debug] [Thread-3 (]: SQL status: DROP VIEW in 0.003 seconds
+[0m19:17:45.675340 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.patient_retention_per_cohort: COMMIT
+[0m19:17:45.678118 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.recent_patient_encounters"
+[0m19:17:45.678429 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.practictioner_no_prescriptions"
+[0m19:17:45.679429 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.patient_prescription_wo_encounter: Close
+[0m19:17:45.679793 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.recent_patient_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.recent_patient_encounters"} */
+alter table "postgres"."public"."recent_patient_encounters" rename to "recent_patient_encounters__dbt_backup"
+[0m19:17:45.680109 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.practictioner_no_prescriptions: COMMIT
+[0m19:17:45.680585 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bd06a50>]}
+[0m19:17:45.681051 [debug] [Thread-1 (]: SQL status: COMMIT in 0.001 seconds
+[0m19:17:45.681611 [info ] [Thread-3 (]: 6 of 15 OK created sql view model public.patient_prescription_wo_encounter ..... [[32mCREATE VIEW[0m in 0.15s]
+[0m19:17:45.684062 [debug] [Thread-1 (]: Applying DROP to: "postgres"."public"."patient_retention_per_cohort__dbt_backup"
+[0m19:17:45.684362 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m19:17:45.684641 [debug] [Thread-2 (]: SQL status: COMMIT in 0.004 seconds
+[0m19:17:45.685051 [debug] [Thread-3 (]: Finished running node model.chorus_data_engineer_interview.patient_prescription_wo_encounter
+[0m19:17:45.687260 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_retention_per_cohort"
+[0m19:17:45.689674 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.recent_patient_encounters"
+[0m19:17:45.691813 [debug] [Thread-2 (]: Applying DROP to: "postgres"."public"."practictioner_no_prescriptions__dbt_backup"
+[0m19:17:45.692162 [debug] [Thread-3 (]: Began running node model.chorus_data_engineer_interview.stg_encounters
+[0m19:17:45.692513 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.patient_retention_per_cohort: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_retention_per_cohort"} */
+drop view if exists "postgres"."public"."patient_retention_per_cohort__dbt_backup" cascade
+[0m19:17:45.692825 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.recent_patient_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.recent_patient_encounters"} */
+alter table "postgres"."public"."recent_patient_encounters__dbt_tmp" rename to "recent_patient_encounters"
+[0m19:17:45.693385 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.practictioner_no_prescriptions"
+[0m19:17:45.693767 [info ] [Thread-3 (]: 10 of 15 START sql view model public.stg_encounters ............................ [RUN]
+[0m19:17:45.694222 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.practictioner_no_prescriptions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.practictioner_no_prescriptions"} */
+drop view if exists "postgres"."public"."practictioner_no_prescriptions__dbt_backup" cascade
+[0m19:17:45.694644 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.patient_prescription_wo_encounter, now model.chorus_data_engineer_interview.stg_encounters)
+[0m19:17:45.695102 [debug] [Thread-3 (]: Began compiling node model.chorus_data_engineer_interview.stg_encounters
+[0m19:17:45.697557 [debug] [Thread-3 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.stg_encounters"
+[0m19:17:45.697864 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.004 seconds
+[0m19:17:45.698182 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.003 seconds
+[0m19:17:45.698468 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.004 seconds
+[0m19:17:45.699794 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.recent_patient_encounters: COMMIT
+[0m19:17:45.700918 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.practictioner_no_prescriptions: Close
+[0m19:17:45.701970 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.patient_retention_per_cohort: Close
+[0m19:17:45.702273 [debug] [Thread-3 (]: Began executing node model.chorus_data_engineer_interview.stg_encounters
+[0m19:17:45.702584 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.recent_patient_encounters"
+[0m19:17:45.703060 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10966f350>]}
+[0m19:17:45.703489 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b393890>]}
+[0m19:17:45.707065 [debug] [Thread-3 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.stg_encounters"
+[0m19:17:45.707424 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.recent_patient_encounters: COMMIT
+[0m19:17:45.708178 [info ] [Thread-2 (]: 8 of 15 OK created sql view model public.practictioner_no_prescriptions ........ [[32mCREATE VIEW[0m in 0.15s]
+[0m19:17:45.708779 [info ] [Thread-1 (]: 7 of 15 OK created sql view model public.patient_retention_per_cohort .......... [[32mCREATE VIEW[0m in 0.15s]
+[0m19:17:45.709519 [debug] [Thread-2 (]: Finished running node model.chorus_data_engineer_interview.practictioner_no_prescriptions
+[0m19:17:45.709997 [debug] [Thread-1 (]: Finished running node model.chorus_data_engineer_interview.patient_retention_per_cohort
+[0m19:17:45.710464 [debug] [Thread-2 (]: Began running node model.chorus_data_engineer_interview.stg_medicationrequests
+[0m19:17:45.710788 [debug] [Thread-4 (]: SQL status: COMMIT in 0.001 seconds
+[0m19:17:45.711110 [debug] [Thread-1 (]: Began running node model.chorus_data_engineer_interview.stg_observations
+[0m19:17:45.711511 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_encounters"
+[0m19:17:45.711905 [info ] [Thread-2 (]: 11 of 15 START sql view model public.stg_medicationrequests .................... [RUN]
+[0m19:17:45.714034 [debug] [Thread-4 (]: Applying DROP to: "postgres"."public"."recent_patient_encounters__dbt_backup"
+[0m19:17:45.714417 [info ] [Thread-1 (]: 12 of 15 START sql view model public.stg_observations .......................... [RUN]
+[0m19:17:45.714781 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_encounters"} */
+
+  create view "postgres"."public"."stg_encounters__dbt_tmp"
+    
+    
+  as (
+    SELECT
+  id,
+  patient_id,
+  practitioner_id,
+  status,
+  encounter_date,
+  reason,
+  created_at
+FROM "postgres"."public"."Encounter"
+  );
+[0m19:17:45.715136 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.practictioner_no_prescriptions, now model.chorus_data_engineer_interview.stg_medicationrequests)
+[0m19:17:45.715777 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.recent_patient_encounters"
+[0m19:17:45.716088 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.patient_retention_per_cohort, now model.chorus_data_engineer_interview.stg_observations)
+[0m19:17:45.716398 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m19:17:45.716698 [debug] [Thread-2 (]: Began compiling node model.chorus_data_engineer_interview.stg_medicationrequests
+[0m19:17:45.716998 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.recent_patient_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.recent_patient_encounters"} */
+drop view if exists "postgres"."public"."recent_patient_encounters__dbt_backup" cascade
+[0m19:17:45.717283 [debug] [Thread-1 (]: Began compiling node model.chorus_data_engineer_interview.stg_observations
+[0m19:17:45.719884 [debug] [Thread-2 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.stg_medicationrequests"
+[0m19:17:45.722762 [debug] [Thread-1 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.stg_observations"
+[0m19:17:45.723612 [debug] [Thread-4 (]: SQL status: DROP VIEW in 0.003 seconds
+[0m19:17:45.724942 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.recent_patient_encounters: Close
+[0m19:17:45.725520 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b67f790>]}
+[0m19:17:45.726282 [info ] [Thread-4 (]: 9 of 15 OK created sql view model public.recent_patient_encounters ............. [[32mCREATE VIEW[0m in 0.14s]
+[0m19:17:45.726976 [debug] [Thread-4 (]: Finished running node model.chorus_data_engineer_interview.recent_patient_encounters
+[0m19:17:45.727420 [debug] [Thread-4 (]: Began running node model.chorus_data_engineer_interview.stg_patients
+[0m19:17:45.727800 [info ] [Thread-4 (]: 13 of 15 START sql view model public.stg_patients .............................. [RUN]
+[0m19:17:45.728298 [debug] [Thread-2 (]: Began executing node model.chorus_data_engineer_interview.stg_medicationrequests
+[0m19:17:45.728793 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.recent_patient_encounters, now model.chorus_data_engineer_interview.stg_patients)
+[0m19:17:45.732998 [debug] [Thread-2 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.stg_medicationrequests"
+[0m19:17:45.733323 [debug] [Thread-1 (]: Began executing node model.chorus_data_engineer_interview.stg_observations
+[0m19:17:45.733635 [debug] [Thread-3 (]: SQL status: CREATE VIEW in 0.017 seconds
+[0m19:17:45.733943 [debug] [Thread-4 (]: Began compiling node model.chorus_data_engineer_interview.stg_patients
+[0m19:17:45.737180 [debug] [Thread-1 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.stg_observations"
+[0m19:17:45.740024 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_encounters"
+[0m19:17:45.744087 [debug] [Thread-4 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.stg_patients"
+[0m19:17:45.744434 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_medicationrequests"
+[0m19:17:45.744834 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_encounters"} */
+alter table "postgres"."public"."stg_encounters" rename to "stg_encounters__dbt_backup"
+[0m19:17:45.745262 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.stg_medicationrequests: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_medicationrequests"} */
+
+  create view "postgres"."public"."stg_medicationrequests__dbt_tmp"
+    
+    
+  as (
+    SELECT
+    id,
+    patient_id,
+    practitioner_id,
+    medication_name,
+    dosage,
+    status,
+    created_at
+FROM "postgres"."public"."MedicationRequest"
+  );
+[0m19:17:45.745578 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_observations"
+[0m19:17:45.745966 [debug] [Thread-4 (]: Began executing node model.chorus_data_engineer_interview.stg_patients
+[0m19:17:45.746234 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m19:17:45.746816 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.stg_observations: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_observations"} */
+
+  create view "postgres"."public"."stg_observations__dbt_tmp"
+    
+    
+  as (
+    SELECT
+  id,
+  patient_id,
+  encounter_id,
+  type,
+  value,
+  unit,
+  recorded_at
+FROM "postgres"."public"."Observation"
+  );
+[0m19:17:45.750344 [debug] [Thread-4 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.stg_patients"
+[0m19:17:45.750717 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.005 seconds
+[0m19:17:45.751183 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:17:45.754400 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_encounters"
+[0m19:17:45.754969 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_encounters"} */
+alter table "postgres"."public"."stg_encounters__dbt_tmp" rename to "stg_encounters"
+[0m19:17:45.755334 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_patients"
+[0m19:17:45.755999 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.stg_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_patients"} */
+
+  create view "postgres"."public"."stg_patients__dbt_tmp"
+    
+    
+  as (
+    SELECT
+  id,
+  identifier,
+  name,
+  gender,
+  birth_date,
+  address,
+  telecom,
+  active,
+  created_at
+FROM "postgres"."public"."Patient"
+  );
+[0m19:17:45.756749 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m19:17:45.757756 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:17:45.760001 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_encounters: COMMIT
+[0m19:17:45.760531 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_encounters"
+[0m19:17:45.760999 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_encounters: COMMIT
+[0m19:17:45.764301 [debug] [Thread-3 (]: SQL status: COMMIT in 0.003 seconds
+[0m19:17:45.767712 [debug] [Thread-3 (]: Applying DROP to: "postgres"."public"."stg_encounters__dbt_backup"
+[0m19:17:45.768086 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.022 seconds
+[0m19:17:45.768405 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.017 seconds
+[0m19:17:45.769442 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_encounters"
+[0m19:17:45.772514 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_medicationrequests"
+[0m19:17:45.775824 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_observations"
+[0m19:17:45.776129 [debug] [Thread-4 (]: SQL status: CREATE VIEW in 0.019 seconds
+[0m19:17:45.776513 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_encounters"} */
+drop view if exists "postgres"."public"."stg_encounters__dbt_backup" cascade
+[0m19:17:45.776868 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.stg_medicationrequests: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_medicationrequests"} */
+alter table "postgres"."public"."stg_medicationrequests__dbt_tmp" rename to "stg_medicationrequests"
+[0m19:17:45.777196 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.stg_observations: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_observations"} */
+alter table "postgres"."public"."stg_observations" rename to "stg_observations__dbt_backup"
+[0m19:17:45.780133 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_patients"
+[0m19:17:45.780619 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.stg_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_patients"} */
+alter table "postgres"."public"."stg_patients" rename to "stg_patients__dbt_backup"
+[0m19:17:45.782947 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:17:45.783271 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m19:17:45.783593 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m19:17:45.784903 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.stg_medicationrequests: COMMIT
+[0m19:17:45.785203 [debug] [Thread-3 (]: SQL status: DROP VIEW in 0.005 seconds
+[0m19:17:45.787554 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_observations"
+[0m19:17:45.790237 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_patients"
+[0m19:17:45.790551 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_medicationrequests"
+[0m19:17:45.791564 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_encounters: Close
+[0m19:17:45.791879 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.stg_observations: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_observations"} */
+alter table "postgres"."public"."stg_observations__dbt_tmp" rename to "stg_observations"
+[0m19:17:45.792201 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.stg_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_patients"} */
+alter table "postgres"."public"."stg_patients__dbt_tmp" rename to "stg_patients"
+[0m19:17:45.792496 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.stg_medicationrequests: COMMIT
+[0m19:17:45.792956 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b4ce450>]}
+[0m19:17:45.793733 [info ] [Thread-3 (]: 10 of 15 OK created sql view model public.stg_encounters ....................... [[32mCREATE VIEW[0m in 0.10s]
+[0m19:17:45.794217 [debug] [Thread-3 (]: Finished running node model.chorus_data_engineer_interview.stg_encounters
+[0m19:17:45.794541 [debug] [Thread-3 (]: Began running node model.chorus_data_engineer_interview.stg_practitioners
+[0m19:17:45.794894 [debug] [Thread-2 (]: SQL status: COMMIT in 0.002 seconds
+[0m19:17:45.795193 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:17:45.795477 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:17:45.795969 [info ] [Thread-3 (]: 14 of 15 START sql view model public.stg_practitioners ......................... [RUN]
+[0m19:17:45.798150 [debug] [Thread-2 (]: Applying DROP to: "postgres"."public"."stg_medicationrequests__dbt_backup"
+[0m19:17:45.799458 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.stg_observations: COMMIT
+[0m19:17:45.800691 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.stg_patients: COMMIT
+[0m19:17:45.801036 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.stg_encounters, now model.chorus_data_engineer_interview.stg_practitioners)
+[0m19:17:45.801622 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_medicationrequests"
+[0m19:17:45.801923 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_observations"
+[0m19:17:45.802212 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_patients"
+[0m19:17:45.802491 [debug] [Thread-3 (]: Began compiling node model.chorus_data_engineer_interview.stg_practitioners
+[0m19:17:45.802790 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.stg_medicationrequests: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_medicationrequests"} */
+drop view if exists "postgres"."public"."stg_medicationrequests__dbt_backup" cascade
+[0m19:17:45.803066 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.stg_observations: COMMIT
+[0m19:17:45.803325 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.stg_patients: COMMIT
+[0m19:17:45.807659 [debug] [Thread-3 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.stg_practitioners"
+[0m19:17:45.808435 [debug] [Thread-3 (]: Began executing node model.chorus_data_engineer_interview.stg_practitioners
+[0m19:17:45.811841 [debug] [Thread-3 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.stg_practitioners"
+[0m19:17:45.812160 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.004 seconds
+[0m19:17:45.812454 [debug] [Thread-1 (]: SQL status: COMMIT in 0.004 seconds
+[0m19:17:45.812719 [debug] [Thread-4 (]: SQL status: COMMIT in 0.005 seconds
+[0m19:17:45.813866 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.stg_medicationrequests: Close
+[0m19:17:45.816034 [debug] [Thread-1 (]: Applying DROP to: "postgres"."public"."stg_observations__dbt_backup"
+[0m19:17:45.818371 [debug] [Thread-4 (]: Applying DROP to: "postgres"."public"."stg_patients__dbt_backup"
+[0m19:17:45.818762 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_practitioners"
+[0m19:17:45.819251 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a4e0510>]}
+[0m19:17:45.819816 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_observations"
+[0m19:17:45.820416 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_patients"
+[0m19:17:45.820751 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_practitioners"} */
+
+  create view "postgres"."public"."stg_practitioners__dbt_tmp"
+    
+    
+  as (
+    SELECT
+  id,
+  identifier,
+  name,
+  specialty,
+  telecom,
+  active,
+  created_at
+FROM "postgres"."public"."Practitioner"
+  );
+[0m19:17:45.821570 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.stg_observations: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_observations"} */
+drop view if exists "postgres"."public"."stg_observations__dbt_backup" cascade
+[0m19:17:45.821289 [info ] [Thread-2 (]: 11 of 15 OK created sql view model public.stg_medicationrequests ............... [[32mCREATE VIEW[0m in 0.10s]
+[0m19:17:45.822053 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.stg_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_patients"} */
+drop view if exists "postgres"."public"."stg_patients__dbt_backup" cascade
+[0m19:17:45.822379 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m19:17:45.822870 [debug] [Thread-2 (]: Finished running node model.chorus_data_engineer_interview.stg_medicationrequests
+[0m19:17:45.823490 [debug] [Thread-2 (]: Began running node model.chorus_data_engineer_interview.top_3_prescriptions
+[0m19:17:45.824053 [info ] [Thread-2 (]: 15 of 15 START sql view model public.top_3_prescriptions ....................... [RUN]
+[0m19:17:45.824424 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.stg_medicationrequests, now model.chorus_data_engineer_interview.top_3_prescriptions)
+[0m19:17:45.824727 [debug] [Thread-2 (]: Began compiling node model.chorus_data_engineer_interview.top_3_prescriptions
+[0m19:17:45.827422 [debug] [Thread-2 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.top_3_prescriptions"
+[0m19:17:45.827800 [debug] [Thread-4 (]: SQL status: DROP VIEW in 0.005 seconds
+[0m19:17:45.828121 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.005 seconds
+[0m19:17:45.829329 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.stg_patients: Close
+[0m19:17:45.830447 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.stg_observations: Close
+[0m19:17:45.831079 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bb4cc90>]}
+[0m19:17:45.831851 [debug] [Thread-2 (]: Began executing node model.chorus_data_engineer_interview.top_3_prescriptions
+[0m19:17:45.832527 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109d5f690>]}
+[0m19:17:45.833213 [info ] [Thread-4 (]: 13 of 15 OK created sql view model public.stg_patients ......................... [[32mCREATE VIEW[0m in 0.10s]
+[0m19:17:45.837012 [debug] [Thread-2 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.top_3_prescriptions"
+[0m19:17:45.837336 [debug] [Thread-3 (]: SQL status: CREATE VIEW in 0.015 seconds
+[0m19:17:45.837960 [info ] [Thread-1 (]: 12 of 15 OK created sql view model public.stg_observations ..................... [[32mCREATE VIEW[0m in 0.12s]
+[0m19:17:45.838456 [debug] [Thread-4 (]: Finished running node model.chorus_data_engineer_interview.stg_patients
+[0m19:17:45.841470 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_practitioners"
+[0m19:17:45.841900 [debug] [Thread-1 (]: Finished running node model.chorus_data_engineer_interview.stg_observations
+[0m19:17:45.842341 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.top_3_prescriptions"
+[0m19:17:45.842662 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_practitioners"} */
+alter table "postgres"."public"."stg_practitioners" rename to "stg_practitioners__dbt_backup"
+[0m19:17:45.843072 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.top_3_prescriptions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.top_3_prescriptions"} */
+
+  create view "postgres"."public"."top_3_prescriptions__dbt_tmp"
+    
+    
+  as (
+    /*
+ Write a query to find the three most commonly prescribed medications from the MedicationRequest table, sorted by the number of prescriptions.
+ */
+
+ WITH medication_counts AS (
+     SELECT
+         medication_name,
+         COUNT(*) AS prescription_count
+     FROM "postgres"."public"."MedicationRequest"
+     GROUP BY medication_name
+ )
+
+SELECT
+    medication_name,
+    prescription_count
+FROM medication_counts
+ORDER BY prescription_count DESC
+LIMIT 3
+  );
+[0m19:17:45.843442 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m19:17:45.845090 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:17:45.848356 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_practitioners"
+[0m19:17:45.848689 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_practitioners"} */
+alter table "postgres"."public"."stg_practitioners__dbt_tmp" rename to "stg_practitioners"
+[0m19:17:45.850139 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m19:17:45.851473 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_practitioners: COMMIT
+[0m19:17:45.851794 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_practitioners"
+[0m19:17:45.852081 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_practitioners: COMMIT
+[0m19:17:45.854262 [debug] [Thread-3 (]: SQL status: COMMIT in 0.002 seconds
+[0m19:17:45.854574 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.011 seconds
+[0m19:17:45.856725 [debug] [Thread-3 (]: Applying DROP to: "postgres"."public"."stg_practitioners__dbt_backup"
+[0m19:17:45.859302 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.top_3_prescriptions"
+[0m19:17:45.859986 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_practitioners"
+[0m19:17:45.860301 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.top_3_prescriptions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.top_3_prescriptions"} */
+alter table "postgres"."public"."top_3_prescriptions__dbt_tmp" rename to "top_3_prescriptions"
+[0m19:17:45.860603 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_practitioners"} */
+drop view if exists "postgres"."public"."stg_practitioners__dbt_backup" cascade
+[0m19:17:45.862582 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:17:45.863897 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.top_3_prescriptions: COMMIT
+[0m19:17:45.864227 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.top_3_prescriptions"
+[0m19:17:45.864508 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.top_3_prescriptions: COMMIT
+[0m19:17:45.865685 [debug] [Thread-3 (]: SQL status: DROP VIEW in 0.005 seconds
+[0m19:17:45.866851 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_practitioners: Close
+[0m19:17:45.867162 [debug] [Thread-2 (]: SQL status: COMMIT in 0.002 seconds
+[0m19:17:45.867757 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b6ba650>]}
+[0m19:17:45.872787 [debug] [Thread-2 (]: Applying DROP to: "postgres"."public"."top_3_prescriptions__dbt_backup"
+[0m19:17:45.873365 [info ] [Thread-3 (]: 14 of 15 OK created sql view model public.stg_practitioners .................... [[32mCREATE VIEW[0m in 0.07s]
+[0m19:17:45.874037 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.top_3_prescriptions"
+[0m19:17:45.874472 [debug] [Thread-3 (]: Finished running node model.chorus_data_engineer_interview.stg_practitioners
+[0m19:17:45.874801 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.top_3_prescriptions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.top_3_prescriptions"} */
+drop view if exists "postgres"."public"."top_3_prescriptions__dbt_backup" cascade
+[0m19:17:45.876307 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.001 seconds
+[0m19:17:45.877362 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.top_3_prescriptions: Close
+[0m19:17:45.877790 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '748d5450-abbe-4c6b-84ef-471434747ef8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bac1310>]}
+[0m19:17:45.878283 [info ] [Thread-2 (]: 15 of 15 OK created sql view model public.top_3_prescriptions .................. [[32mCREATE VIEW[0m in 0.05s]
+[0m19:17:45.878739 [debug] [Thread-2 (]: Finished running node model.chorus_data_engineer_interview.top_3_prescriptions
+[0m19:17:45.879859 [debug] [MainThread]: On master: COMMIT
+[0m19:17:45.880123 [debug] [MainThread]: Using postgres connection "master"
+[0m19:17:45.880479 [debug] [MainThread]: On master: COMMIT
+[0m19:17:45.880691 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m19:17:45.889089 [debug] [MainThread]: SQL status: COMMIT in 0.008 seconds
+[0m19:17:45.889443 [debug] [MainThread]: On master: Close
+[0m19:17:45.889811 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m19:17:45.890080 [debug] [MainThread]: Connection 'model.chorus_data_engineer_interview.stg_observations' was properly closed.
+[0m19:17:45.890296 [debug] [MainThread]: Connection 'model.chorus_data_engineer_interview.top_3_prescriptions' was properly closed.
+[0m19:17:45.890504 [debug] [MainThread]: Connection 'model.chorus_data_engineer_interview.stg_practitioners' was properly closed.
+[0m19:17:45.890705 [debug] [MainThread]: Connection 'model.chorus_data_engineer_interview.stg_patients' was properly closed.
+[0m19:17:45.891031 [info ] [MainThread]: 
+[0m19:17:45.891301 [info ] [MainThread]: Finished running 15 view models in 0 hours 0 minutes and 0.79 seconds (0.79s).
+[0m19:17:45.893262 [debug] [MainThread]: Command end result
+[0m19:17:45.927239 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/home/PycharmProjects/chorusinnovations/chorus-data-engineering-interview/dbt/target/manifest.json
+[0m19:17:45.929127 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/home/PycharmProjects/chorusinnovations/chorus-data-engineering-interview/dbt/target/semantic_manifest.json
+[0m19:17:45.935199 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/home/PycharmProjects/chorusinnovations/chorus-data-engineering-interview/dbt/target/run_results.json
+[0m19:17:45.935512 [info ] [MainThread]: 
+[0m19:17:45.935840 [info ] [MainThread]: [31mCompleted with 2 errors, 0 partial successes, and 0 warnings:[0m
+[0m19:17:45.936098 [info ] [MainThread]: 
+[0m19:17:45.936407 [error] [MainThread]: [31mFailure in model observations_per_specific_patient (models/01_beginner/observations_per_specific_patient.sql)[0m
+[0m19:17:45.936712 [error] [MainThread]:   Compilation Error in model observations_per_specific_patient (models/01_beginner/observations_per_specific_patient.sql)
+  Required var 'id' not found in config:
+  Vars supplied to observations_per_specific_patient = {}
+[0m19:17:45.936953 [info ] [MainThread]: 
+[0m19:17:45.937241 [error] [MainThread]: [31mFailure in model encounters_per_specific_patient (models/01_beginner/encounters_per_specific_patient.sql)[0m
+[0m19:17:45.937540 [error] [MainThread]:   Database Error in model encounters_per_specific_patient (models/01_beginner/encounters_per_specific_patient.sql)
+  syntax error at or near "{"
+  LINE 18: WHERE "postgres"."public"."Patient".id = {var('patient_id')}
+                                                    ^
+  compiled code at target/run/chorus_data_engineer_interview/models/01_beginner/encounters_per_specific_patient.sql
+[0m19:17:45.937777 [info ] [MainThread]: 
+[0m19:17:45.938051 [info ] [MainThread]:   compiled code at target/compiled/chorus_data_engineer_interview/models/01_beginner/encounters_per_specific_patient.sql
+[0m19:17:45.938296 [info ] [MainThread]: 
+[0m19:17:45.938544 [info ] [MainThread]: Done. PASS=13 WARN=0 ERROR=2 SKIP=0 NO-OP=0 TOTAL=15
+[0m19:17:45.942302 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 1.9984063, "process_in_blocks": "0", "process_kernel_time": 0.396539, "process_mem_max_rss": "157335552", "process_out_blocks": "0", "process_user_time": 2.700988}
+[0m19:17:45.942713 [debug] [MainThread]: Command `dbt run` failed at 19:17:45.942635 after 2.00 seconds
+[0m19:17:45.943040 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1060c6990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a406590>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a407850>]}
+[0m19:17:45.943342 [debug] [MainThread]: Flushing usage events
+[0m19:17:46.521007 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:18:44.901894 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109d7ac10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109ddc590>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109ddce90>]}
+
+
+============================== 19:18:44.905817 | a8649c9b-90b4-4d2d-a615-28f302535b45 ==============================
+[0m19:18:44.905817 [info ] [MainThread]: Running with dbt=1.11.8
+[0m19:18:44.906346 [debug] [MainThread]: running dbt with arguments {'warn_error': 'None', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'profiles_dir': '/Users/home/.dbt', 'quiet': 'False', 'version_check': 'True', 'write_json': 'True', 'use_colors': 'True', 'printer_width': '80', 'invocation_command': 'dbt run', 'indirect_selection': 'eager', 'debug': 'False', 'static_parser': 'True', 'empty': 'False', 'log_format': 'default', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'cache_selected_only': 'False', 'partial_parse': 'True', 'no_print': 'None', 'log_cache_events': 'False', 'log_path': '/Users/home/PycharmProjects/chorusinnovations/chorus-data-engineering-interview/dbt/logs', 'use_experimental_parser': 'False', 'introspect': 'True'}
+[0m19:18:45.110127 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109d7b310>]}
+[0m19:18:45.162918 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106fa9390>]}
+[0m19:18:45.165724 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m19:18:45.259527 [debug] [MainThread]: checksum: 7d524ac048c2100769df89d592e662e060a73ca564e31bd9c2a37efdfe8d8ab6, vars: {}, profile: , target: , version: 1.11.8
+[0m19:18:45.393630 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m19:18:45.394219 [debug] [MainThread]: Partial parsing: updated file: chorus_data_engineer_interview://models/01_beginner/observations_per_specific_patient.sql
+[0m19:18:45.657596 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ab8aa10>]}
+[0m19:18:45.743342 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/home/PycharmProjects/chorusinnovations/chorus-data-engineering-interview/dbt/target/manifest.json
+[0m19:18:45.745796 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/home/PycharmProjects/chorusinnovations/chorus-data-engineering-interview/dbt/target/semantic_manifest.json
+[0m19:18:45.756426 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ad7fb90>]}
+[0m19:18:45.756859 [info ] [MainThread]: Found 15 models, 21 data tests, 5 sources, 465 macros
+[0m19:18:45.757135 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a3a08d0>]}
+[0m19:18:45.759401 [info ] [MainThread]: 
+[0m19:18:45.759683 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m19:18:45.759977 [info ] [MainThread]: 
+[0m19:18:45.760577 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m19:18:45.764591 [debug] [ThreadPool]: Acquiring new postgres connection 'list_postgres'
+[0m19:18:45.813947 [debug] [ThreadPool]: Using postgres connection "list_postgres"
+[0m19:18:45.814305 [debug] [ThreadPool]: On list_postgres: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "connection_name": "list_postgres"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m19:18:45.814534 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m19:18:45.853766 [debug] [ThreadPool]: SQL status: SELECT 4 in 0.039 seconds
+[0m19:18:45.854880 [debug] [ThreadPool]: On list_postgres: Close
+[0m19:18:45.856545 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_postgres, now list_postgres_public)
+[0m19:18:45.862901 [debug] [ThreadPool]: Using postgres connection "list_postgres_public"
+[0m19:18:45.863231 [debug] [ThreadPool]: On list_postgres_public: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "connection_name": "list_postgres_public"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'postgres' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m19:18:45.863472 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m19:18:45.878573 [debug] [ThreadPool]: SQL status: SELECT 20 in 0.015 seconds
+[0m19:18:45.879946 [debug] [ThreadPool]: On list_postgres_public: ROLLBACK
+[0m19:18:45.881118 [debug] [ThreadPool]: On list_postgres_public: Close
+[0m19:18:45.887497 [debug] [MainThread]: Using postgres connection "master"
+[0m19:18:45.887864 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m19:18:45.888170 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m19:18:45.902142 [debug] [MainThread]: SQL status: SELECT 16 in 0.014 seconds
+[0m19:18:45.905098 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a36be10>]}
+[0m19:18:45.905455 [debug] [MainThread]: On master: ROLLBACK
+[0m19:18:45.906572 [debug] [MainThread]: On master: COMMIT
+[0m19:18:45.906885 [debug] [MainThread]: Using postgres connection "master"
+[0m19:18:45.907116 [debug] [MainThread]: On master: COMMIT
+[0m19:18:45.910189 [debug] [MainThread]: SQL status: COMMIT in 0.003 seconds
+[0m19:18:45.910469 [debug] [MainThread]: On master: Close
+[0m19:18:45.913741 [debug] [Thread-1 (]: Began running node model.chorus_data_engineer_interview.all_active_patients
+[0m19:18:45.914044 [debug] [Thread-2 (]: Began running node model.chorus_data_engineer_interview.avg_encounter_per_patient
+[0m19:18:45.914372 [debug] [Thread-3 (]: Began running node model.chorus_data_engineer_interview.encounters_per_specific_patient
+[0m19:18:45.914623 [debug] [Thread-4 (]: Began running node model.chorus_data_engineer_interview.observations_per_specific_patient
+[0m19:18:45.915080 [info ] [Thread-1 (]: 1 of 15 START sql view model public.all_active_patients ........................ [RUN]
+[0m19:18:45.915463 [info ] [Thread-2 (]: 2 of 15 START sql view model public.avg_encounter_per_patient .................. [RUN]
+[0m19:18:45.915808 [info ] [Thread-3 (]: 3 of 15 START sql view model public.encounters_per_specific_patient ............ [RUN]
+[0m19:18:45.916145 [info ] [Thread-4 (]: 4 of 15 START sql view model public.observations_per_specific_patient .......... [RUN]
+[0m19:18:45.916476 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_postgres_public, now model.chorus_data_engineer_interview.all_active_patients)
+[0m19:18:45.916855 [debug] [Thread-2 (]: Acquiring new postgres connection 'model.chorus_data_engineer_interview.avg_encounter_per_patient'
+[0m19:18:45.917196 [debug] [Thread-3 (]: Acquiring new postgres connection 'model.chorus_data_engineer_interview.encounters_per_specific_patient'
+[0m19:18:45.917505 [debug] [Thread-4 (]: Acquiring new postgres connection 'model.chorus_data_engineer_interview.observations_per_specific_patient'
+[0m19:18:45.917763 [debug] [Thread-1 (]: Began compiling node model.chorus_data_engineer_interview.all_active_patients
+[0m19:18:45.918001 [debug] [Thread-2 (]: Began compiling node model.chorus_data_engineer_interview.avg_encounter_per_patient
+[0m19:18:45.918232 [debug] [Thread-3 (]: Began compiling node model.chorus_data_engineer_interview.encounters_per_specific_patient
+[0m19:18:45.918457 [debug] [Thread-4 (]: Began compiling node model.chorus_data_engineer_interview.observations_per_specific_patient
+[0m19:18:45.924365 [debug] [Thread-1 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.all_active_patients"
+[0m19:18:45.926578 [debug] [Thread-2 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.avg_encounter_per_patient"
+[0m19:18:45.929650 [debug] [Thread-3 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.encounters_per_specific_patient"
+[0m19:18:45.932944 [debug] [Thread-4 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.observations_per_specific_patient"
+[0m19:18:45.933869 [debug] [Thread-3 (]: Began executing node model.chorus_data_engineer_interview.encounters_per_specific_patient
+[0m19:18:45.934221 [debug] [Thread-2 (]: Began executing node model.chorus_data_engineer_interview.avg_encounter_per_patient
+[0m19:18:45.939786 [debug] [Thread-1 (]: Began executing node model.chorus_data_engineer_interview.all_active_patients
+[0m19:18:45.940051 [debug] [Thread-4 (]: Began executing node model.chorus_data_engineer_interview.observations_per_specific_patient
+[0m19:18:45.967078 [debug] [Thread-3 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.encounters_per_specific_patient"
+[0m19:18:45.968581 [debug] [Thread-2 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.avg_encounter_per_patient"
+[0m19:18:45.972738 [debug] [Thread-1 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.all_active_patients"
+[0m19:18:45.975563 [debug] [Thread-4 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.observations_per_specific_patient"
+[0m19:18:45.976382 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.encounters_per_specific_patient"
+[0m19:18:45.976734 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.encounters_per_specific_patient: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.encounters_per_specific_patient"} */
+
+  create view "postgres"."public"."encounters_per_specific_patient__dbt_tmp"
+    
+    
+  as (
+    /*
+Given a patient_id, retrieve all encounters for that patient, including the status and encounter date.
+*/
+
+SELECT
+  id,
+  status,
+  encounter_date
+FROM "postgres"."public"."Patient"
+JOIN "postgres"."public"."Encounter"
+    ON "postgres"."public"."Patient".id = "postgres"."public"."Encounter".patient_id
+WHERE "postgres"."public"."Patient".id = {var('patient_id')}
+  );
+[0m19:18:45.977097 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m19:18:45.977619 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.observations_per_specific_patient"
+[0m19:18:45.977931 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.avg_encounter_per_patient"
+[0m19:18:45.978400 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.all_active_patients"
+[0m19:18:45.978937 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.observations_per_specific_patient: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.observations_per_specific_patient"} */
+
+  create view "postgres"."public"."observations_per_specific_patient__dbt_tmp"
+    
+    
+  as (
+    /*
+Write a query to fetch all observations for a given patient_id, showing the observation type, value, unit, and recorded date.
+*/
+
+SELECT
+  patient_id,
+  type,
+  value,
+  unit,
+  recorded_at
+FROM "postgres"."public"."Patient"
+JOIN "postgres"."public"."Observation"
+    ON "postgres"."public"."Patient".id = "postgres"."public"."Observation".patient_id
+WHERE "postgres"."public"."Patient".id = {var('patient_id')}
+  );
+[0m19:18:45.979428 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.avg_encounter_per_patient: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.avg_encounter_per_patient"} */
+
+  create view "postgres"."public"."avg_encounter_per_patient__dbt_tmp"
+    
+    
+  as (
+    /*
+ Calculate the average number of encounters per patient, rounded to two decimal places.
+ */
+
+WITH encounter_counts AS (
+    SELECT
+        patient_id,
+        COUNT(*) AS encounter_count
+    FROM "postgres"."public"."Encounter"
+    GROUP BY patient_id
+)
+
+SELECT
+    ROUND(AVG(encounter_count), 2) AS avg_encounters_per_patient
+FROM encounter_counts
+  );
+[0m19:18:45.979791 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.all_active_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.all_active_patients"} */
+
+  create view "postgres"."public"."all_active_patients__dbt_tmp"
+    
+    
+  as (
+    /* Write a query to return all patients who are active. */
+
+SELECT
+  id,
+  identifier,
+  gender
+FROM "postgres"."public"."Patient"
+WHERE active = true
+  );
+[0m19:18:45.980091 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m19:18:45.980359 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m19:18:45.980660 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:18:45.988694 [debug] [Thread-3 (]: Postgres adapter: Postgres error: syntax error at or near "{"
+LINE 18: WHERE "postgres"."public"."Patient".id = {var('patient_id')}
+                                                  ^
+
+[0m19:18:45.990381 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.encounters_per_specific_patient: ROLLBACK
+[0m19:18:45.993067 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.encounters_per_specific_patient: Close
+[0m19:18:45.994150 [debug] [Thread-4 (]: Postgres adapter: Postgres error: syntax error at or near "{"
+LINE 20: WHERE "postgres"."public"."Patient".id = {var('patient_id')}
+                                                  ^
+
+[0m19:18:45.995924 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.015 seconds
+[0m19:18:45.996312 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.016 seconds
+[0m19:18:45.996620 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.observations_per_specific_patient: ROLLBACK
+[0m19:18:46.002480 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.all_active_patients"
+[0m19:18:46.005263 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.avg_encounter_per_patient"
+[0m19:18:46.005778 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.all_active_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.all_active_patients"} */
+alter table "postgres"."public"."all_active_patients" rename to "all_active_patients__dbt_backup"
+[0m19:18:46.006189 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.avg_encounter_per_patient: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.avg_encounter_per_patient"} */
+alter table "postgres"."public"."avg_encounter_per_patient" rename to "avg_encounter_per_patient__dbt_backup"
+[0m19:18:46.007855 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.observations_per_specific_patient: Close
+[0m19:18:46.008168 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:18:46.008593 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:18:46.013314 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.all_active_patients"
+[0m19:18:46.016159 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.avg_encounter_per_patient"
+[0m19:18:46.016578 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.all_active_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.all_active_patients"} */
+alter table "postgres"."public"."all_active_patients__dbt_tmp" rename to "all_active_patients"
+[0m19:18:46.017201 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.avg_encounter_per_patient: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.avg_encounter_per_patient"} */
+alter table "postgres"."public"."avg_encounter_per_patient__dbt_tmp" rename to "avg_encounter_per_patient"
+[0m19:18:46.019252 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m19:18:46.019569 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:18:46.026431 [debug] [Thread-3 (]: Database Error in model encounters_per_specific_patient (models/01_beginner/encounters_per_specific_patient.sql)
+  syntax error at or near "{"
+  LINE 18: WHERE "postgres"."public"."Patient".id = {var('patient_id')}
+                                                    ^
+  compiled code at target/run/chorus_data_engineer_interview/models/01_beginner/encounters_per_specific_patient.sql
+[0m19:18:46.046581 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.all_active_patients: COMMIT
+[0m19:18:46.047043 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.avg_encounter_per_patient: COMMIT
+[0m19:18:46.048130 [debug] [Thread-4 (]: Database Error in model observations_per_specific_patient (models/01_beginner/observations_per_specific_patient.sql)
+  syntax error at or near "{"
+  LINE 20: WHERE "postgres"."public"."Patient".id = {var('patient_id')}
+                                                    ^
+  compiled code at target/run/chorus_data_engineer_interview/models/01_beginner/observations_per_specific_patient.sql
+[0m19:18:46.049483 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.all_active_patients"
+[0m19:18:46.049892 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.avg_encounter_per_patient"
+[0m19:18:46.050207 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b18ecd0>]}
+[0m19:18:46.050519 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b26b810>]}
+[0m19:18:46.050802 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.all_active_patients: COMMIT
+[0m19:18:46.051060 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.avg_encounter_per_patient: COMMIT
+[0m19:18:46.051547 [error] [Thread-3 (]: 3 of 15 ERROR creating sql view model public.encounters_per_specific_patient ... [[31mERROR[0m in 0.13s]
+[0m19:18:46.052010 [error] [Thread-4 (]: 4 of 15 ERROR creating sql view model public.observations_per_specific_patient . [[31mERROR[0m in 0.13s]
+[0m19:18:46.052552 [debug] [Thread-3 (]: Finished running node model.chorus_data_engineer_interview.encounters_per_specific_patient
+[0m19:18:46.052986 [debug] [Thread-4 (]: Finished running node model.chorus_data_engineer_interview.observations_per_specific_patient
+[0m19:18:46.053302 [debug] [Thread-3 (]: Began running node model.chorus_data_engineer_interview.patient_multi_practitioners
+[0m19:18:46.053688 [debug] [Thread-7 (]: Marking all children of 'model.chorus_data_engineer_interview.encounters_per_specific_patient' to be skipped because of status 'error'.  Reason: Database Error in model encounters_per_specific_patient (models/01_beginner/encounters_per_specific_patient.sql)
+  syntax error at or near "{"
+  LINE 18: WHERE "postgres"."public"."Patient".id = {var('patient_id')}
+                                                    ^
+  compiled code at target/run/chorus_data_engineer_interview/models/01_beginner/encounters_per_specific_patient.sql.
+[0m19:18:46.054058 [debug] [Thread-4 (]: Began running node model.chorus_data_engineer_interview.patient_prescription_wo_encounter
+[0m19:18:46.054521 [info ] [Thread-3 (]: 5 of 15 START sql view model public.patient_multi_practitioners ................ [RUN]
+[0m19:18:46.054993 [debug] [Thread-2 (]: SQL status: COMMIT in 0.003 seconds
+[0m19:18:46.055232 [debug] [Thread-1 (]: SQL status: COMMIT in 0.003 seconds
+[0m19:18:46.056035 [debug] [Thread-7 (]: Marking all children of 'model.chorus_data_engineer_interview.observations_per_specific_patient' to be skipped because of status 'error'.  Reason: Database Error in model observations_per_specific_patient (models/01_beginner/observations_per_specific_patient.sql)
+  syntax error at or near "{"
+  LINE 20: WHERE "postgres"."public"."Patient".id = {var('patient_id')}
+                                                    ^
+  compiled code at target/run/chorus_data_engineer_interview/models/01_beginner/observations_per_specific_patient.sql.
+[0m19:18:46.056435 [info ] [Thread-4 (]: 6 of 15 START sql view model public.patient_prescription_wo_encounter .......... [RUN]
+[0m19:18:46.056768 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.encounters_per_specific_patient, now model.chorus_data_engineer_interview.patient_multi_practitioners)
+[0m19:18:46.062322 [debug] [Thread-2 (]: Applying DROP to: "postgres"."public"."avg_encounter_per_patient__dbt_backup"
+[0m19:18:46.064300 [debug] [Thread-1 (]: Applying DROP to: "postgres"."public"."all_active_patients__dbt_backup"
+[0m19:18:46.064685 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.observations_per_specific_patient, now model.chorus_data_engineer_interview.patient_prescription_wo_encounter)
+[0m19:18:46.064967 [debug] [Thread-3 (]: Began compiling node model.chorus_data_engineer_interview.patient_multi_practitioners
+[0m19:18:46.068860 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.avg_encounter_per_patient"
+[0m19:18:46.069390 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.all_active_patients"
+[0m19:18:46.069662 [debug] [Thread-4 (]: Began compiling node model.chorus_data_engineer_interview.patient_prescription_wo_encounter
+[0m19:18:46.071752 [debug] [Thread-3 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.patient_multi_practitioners"
+[0m19:18:46.072045 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.avg_encounter_per_patient: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.avg_encounter_per_patient"} */
+drop view if exists "postgres"."public"."avg_encounter_per_patient__dbt_backup" cascade
+[0m19:18:46.072316 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.all_active_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.all_active_patients"} */
+drop view if exists "postgres"."public"."all_active_patients__dbt_backup" cascade
+[0m19:18:46.076134 [debug] [Thread-4 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"
+[0m19:18:46.076924 [debug] [Thread-3 (]: Began executing node model.chorus_data_engineer_interview.patient_multi_practitioners
+[0m19:18:46.080548 [debug] [Thread-3 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.patient_multi_practitioners"
+[0m19:18:46.080953 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.004 seconds
+[0m19:18:46.081304 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.005 seconds
+[0m19:18:46.083383 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.avg_encounter_per_patient: Close
+[0m19:18:46.083679 [debug] [Thread-4 (]: Began executing node model.chorus_data_engineer_interview.patient_prescription_wo_encounter
+[0m19:18:46.084665 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.all_active_patients: Close
+[0m19:18:46.084945 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_multi_practitioners"
+[0m19:18:46.085361 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b3db050>]}
+[0m19:18:46.088255 [debug] [Thread-4 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"
+[0m19:18:46.088707 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b1df8d0>]}
+[0m19:18:46.089014 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.patient_multi_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_multi_practitioners"} */
+
+  create view "postgres"."public"."patient_multi_practitioners__dbt_tmp"
+    
+    
+  as (
+    /*
+Write a query to return a list of patient IDs who have had encounters with more than one distinct practitioner.
+ */
+
+WITH practitioner_counts AS (
+    SELECT
+        patient_id,
+        COUNT(DISTINCT practitioner_id) AS distinct_practitioners
+    FROM "postgres"."public"."Encounter"
+    GROUP BY patient_id
+)
+
+SELECT
+    patient_id
+FROM practitioner_counts
+WHERE distinct_practitioners > 1
+  );
+[0m19:18:46.089533 [info ] [Thread-2 (]: 2 of 15 OK created sql view model public.avg_encounter_per_patient ............. [[32mCREATE VIEW[0m in 0.17s]
+[0m19:18:46.090115 [info ] [Thread-1 (]: 1 of 15 OK created sql view model public.all_active_patients ................... [[32mCREATE VIEW[0m in 0.17s]
+[0m19:18:46.090477 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m19:18:46.090822 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"
+[0m19:18:46.091374 [debug] [Thread-2 (]: Finished running node model.chorus_data_engineer_interview.avg_encounter_per_patient
+[0m19:18:46.091740 [debug] [Thread-1 (]: Finished running node model.chorus_data_engineer_interview.all_active_patients
+[0m19:18:46.092158 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.patient_prescription_wo_encounter: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"} */
+
+  create view "postgres"."public"."patient_prescription_wo_encounter__dbt_tmp"
+    
+    
+  as (
+    /*
+ Write a query to find patients who have a record in the MedicationRequest table but no associated encounters in the Encounter table.
+ */
+
+WITH
+
+patients_with_medication_requests AS (
+    SELECT DISTINCT patient_id
+    FROM "postgres"."public"."MedicationRequest"
+),
+
+patients_with_encounters AS (
+    SELECT DISTINCT patient_id
+    FROM "postgres"."public"."Encounter"
+)
+
+SELECT
+    patient_id
+FROM patients_with_medication_requests
+WHERE patient_id NOT IN (SELECT patient_id FROM patients_with_encounters)
+  );
+[0m19:18:46.092523 [debug] [Thread-2 (]: Began running node model.chorus_data_engineer_interview.patient_retention_per_cohort
+[0m19:18:46.093054 [debug] [Thread-1 (]: Began running node model.chorus_data_engineer_interview.practictioner_no_prescriptions
+[0m19:18:46.093684 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m19:18:46.094278 [info ] [Thread-2 (]: 7 of 15 START sql view model public.patient_retention_per_cohort ............... [RUN]
+[0m19:18:46.095195 [info ] [Thread-1 (]: 8 of 15 START sql view model public.practictioner_no_prescriptions ............. [RUN]
+[0m19:18:46.096130 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.avg_encounter_per_patient, now model.chorus_data_engineer_interview.patient_retention_per_cohort)
+[0m19:18:46.096647 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.all_active_patients, now model.chorus_data_engineer_interview.practictioner_no_prescriptions)
+[0m19:18:46.097382 [debug] [Thread-2 (]: Began compiling node model.chorus_data_engineer_interview.patient_retention_per_cohort
+[0m19:18:46.098091 [debug] [Thread-1 (]: Began compiling node model.chorus_data_engineer_interview.practictioner_no_prescriptions
+[0m19:18:46.101434 [debug] [Thread-2 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.patient_retention_per_cohort"
+[0m19:18:46.104357 [debug] [Thread-1 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.practictioner_no_prescriptions"
+[0m19:18:46.105280 [debug] [Thread-2 (]: Began executing node model.chorus_data_engineer_interview.patient_retention_per_cohort
+[0m19:18:46.108415 [debug] [Thread-2 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.patient_retention_per_cohort"
+[0m19:18:46.108828 [debug] [Thread-1 (]: Began executing node model.chorus_data_engineer_interview.practictioner_no_prescriptions
+[0m19:18:46.113235 [debug] [Thread-1 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.practictioner_no_prescriptions"
+[0m19:18:46.113610 [debug] [Thread-3 (]: SQL status: CREATE VIEW in 0.023 seconds
+[0m19:18:46.113952 [debug] [Thread-4 (]: SQL status: CREATE VIEW in 0.020 seconds
+[0m19:18:46.117067 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_multi_practitioners"
+[0m19:18:46.117397 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_retention_per_cohort"
+[0m19:18:46.120429 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"
+[0m19:18:46.120797 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.patient_multi_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_multi_practitioners"} */
+alter table "postgres"."public"."patient_multi_practitioners" rename to "patient_multi_practitioners__dbt_backup"
+[0m19:18:46.121129 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.practictioner_no_prescriptions"
+[0m19:18:46.121505 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.patient_retention_per_cohort: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_retention_per_cohort"} */
+
+  create view "postgres"."public"."patient_retention_per_cohort__dbt_tmp"
+    
+    
+  as (
+    /*
+Write a query to count how many patients had their first encounter in each month (YYYY-MM format) and still had at least one encounter in the following six months.
+*/
+
+WITH
+
+first_encounters AS (
+    SELECT
+        patient_id,
+        MIN(encounter_date) AS first_encounter_date
+    FROM "postgres"."public"."Encounter"
+    GROUP BY patient_id
+),
+
+retained_patients AS (
+    SELECT
+        fe.patient_id,
+        fe.first_encounter_date,
+        DATE_TRUNC('month', fe.first_encounter_date) AS first_encounter_month,
+        MAX(e.encounter_date) AS last_encounter_date
+    FROM first_encounters fe
+    JOIN "postgres"."public"."Encounter" e ON fe.patient_id = e.patient_id
+    WHERE e.encounter_date >= fe.first_encounter_date
+    GROUP BY fe.patient_id, fe.first_encounter_date
+)
+
+SELECT
+    first_encounter_month,
+    COUNT(DISTINCT patient_id) AS retained_patients_count
+FROM retained_patients
+WHERE last_encounter_date >= first_encounter_date + INTERVAL '6 months'
+GROUP BY first_encounter_month
+ORDER BY first_encounter_month
+  );
+[0m19:18:46.121905 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.patient_prescription_wo_encounter: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"} */
+alter table "postgres"."public"."patient_prescription_wo_encounter" rename to "patient_prescription_wo_encounter__dbt_backup"
+[0m19:18:46.122312 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.practictioner_no_prescriptions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.practictioner_no_prescriptions"} */
+
+  create view "postgres"."public"."practictioner_no_prescriptions__dbt_tmp"
+    
+    
+  as (
+    /*
+ Write a query to find all practitioners who do not appear in the MedicationRequest table as a prescribing practitioner.
+ */
+
+WITH prescribing_practitioners AS (
+    SELECT DISTINCT practitioner_id
+    FROM "postgres"."public"."MedicationRequest"
+)
+
+SELECT
+    id AS practitioner_id,
+    name,
+    specialty
+FROM "postgres"."public"."Practitioner"
+WHERE id NOT IN (SELECT practitioner_id FROM prescribing_practitioners)
+  );
+[0m19:18:46.122672 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m19:18:46.123040 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:18:46.123809 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:18:46.126702 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_multi_practitioners"
+[0m19:18:46.127050 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.004 seconds
+[0m19:18:46.128022 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.patient_multi_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_multi_practitioners"} */
+alter table "postgres"."public"."patient_multi_practitioners__dbt_tmp" rename to "patient_multi_practitioners"
+[0m19:18:46.133218 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"
+[0m19:18:46.133727 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.patient_prescription_wo_encounter: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"} */
+alter table "postgres"."public"."patient_prescription_wo_encounter__dbt_tmp" rename to "patient_prescription_wo_encounter"
+[0m19:18:46.135821 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:18:46.136189 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:18:46.137513 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.patient_multi_practitioners: COMMIT
+[0m19:18:46.138746 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.patient_prescription_wo_encounter: COMMIT
+[0m19:18:46.139102 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_multi_practitioners"
+[0m19:18:46.139485 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"
+[0m19:18:46.139822 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.patient_multi_practitioners: COMMIT
+[0m19:18:46.140161 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.017 seconds
+[0m19:18:46.140433 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.patient_prescription_wo_encounter: COMMIT
+[0m19:18:46.140727 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.018 seconds
+[0m19:18:46.143932 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.practictioner_no_prescriptions"
+[0m19:18:46.144296 [debug] [Thread-3 (]: SQL status: COMMIT in 0.003 seconds
+[0m19:18:46.147653 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_retention_per_cohort"
+[0m19:18:46.147961 [debug] [Thread-4 (]: SQL status: COMMIT in 0.003 seconds
+[0m19:18:46.148310 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.practictioner_no_prescriptions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.practictioner_no_prescriptions"} */
+alter table "postgres"."public"."practictioner_no_prescriptions" rename to "practictioner_no_prescriptions__dbt_backup"
+[0m19:18:46.150472 [debug] [Thread-3 (]: Applying DROP to: "postgres"."public"."patient_multi_practitioners__dbt_backup"
+[0m19:18:46.150810 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.patient_retention_per_cohort: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_retention_per_cohort"} */
+alter table "postgres"."public"."patient_retention_per_cohort" rename to "patient_retention_per_cohort__dbt_backup"
+[0m19:18:46.153084 [debug] [Thread-4 (]: Applying DROP to: "postgres"."public"."patient_prescription_wo_encounter__dbt_backup"
+[0m19:18:46.153776 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_multi_practitioners"
+[0m19:18:46.154414 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"
+[0m19:18:46.154742 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.patient_multi_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_multi_practitioners"} */
+drop view if exists "postgres"."public"."patient_multi_practitioners__dbt_backup" cascade
+[0m19:18:46.155084 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.patient_prescription_wo_encounter: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_prescription_wo_encounter"} */
+drop view if exists "postgres"."public"."patient_prescription_wo_encounter__dbt_backup" cascade
+[0m19:18:46.155388 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:18:46.155731 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:18:46.158817 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.practictioner_no_prescriptions"
+[0m19:18:46.159114 [debug] [Thread-4 (]: SQL status: DROP VIEW in 0.003 seconds
+[0m19:18:46.159373 [debug] [Thread-3 (]: SQL status: DROP VIEW in 0.003 seconds
+[0m19:18:46.162139 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_retention_per_cohort"
+[0m19:18:46.162494 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.practictioner_no_prescriptions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.practictioner_no_prescriptions"} */
+alter table "postgres"."public"."practictioner_no_prescriptions__dbt_tmp" rename to "practictioner_no_prescriptions"
+[0m19:18:46.163593 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.patient_prescription_wo_encounter: Close
+[0m19:18:46.164662 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.patient_multi_practitioners: Close
+[0m19:18:46.165013 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.patient_retention_per_cohort: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_retention_per_cohort"} */
+alter table "postgres"."public"."patient_retention_per_cohort__dbt_tmp" rename to "patient_retention_per_cohort"
+[0m19:18:46.165650 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b2a0990>]}
+[0m19:18:46.166153 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b2afed0>]}
+[0m19:18:46.167002 [info ] [Thread-4 (]: 6 of 15 OK created sql view model public.patient_prescription_wo_encounter ..... [[32mCREATE VIEW[0m in 0.10s]
+[0m19:18:46.167340 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:18:46.167917 [info ] [Thread-3 (]: 5 of 15 OK created sql view model public.patient_multi_practitioners ........... [[32mCREATE VIEW[0m in 0.11s]
+[0m19:18:46.168380 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:18:46.168887 [debug] [Thread-4 (]: Finished running node model.chorus_data_engineer_interview.patient_prescription_wo_encounter
+[0m19:18:46.170177 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.practictioner_no_prescriptions: COMMIT
+[0m19:18:46.170605 [debug] [Thread-3 (]: Finished running node model.chorus_data_engineer_interview.patient_multi_practitioners
+[0m19:18:46.171797 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.patient_retention_per_cohort: COMMIT
+[0m19:18:46.172151 [debug] [Thread-4 (]: Began running node model.chorus_data_engineer_interview.recent_patient_encounters
+[0m19:18:46.172542 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.practictioner_no_prescriptions"
+[0m19:18:46.172875 [debug] [Thread-3 (]: Began running node model.chorus_data_engineer_interview.stg_encounters
+[0m19:18:46.173218 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_retention_per_cohort"
+[0m19:18:46.173639 [info ] [Thread-4 (]: 9 of 15 START sql view model public.recent_patient_encounters .................. [RUN]
+[0m19:18:46.173974 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.practictioner_no_prescriptions: COMMIT
+[0m19:18:46.174328 [info ] [Thread-3 (]: 10 of 15 START sql view model public.stg_encounters ............................ [RUN]
+[0m19:18:46.174642 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.patient_retention_per_cohort: COMMIT
+[0m19:18:46.174954 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.patient_prescription_wo_encounter, now model.chorus_data_engineer_interview.recent_patient_encounters)
+[0m19:18:46.175359 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.patient_multi_practitioners, now model.chorus_data_engineer_interview.stg_encounters)
+[0m19:18:46.175877 [debug] [Thread-4 (]: Began compiling node model.chorus_data_engineer_interview.recent_patient_encounters
+[0m19:18:46.176185 [debug] [Thread-3 (]: Began compiling node model.chorus_data_engineer_interview.stg_encounters
+[0m19:18:46.179031 [debug] [Thread-4 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.recent_patient_encounters"
+[0m19:18:46.179348 [debug] [Thread-1 (]: SQL status: COMMIT in 0.004 seconds
+[0m19:18:46.179636 [debug] [Thread-2 (]: SQL status: COMMIT in 0.004 seconds
+[0m19:18:46.182025 [debug] [Thread-3 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.stg_encounters"
+[0m19:18:46.184236 [debug] [Thread-1 (]: Applying DROP to: "postgres"."public"."practictioner_no_prescriptions__dbt_backup"
+[0m19:18:46.186352 [debug] [Thread-2 (]: Applying DROP to: "postgres"."public"."patient_retention_per_cohort__dbt_backup"
+[0m19:18:46.187051 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.practictioner_no_prescriptions"
+[0m19:18:46.187425 [debug] [Thread-4 (]: Began executing node model.chorus_data_engineer_interview.recent_patient_encounters
+[0m19:18:46.187969 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.patient_retention_per_cohort"
+[0m19:18:46.188290 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.practictioner_no_prescriptions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.practictioner_no_prescriptions"} */
+drop view if exists "postgres"."public"."practictioner_no_prescriptions__dbt_backup" cascade
+[0m19:18:46.188579 [debug] [Thread-3 (]: Began executing node model.chorus_data_engineer_interview.stg_encounters
+[0m19:18:46.193774 [debug] [Thread-4 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.recent_patient_encounters"
+[0m19:18:46.194147 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.patient_retention_per_cohort: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.patient_retention_per_cohort"} */
+drop view if exists "postgres"."public"."patient_retention_per_cohort__dbt_backup" cascade
+[0m19:18:46.197392 [debug] [Thread-3 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.stg_encounters"
+[0m19:18:46.197710 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.003 seconds
+[0m19:18:46.199230 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.practictioner_no_prescriptions: Close
+[0m19:18:46.199695 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.recent_patient_encounters"
+[0m19:18:46.200063 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_encounters"
+[0m19:18:46.200384 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.recent_patient_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.recent_patient_encounters"} */
+
+  create view "postgres"."public"."recent_patient_encounters__dbt_tmp"
+    
+    
+  as (
+    /*
+Retrieve each patient’s most recent encounter (based on encounter_date). Return the patient_id, encounter_date, and status.
+*/
+
+WITH ranked_encounters AS (
+    SELECT
+        patient_id,
+        encounter_date,
+        status,
+        ROW_NUMBER() OVER (PARTITION BY patient_id ORDER BY encounter_date DESC) AS rn
+    FROM "postgres"."public"."Encounter"
+)
+
+SELECT
+    patient_id,
+    encounter_date,
+    status
+FROM ranked_encounters
+WHERE rn = 1
+  );
+[0m19:18:46.200880 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b4a1850>]}
+[0m19:18:46.201221 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.003 seconds
+[0m19:18:46.201538 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_encounters"} */
+
+  create view "postgres"."public"."stg_encounters__dbt_tmp"
+    
+    
+  as (
+    SELECT
+  id,
+  patient_id,
+  practitioner_id,
+  status,
+  encounter_date,
+  reason,
+  created_at
+FROM "postgres"."public"."Encounter"
+  );
+[0m19:18:46.201858 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m19:18:46.202408 [info ] [Thread-1 (]: 8 of 15 OK created sql view model public.practictioner_no_prescriptions ........ [[32mCREATE VIEW[0m in 0.10s]
+[0m19:18:46.203593 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.patient_retention_per_cohort: Close
+[0m19:18:46.203903 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m19:18:46.204445 [debug] [Thread-1 (]: Finished running node model.chorus_data_engineer_interview.practictioner_no_prescriptions
+[0m19:18:46.204941 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a2e8090>]}
+[0m19:18:46.206006 [debug] [Thread-1 (]: Began running node model.chorus_data_engineer_interview.stg_medicationrequests
+[0m19:18:46.206924 [info ] [Thread-2 (]: 7 of 15 OK created sql view model public.patient_retention_per_cohort .......... [[32mCREATE VIEW[0m in 0.11s]
+[0m19:18:46.208502 [info ] [Thread-1 (]: 11 of 15 START sql view model public.stg_medicationrequests .................... [RUN]
+[0m19:18:46.209912 [debug] [Thread-2 (]: Finished running node model.chorus_data_engineer_interview.patient_retention_per_cohort
+[0m19:18:46.210612 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.practictioner_no_prescriptions, now model.chorus_data_engineer_interview.stg_medicationrequests)
+[0m19:18:46.211211 [debug] [Thread-2 (]: Began running node model.chorus_data_engineer_interview.stg_observations
+[0m19:18:46.211969 [debug] [Thread-1 (]: Began compiling node model.chorus_data_engineer_interview.stg_medicationrequests
+[0m19:18:46.212702 [info ] [Thread-2 (]: 12 of 15 START sql view model public.stg_observations .......................... [RUN]
+[0m19:18:46.215648 [debug] [Thread-1 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.stg_medicationrequests"
+[0m19:18:46.216184 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.patient_retention_per_cohort, now model.chorus_data_engineer_interview.stg_observations)
+[0m19:18:46.216649 [debug] [Thread-2 (]: Began compiling node model.chorus_data_engineer_interview.stg_observations
+[0m19:18:46.219181 [debug] [Thread-2 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.stg_observations"
+[0m19:18:46.219606 [debug] [Thread-1 (]: Began executing node model.chorus_data_engineer_interview.stg_medicationrequests
+[0m19:18:46.223167 [debug] [Thread-1 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.stg_medicationrequests"
+[0m19:18:46.223488 [debug] [Thread-4 (]: SQL status: CREATE VIEW in 0.022 seconds
+[0m19:18:46.223777 [debug] [Thread-3 (]: SQL status: CREATE VIEW in 0.020 seconds
+[0m19:18:46.226775 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.recent_patient_encounters"
+[0m19:18:46.227081 [debug] [Thread-2 (]: Began executing node model.chorus_data_engineer_interview.stg_observations
+[0m19:18:46.230055 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_encounters"
+[0m19:18:46.230398 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_medicationrequests"
+[0m19:18:46.230777 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.recent_patient_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.recent_patient_encounters"} */
+alter table "postgres"."public"."recent_patient_encounters" rename to "recent_patient_encounters__dbt_backup"
+[0m19:18:46.233985 [debug] [Thread-2 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.stg_observations"
+[0m19:18:46.234319 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_encounters"} */
+alter table "postgres"."public"."stg_encounters" rename to "stg_encounters__dbt_backup"
+[0m19:18:46.234733 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.stg_medicationrequests: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_medicationrequests"} */
+
+  create view "postgres"."public"."stg_medicationrequests__dbt_tmp"
+    
+    
+  as (
+    SELECT
+    id,
+    patient_id,
+    practitioner_id,
+    medication_name,
+    dosage,
+    status,
+    created_at
+FROM "postgres"."public"."MedicationRequest"
+  );
+[0m19:18:46.235252 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:18:46.235849 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_observations"
+[0m19:18:46.236168 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.stg_observations: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_observations"} */
+
+  create view "postgres"."public"."stg_observations__dbt_tmp"
+    
+    
+  as (
+    SELECT
+  id,
+  patient_id,
+  encounter_id,
+  type,
+  value,
+  unit,
+  recorded_at
+FROM "postgres"."public"."Observation"
+  );
+[0m19:18:46.236589 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m19:18:46.238700 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m19:18:46.239223 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.004 seconds
+[0m19:18:46.242598 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.recent_patient_encounters"
+[0m19:18:46.245258 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_encounters"
+[0m19:18:46.245840 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.recent_patient_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.recent_patient_encounters"} */
+alter table "postgres"."public"."recent_patient_encounters__dbt_tmp" rename to "recent_patient_encounters"
+[0m19:18:46.246223 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_encounters"} */
+alter table "postgres"."public"."stg_encounters__dbt_tmp" rename to "stg_encounters"
+[0m19:18:46.248243 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:18:46.249753 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.recent_patient_encounters: COMMIT
+[0m19:18:46.251829 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.017 seconds
+[0m19:18:46.252113 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.016 seconds
+[0m19:18:46.252399 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.006 seconds
+[0m19:18:46.252716 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.recent_patient_encounters"
+[0m19:18:46.255595 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_medicationrequests"
+[0m19:18:46.258445 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_observations"
+[0m19:18:46.259700 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_encounters: COMMIT
+[0m19:18:46.260006 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.recent_patient_encounters: COMMIT
+[0m19:18:46.260299 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.stg_medicationrequests: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_medicationrequests"} */
+alter table "postgres"."public"."stg_medicationrequests" rename to "stg_medicationrequests__dbt_backup"
+[0m19:18:46.260600 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.stg_observations: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_observations"} */
+alter table "postgres"."public"."stg_observations" rename to "stg_observations__dbt_backup"
+[0m19:18:46.260887 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_encounters"
+[0m19:18:46.261347 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_encounters: COMMIT
+[0m19:18:46.262949 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:18:46.263316 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:18:46.263633 [debug] [Thread-4 (]: SQL status: COMMIT in 0.002 seconds
+[0m19:18:46.263892 [debug] [Thread-3 (]: SQL status: COMMIT in 0.002 seconds
+[0m19:18:46.266454 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_observations"
+[0m19:18:46.269036 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_medicationrequests"
+[0m19:18:46.271108 [debug] [Thread-4 (]: Applying DROP to: "postgres"."public"."recent_patient_encounters__dbt_backup"
+[0m19:18:46.273154 [debug] [Thread-3 (]: Applying DROP to: "postgres"."public"."stg_encounters__dbt_backup"
+[0m19:18:46.273469 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.stg_observations: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_observations"} */
+alter table "postgres"."public"."stg_observations__dbt_tmp" rename to "stg_observations"
+[0m19:18:46.273775 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.stg_medicationrequests: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_medicationrequests"} */
+alter table "postgres"."public"."stg_medicationrequests__dbt_tmp" rename to "stg_medicationrequests"
+[0m19:18:46.274355 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.recent_patient_encounters"
+[0m19:18:46.274903 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_encounters"
+[0m19:18:46.275322 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.recent_patient_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.recent_patient_encounters"} */
+drop view if exists "postgres"."public"."recent_patient_encounters__dbt_backup" cascade
+[0m19:18:46.275655 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_encounters: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_encounters"} */
+drop view if exists "postgres"."public"."stg_encounters__dbt_backup" cascade
+[0m19:18:46.276833 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m19:18:46.277144 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:18:46.278437 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.stg_medicationrequests: COMMIT
+[0m19:18:46.278766 [debug] [Thread-3 (]: SQL status: DROP VIEW in 0.003 seconds
+[0m19:18:46.279091 [debug] [Thread-4 (]: SQL status: DROP VIEW in 0.003 seconds
+[0m19:18:46.280359 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.stg_observations: COMMIT
+[0m19:18:46.280673 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_medicationrequests"
+[0m19:18:46.281689 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_encounters: Close
+[0m19:18:46.282676 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.recent_patient_encounters: Close
+[0m19:18:46.282981 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_observations"
+[0m19:18:46.283270 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.stg_medicationrequests: COMMIT
+[0m19:18:46.283722 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b3c5550>]}
+[0m19:18:46.284157 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b1dc2d0>]}
+[0m19:18:46.284442 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.stg_observations: COMMIT
+[0m19:18:46.285119 [info ] [Thread-3 (]: 10 of 15 OK created sql view model public.stg_encounters ....................... [[32mCREATE VIEW[0m in 0.11s]
+[0m19:18:46.285887 [info ] [Thread-4 (]: 9 of 15 OK created sql view model public.recent_patient_encounters ............. [[32mCREATE VIEW[0m in 0.11s]
+[0m19:18:46.286489 [debug] [Thread-3 (]: Finished running node model.chorus_data_engineer_interview.stg_encounters
+[0m19:18:46.286821 [debug] [Thread-1 (]: SQL status: COMMIT in 0.002 seconds
+[0m19:18:46.287109 [debug] [Thread-2 (]: SQL status: COMMIT in 0.001 seconds
+[0m19:18:46.287520 [debug] [Thread-4 (]: Finished running node model.chorus_data_engineer_interview.recent_patient_encounters
+[0m19:18:46.287863 [debug] [Thread-3 (]: Began running node model.chorus_data_engineer_interview.stg_patients
+[0m19:18:46.290101 [debug] [Thread-1 (]: Applying DROP to: "postgres"."public"."stg_medicationrequests__dbt_backup"
+[0m19:18:46.292105 [debug] [Thread-2 (]: Applying DROP to: "postgres"."public"."stg_observations__dbt_backup"
+[0m19:18:46.292437 [debug] [Thread-4 (]: Began running node model.chorus_data_engineer_interview.stg_practitioners
+[0m19:18:46.292848 [info ] [Thread-3 (]: 13 of 15 START sql view model public.stg_patients .............................. [RUN]
+[0m19:18:46.293482 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_medicationrequests"
+[0m19:18:46.294070 [debug] [Thread-2 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_observations"
+[0m19:18:46.294441 [info ] [Thread-4 (]: 14 of 15 START sql view model public.stg_practitioners ......................... [RUN]
+[0m19:18:46.294794 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.stg_encounters, now model.chorus_data_engineer_interview.stg_patients)
+[0m19:18:46.295110 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.stg_medicationrequests: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_medicationrequests"} */
+drop view if exists "postgres"."public"."stg_medicationrequests__dbt_backup" cascade
+[0m19:18:46.295405 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.stg_observations: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_observations"} */
+drop view if exists "postgres"."public"."stg_observations__dbt_backup" cascade
+[0m19:18:46.295698 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.recent_patient_encounters, now model.chorus_data_engineer_interview.stg_practitioners)
+[0m19:18:46.295988 [debug] [Thread-3 (]: Began compiling node model.chorus_data_engineer_interview.stg_patients
+[0m19:18:46.296353 [debug] [Thread-4 (]: Began compiling node model.chorus_data_engineer_interview.stg_practitioners
+[0m19:18:46.299015 [debug] [Thread-3 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.stg_patients"
+[0m19:18:46.299323 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.003 seconds
+[0m19:18:46.299603 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.003 seconds
+[0m19:18:46.301990 [debug] [Thread-4 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.stg_practitioners"
+[0m19:18:46.303139 [debug] [Thread-2 (]: On model.chorus_data_engineer_interview.stg_observations: Close
+[0m19:18:46.304281 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.stg_medicationrequests: Close
+[0m19:18:46.304851 [debug] [Thread-3 (]: Began executing node model.chorus_data_engineer_interview.stg_patients
+[0m19:18:46.305338 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ad60d90>]}
+[0m19:18:46.305747 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b45d9d0>]}
+[0m19:18:46.310980 [debug] [Thread-3 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.stg_patients"
+[0m19:18:46.311584 [info ] [Thread-1 (]: 11 of 15 OK created sql view model public.stg_medicationrequests ............... [[32mCREATE VIEW[0m in 0.09s]
+[0m19:18:46.311976 [debug] [Thread-4 (]: Began executing node model.chorus_data_engineer_interview.stg_practitioners
+[0m19:18:46.312434 [info ] [Thread-2 (]: 12 of 15 OK created sql view model public.stg_observations ..................... [[32mCREATE VIEW[0m in 0.09s]
+[0m19:18:46.313011 [debug] [Thread-1 (]: Finished running node model.chorus_data_engineer_interview.stg_medicationrequests
+[0m19:18:46.316388 [debug] [Thread-4 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.stg_practitioners"
+[0m19:18:46.316843 [debug] [Thread-2 (]: Finished running node model.chorus_data_engineer_interview.stg_observations
+[0m19:18:46.317172 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_patients"
+[0m19:18:46.317511 [debug] [Thread-1 (]: Began running node model.chorus_data_engineer_interview.top_3_prescriptions
+[0m19:18:46.318232 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_practitioners"
+[0m19:18:46.318603 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_patients"} */
+
+  create view "postgres"."public"."stg_patients__dbt_tmp"
+    
+    
+  as (
+    SELECT
+  id,
+  identifier,
+  name,
+  gender,
+  birth_date,
+  address,
+  telecom,
+  active,
+  created_at
+FROM "postgres"."public"."Patient"
+  );
+[0m19:18:46.319007 [info ] [Thread-1 (]: 15 of 15 START sql view model public.top_3_prescriptions ....................... [RUN]
+[0m19:18:46.319353 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.stg_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_practitioners"} */
+
+  create view "postgres"."public"."stg_practitioners__dbt_tmp"
+    
+    
+  as (
+    SELECT
+  id,
+  identifier,
+  name,
+  specialty,
+  telecom,
+  active,
+  created_at
+FROM "postgres"."public"."Practitioner"
+  );
+[0m19:18:46.319647 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m19:18:46.319960 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.chorus_data_engineer_interview.stg_medicationrequests, now model.chorus_data_engineer_interview.top_3_prescriptions)
+[0m19:18:46.320255 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m19:18:46.320652 [debug] [Thread-1 (]: Began compiling node model.chorus_data_engineer_interview.top_3_prescriptions
+[0m19:18:46.323431 [debug] [Thread-1 (]: Writing injected SQL for node "model.chorus_data_engineer_interview.top_3_prescriptions"
+[0m19:18:46.324237 [debug] [Thread-1 (]: Began executing node model.chorus_data_engineer_interview.top_3_prescriptions
+[0m19:18:46.327881 [debug] [Thread-1 (]: Writing runtime sql for node "model.chorus_data_engineer_interview.top_3_prescriptions"
+[0m19:18:46.328571 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.top_3_prescriptions"
+[0m19:18:46.328929 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.top_3_prescriptions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.top_3_prescriptions"} */
+
+  create view "postgres"."public"."top_3_prescriptions__dbt_tmp"
+    
+    
+  as (
+    /*
+ Write a query to find the three most commonly prescribed medications from the MedicationRequest table, sorted by the number of prescriptions.
+ */
+
+ WITH medication_counts AS (
+     SELECT
+         medication_name,
+         COUNT(*) AS prescription_count
+     FROM "postgres"."public"."MedicationRequest"
+     GROUP BY medication_name
+ )
+
+SELECT
+    medication_name,
+    prescription_count
+FROM medication_counts
+ORDER BY prescription_count DESC
+LIMIT 3
+  );
+[0m19:18:46.329243 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:18:46.332193 [debug] [Thread-4 (]: SQL status: CREATE VIEW in 0.012 seconds
+[0m19:18:46.332793 [debug] [Thread-3 (]: SQL status: CREATE VIEW in 0.013 seconds
+[0m19:18:46.335853 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_practitioners"
+[0m19:18:46.338811 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_patients"
+[0m19:18:46.339151 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.stg_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_practitioners"} */
+alter table "postgres"."public"."stg_practitioners" rename to "stg_practitioners__dbt_backup"
+[0m19:18:46.339461 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_patients"} */
+alter table "postgres"."public"."stg_patients" rename to "stg_patients__dbt_backup"
+[0m19:18:46.340569 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.011 seconds
+[0m19:18:46.343518 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.top_3_prescriptions"
+[0m19:18:46.343856 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.004 seconds
+[0m19:18:46.344122 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.top_3_prescriptions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.top_3_prescriptions"} */
+alter table "postgres"."public"."top_3_prescriptions" rename to "top_3_prescriptions__dbt_backup"
+[0m19:18:46.344385 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.005 seconds
+[0m19:18:46.347009 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_patients"
+[0m19:18:46.349829 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_practitioners"
+[0m19:18:46.350116 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m19:18:46.350420 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_patients"} */
+alter table "postgres"."public"."stg_patients__dbt_tmp" rename to "stg_patients"
+[0m19:18:46.350724 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.stg_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_practitioners"} */
+alter table "postgres"."public"."stg_practitioners__dbt_tmp" rename to "stg_practitioners"
+[0m19:18:46.353305 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.top_3_prescriptions"
+[0m19:18:46.353780 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.top_3_prescriptions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.top_3_prescriptions"} */
+alter table "postgres"."public"."top_3_prescriptions__dbt_tmp" rename to "top_3_prescriptions"
+[0m19:18:46.355070 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m19:18:46.355416 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m19:18:46.356845 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_patients: COMMIT
+[0m19:18:46.357133 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m19:18:46.358286 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.stg_practitioners: COMMIT
+[0m19:18:46.358593 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_patients"
+[0m19:18:46.359734 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.top_3_prescriptions: COMMIT
+[0m19:18:46.360082 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_practitioners"
+[0m19:18:46.360391 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_patients: COMMIT
+[0m19:18:46.360677 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.top_3_prescriptions"
+[0m19:18:46.360957 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.stg_practitioners: COMMIT
+[0m19:18:46.361298 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.top_3_prescriptions: COMMIT
+[0m19:18:46.363182 [debug] [Thread-3 (]: SQL status: COMMIT in 0.002 seconds
+[0m19:18:46.363493 [debug] [Thread-1 (]: SQL status: COMMIT in 0.002 seconds
+[0m19:18:46.367327 [debug] [Thread-3 (]: Applying DROP to: "postgres"."public"."stg_patients__dbt_backup"
+[0m19:18:46.367606 [debug] [Thread-4 (]: SQL status: COMMIT in 0.006 seconds
+[0m19:18:46.415005 [debug] [Thread-1 (]: Applying DROP to: "postgres"."public"."top_3_prescriptions__dbt_backup"
+[0m19:18:46.415707 [debug] [Thread-3 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_patients"
+[0m19:18:46.417853 [debug] [Thread-4 (]: Applying DROP to: "postgres"."public"."stg_practitioners__dbt_backup"
+[0m19:18:46.418431 [debug] [Thread-1 (]: Using postgres connection "model.chorus_data_engineer_interview.top_3_prescriptions"
+[0m19:18:46.418737 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_patients: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_patients"} */
+drop view if exists "postgres"."public"."stg_patients__dbt_backup" cascade
+[0m19:18:46.419295 [debug] [Thread-4 (]: Using postgres connection "model.chorus_data_engineer_interview.stg_practitioners"
+[0m19:18:46.419595 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.top_3_prescriptions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.top_3_prescriptions"} */
+drop view if exists "postgres"."public"."top_3_prescriptions__dbt_backup" cascade
+[0m19:18:46.419985 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.stg_practitioners: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "chorus_data_engineer_interview", "target_name": "dev", "node_id": "model.chorus_data_engineer_interview.stg_practitioners"} */
+drop view if exists "postgres"."public"."stg_practitioners__dbt_backup" cascade
+[0m19:18:46.423464 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.003 seconds
+[0m19:18:46.423782 [debug] [Thread-3 (]: SQL status: DROP VIEW in 0.004 seconds
+[0m19:18:46.424082 [debug] [Thread-4 (]: SQL status: DROP VIEW in 0.004 seconds
+[0m19:18:46.425111 [debug] [Thread-1 (]: On model.chorus_data_engineer_interview.top_3_prescriptions: Close
+[0m19:18:46.426019 [debug] [Thread-3 (]: On model.chorus_data_engineer_interview.stg_patients: Close
+[0m19:18:46.426854 [debug] [Thread-4 (]: On model.chorus_data_engineer_interview.stg_practitioners: Close
+[0m19:18:46.427265 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b561e90>]}
+[0m19:18:46.427633 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b562010>]}
+[0m19:18:46.428047 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a8649c9b-90b4-4d2d-a615-28f302535b45', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b469110>]}
+[0m19:18:46.428547 [info ] [Thread-1 (]: 15 of 15 OK created sql view model public.top_3_prescriptions .................. [[32mCREATE VIEW[0m in 0.11s]
+[0m19:18:46.429006 [info ] [Thread-3 (]: 13 of 15 OK created sql view model public.stg_patients ......................... [[32mCREATE VIEW[0m in 0.13s]
+[0m19:18:46.429460 [info ] [Thread-4 (]: 14 of 15 OK created sql view model public.stg_practitioners .................... [[32mCREATE VIEW[0m in 0.13s]
+[0m19:18:46.429868 [debug] [Thread-1 (]: Finished running node model.chorus_data_engineer_interview.top_3_prescriptions
+[0m19:18:46.430197 [debug] [Thread-3 (]: Finished running node model.chorus_data_engineer_interview.stg_patients
+[0m19:18:46.430529 [debug] [Thread-4 (]: Finished running node model.chorus_data_engineer_interview.stg_practitioners
+[0m19:18:46.431906 [debug] [MainThread]: On master: COMMIT
+[0m19:18:46.432134 [debug] [MainThread]: Using postgres connection "master"
+[0m19:18:46.432319 [debug] [MainThread]: On master: COMMIT
+[0m19:18:46.432502 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m19:18:46.441196 [debug] [MainThread]: SQL status: COMMIT in 0.009 seconds
+[0m19:18:46.441497 [debug] [MainThread]: On master: Close
+[0m19:18:46.441916 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m19:18:46.442116 [debug] [MainThread]: Connection 'model.chorus_data_engineer_interview.top_3_prescriptions' was properly closed.
+[0m19:18:46.442295 [debug] [MainThread]: Connection 'model.chorus_data_engineer_interview.stg_observations' was properly closed.
+[0m19:18:46.442469 [debug] [MainThread]: Connection 'model.chorus_data_engineer_interview.stg_patients' was properly closed.
+[0m19:18:46.442728 [debug] [MainThread]: Connection 'model.chorus_data_engineer_interview.stg_practitioners' was properly closed.
+[0m19:18:46.443012 [info ] [MainThread]: 
+[0m19:18:46.443238 [info ] [MainThread]: Finished running 15 view models in 0 hours 0 minutes and 0.68 seconds (0.68s).
+[0m19:18:46.445083 [debug] [MainThread]: Command end result
+[0m19:18:46.474972 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/home/PycharmProjects/chorusinnovations/chorus-data-engineering-interview/dbt/target/manifest.json
+[0m19:18:46.476719 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/home/PycharmProjects/chorusinnovations/chorus-data-engineering-interview/dbt/target/semantic_manifest.json
+[0m19:18:46.482078 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/home/PycharmProjects/chorusinnovations/chorus-data-engineering-interview/dbt/target/run_results.json
+[0m19:18:46.482351 [info ] [MainThread]: 
+[0m19:18:46.482630 [info ] [MainThread]: [31mCompleted with 2 errors, 0 partial successes, and 0 warnings:[0m
+[0m19:18:46.482849 [info ] [MainThread]: 
+[0m19:18:46.483117 [error] [MainThread]: [31mFailure in model encounters_per_specific_patient (models/01_beginner/encounters_per_specific_patient.sql)[0m
+[0m19:18:46.483385 [error] [MainThread]:   Database Error in model encounters_per_specific_patient (models/01_beginner/encounters_per_specific_patient.sql)
+  syntax error at or near "{"
+  LINE 18: WHERE "postgres"."public"."Patient".id = {var('patient_id')}
+                                                    ^
+  compiled code at target/run/chorus_data_engineer_interview/models/01_beginner/encounters_per_specific_patient.sql
+[0m19:18:46.483592 [info ] [MainThread]: 
+[0m19:18:46.483830 [info ] [MainThread]:   compiled code at target/compiled/chorus_data_engineer_interview/models/01_beginner/encounters_per_specific_patient.sql
+[0m19:18:46.484019 [info ] [MainThread]: 
+[0m19:18:46.484263 [error] [MainThread]: [31mFailure in model observations_per_specific_patient (models/01_beginner/observations_per_specific_patient.sql)[0m
+[0m19:18:46.484514 [error] [MainThread]:   Database Error in model observations_per_specific_patient (models/01_beginner/observations_per_specific_patient.sql)
+  syntax error at or near "{"
+  LINE 20: WHERE "postgres"."public"."Patient".id = {var('patient_id')}
+                                                    ^
+  compiled code at target/run/chorus_data_engineer_interview/models/01_beginner/observations_per_specific_patient.sql
+[0m19:18:46.484710 [info ] [MainThread]: 
+[0m19:18:46.484939 [info ] [MainThread]:   compiled code at target/compiled/chorus_data_engineer_interview/models/01_beginner/observations_per_specific_patient.sql
+[0m19:18:46.485142 [info ] [MainThread]: 
+[0m19:18:46.485356 [info ] [MainThread]: Done. PASS=13 WARN=0 ERROR=2 SKIP=0 NO-OP=0 TOTAL=15
+[0m19:18:46.488784 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 1.6531546, "process_in_blocks": "0", "process_kernel_time": 0.402865, "process_mem_max_rss": "154681344", "process_out_blocks": "0", "process_user_time": 2.438375}
+[0m19:18:46.489120 [debug] [MainThread]: Command `dbt run` failed at 19:18:46.489055 after 1.65 seconds
+[0m19:18:46.489410 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b4e7310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b4d1410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b4d21d0>]}
+[0m19:18:46.489672 [debug] [MainThread]: Flushing usage events
+[0m19:18:46.935155 [debug] [MainThread]: An error was encountered while trying to flush usage events

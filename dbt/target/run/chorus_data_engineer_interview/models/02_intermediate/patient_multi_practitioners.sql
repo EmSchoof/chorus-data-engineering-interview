@@ -14,6 +14,7 @@ WITH practitioner_counts AS (
     FROM "postgres"."public"."Encounter"
     GROUP BY patient_id
 )
+
 SELECT
     patient_id
 FROM practitioner_counts
