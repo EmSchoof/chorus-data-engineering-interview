@@ -1,18 +1,22 @@
 import psycopg2
+from dotenv import load_dotenv
 import uuid
+import os
 from faker import Faker
 import random
+
+load_dotenv()
 
 # Initialize Faker
 fake = Faker()
 
-# Database Connection Settings
+# Database Connection Settings (from env vars, no defaults)
 DB_CONFIG = {
-    "dbname": "postgres",
-    "user": "user",
-    "password": "password",
-    "host": "localhost",
-    "port": "5432"
+    "dbname": os.getenv("POSTGRES_DB"),
+    "user": os.getenv("POSTGRES_USER"),
+    "password": os.getenv("POSTGRES_PASSWORD"),
+    "host": os.getenv("POSTGRES_HOST"),
+    "port": os.getenv("POSTGRES_PORT")
 }
 
 # Connect to PostgreSQL

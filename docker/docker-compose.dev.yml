@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:16-alpine
+    env_file: .env
+    restart: on-failure
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+
+volumes:
+  pgdata:

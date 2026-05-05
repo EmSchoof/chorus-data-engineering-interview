@@ -21,45 +21,54 @@ spec:
             - name: PGADMIN_DEFAULT_EMAIL
               value: fake@gmail.com
             - name: PGADMIN_DEFAULT_PASSWORD
-              value: password
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
         - name: postgres
-          image: postgres
+          image: postgres:16-alpine
           readinessProbe:
             exec:
               command:
                 - sh
                 - -c
-                - "pg_isready -U user -d postgres"
-            initialDelaySeconds: 5  # Wait before first check
-            periodSeconds: 3         # Check every 3s
-            timeoutSeconds: 3        # Timeout per check
-            failureThreshold: 5      # Fail if unready 5 times
+                - "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"
+            initialDelaySeconds: 5
+            periodSeconds: 3
+            timeoutSeconds: 3
+            failureThreshold: 5
           livenessProbe:
             exec:
               command:
                 - sh
                 - -c
-                - "pg_isready -U user -d postgres"
-            initialDelaySeconds: 10  # Start checking after 10s
-            periodSeconds: 5         # Check every 5s
-            timeoutSeconds: 5        # Timeout per check
-            failureThreshold: 5      # Restart if unresponsive
+                - "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 5
           ports:
             - containerPort: 5432
           env:
             - name: POSTGRES_USER
-              value: 'user'
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: user
             - name: POSTGRES_PASSWORD
-              value: 'password'
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
             - name: POSTGRES_DB
               value: 'postgres'
           volumeMounts:
-            - mountPath: /var/lib/postgresql/data
+            - mountPath: /var/lib/postgresql
               name: postgres-storage
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
-            claimName: db-pvc # Uses the PVC instead of `emptyDir`
+            claimName: db-pvc
 
 ---
 apiVersion: v1
@@ -70,21 +79,11 @@ spec:
   selector:
     app: db
   ports:
-    - protocol: TCP
-      port: 5432 # Service port (internal cluster)
-      targetPort: 5432 # PostgreSQL container port
-  type: NodePort
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: db-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi # Adjust the size as needed
+    - name: postgres
+      protocol: TCP
+      port: 5432
+      targetPort: 5432
+  type: ClusterIP
 
 ---
 apiVersion: v1
@@ -95,7 +94,20 @@ spec:
   selector:
     app: db
   ports:
-    - protocol: TCP
-      port: 80 # Service port (internal cluster)
-      targetPort: 80 # PostgreSQL container port
+    - name: pgadmin
+      protocol: TCP
+      port: 80
+      targetPort: 80
   type: NodePort
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: db-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi

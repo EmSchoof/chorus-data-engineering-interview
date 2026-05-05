@@ -1,4 +1,6 @@
+# Load Kubernetes manifests
 k8s_yaml([
+    './k8s/postgres-secret.yaml',
     './k8s/postgres.yaml'
 ])
 
@@ -10,15 +12,15 @@ k8s_resource(
 )
 
 local_resource(
-    "init_db",
-    "PGPASSWORD=password psql -U user -d postgres -h localhost -p 5432 -f ./fhir/ddl/fhir_database.sql",
+    "init_schema",
+    "cd src && pip install -q -r requirements.txt && python init_db.py",
     trigger_mode=TRIGGER_MODE_MANUAL,
     resource_deps=['db']
 )
 
 local_resource(
     "seed_db",
-    "python main.py",
+    "cd src && pip install -q -r requirements.txt && python main.py",
     trigger_mode=TRIGGER_MODE_MANUAL,
-    resource_deps=['init_db']
+    resource_deps=['init_schema']
 )
