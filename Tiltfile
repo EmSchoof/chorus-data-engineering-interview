@@ -13,14 +13,14 @@ k8s_resource(
 
 local_resource(
     "init_schema",
-    "cd src && python init_db.py",
+    "cd src && pip install -q -r requirements.txt && python init_db.py",
     trigger_mode=TRIGGER_MODE_MANUAL,
     resource_deps=['db']
 )
 
 local_resource(
     "seed_db",
-    "cd src && python main.py",
+    "cd src && pip install -q -r requirements.txt && python main.py",
     trigger_mode=TRIGGER_MODE_MANUAL,
     resource_deps=['init_schema']
 )

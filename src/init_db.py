@@ -15,7 +15,7 @@ DB_CONFIG = {
 conn = psycopg2.connect(**DB_CONFIG)
 cursor = conn.cursor()
 
-ddl_path = os.getenv("DDL_PATH", "fhir/ddl/fhir_database.sql")
+ddl_path = os.getenv("DDL_PATH", "../fhir/ddl/fhir_database.sql")
 with open(ddl_path, 'r') as f:
     ddl = f.read()
     # Add IF NOT EXISTS to each CREATE TABLE
