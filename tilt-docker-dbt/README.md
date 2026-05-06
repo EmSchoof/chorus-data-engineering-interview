@@ -32,8 +32,8 @@ tilt-docker-dbt/
 │   │       ├── dim_avg_encounter_per_patient.sql
 │   │       ├── dim_patient_prescription_wo_encounter.sql
 │   │       └── dim_patient_retention_per_cohort.sql
-│   ├── dbt_project.yml
-│   ├── packages.yml
+│   ├── dbt_project.yml                # Project config (default: table materialization)
+│   ├── packages.yml                   # dbt-utils, codegen
 │   ├── package-lock.yml
 │   └── profiles.yml                   # (not tracked; create locally)
 ├── docker/                            # Docker Compose setup
@@ -48,16 +48,17 @@ tilt-docker-dbt/
 │   └── postgres-secret.yaml           # Kubernetes Secret
 ├── src/                               # Python initialization
 │   ├── main.py                        # Faker test data generator
-│   ├── init_db.py
+│   ├── init_db.py                     # Schema initialization script
 │   ├── requirements.txt               # psycopg2, faker, python-dotenv
+│   ├── .env                           # Database connection variables
 │   └── __init__.py
-├── Dockerfile                         # Root Dockerfile (for image builds)
+├── Dockerfile                         # Root Dockerfile (multi-stage, non-root user)
 └── README.md                          # This file
 ```
 
 ## Quick Start
 
-### 1. Start PostgreSQL with Test Data
+### 1. Start PostgreSQL
 
 ```bash
 cd docker
@@ -76,44 +77,40 @@ Verify the container is running:
 docker compose -f docker-compose.dev.yml logs db
 ```
 
-The `docker-compose` starts PostgreSQL only. Schema creation and test data insertion happen separately.
-
 ### 2. Initialize FHIR Database Schema
 
+Option A: Using Docker exec
 ```bash
-# From project root or docker/ directory
-psql -h 127.0.0.1 -U user -d postgres -f ../fhir/ddl/fhir_database.sql
-# When prompted, enter: password
+docker exec -i $(docker compose -f docker-compose.dev.yml ps -q db) \
+  psql -U user -d postgres < ../fhir/ddl/fhir_database.sql
 ```
 
-Or, if using Docker:
-
+Option B: Using Python script (auto-adds IF NOT EXISTS)
 ```bash
-docker exec -i $(docker compose -f docker-compose.dev.yml ps -q db) psql -U user -d postgres < ../fhir/ddl/fhir_database.sql
+cd ../src
+pip install -r requirements.txt
+python init_db.py
+```
+
+Option C: Manual psql
+```bash
+psql -h 127.0.0.1 -U user -d postgres -f ../fhir/ddl/fhir_database.sql
+# When prompted, enter: password
 ```
 
 ### 3. Generate Test Data
 
 ```bash
-# From project root
 cd src
-pip install -r requirements.txt
 python main.py
 ```
 
-Or, using Docker:
-
-```bash
-docker run --rm --network docker_default \
-  -e POSTGRES_HOST=db \
-  -e POSTGRES_USER=user \
-  -e POSTGRES_PASSWORD=password \
-  -e POSTGRES_DB=postgres \
-  -e POSTGRES_PORT=5432 \
-  -v $(pwd)/src:/app \
-  python:3.11.12-slim-bullseye \
-  bash -c "cd /app && pip install -r requirements.txt && python main.py"
-```
+The script generates:
+- 10 patients
+- 5 practitioners
+- 15 encounters
+- 20 observations
+- 10 medication requests
 
 ### 4. Configure dbt Profile
 
@@ -162,8 +159,9 @@ dbt docs serve  # View at http://localhost:8000
 ## dbt Model Architecture
 
 ### Layer 1: Staging (`staging/`)
+
 **Purpose:** Canonicalize raw FHIR tables.  
-**Materialization:** `ephemeral` (temporary CTEs, no physical table)  
+**Materialization:** `view` (default, no override in config)  
 **Sources:** Defined in `schema.yml`
 
 **Source tables from `schema.yml`:**
@@ -174,31 +172,33 @@ dbt docs serve  # View at http://localhost:8000
 - `fake_data.MedicationRequest` — Medication prescriptions
 
 **Output models:**
-- `stg_patients`
-- `stg_practitioners`
-- `stg_encounters`
-- `stg_observations`
-- `stg_medication_requests`
+- `stg_patients` — Select all columns from Patient
+- `stg_practitioners` — Select all columns from Practitioner
+- `stg_encounters` — Select all columns from Encounter
+- `stg_observations` — Select all columns from Observation
+- `stg_medication_requests` — Select all columns from MedicationRequest
 
 ### Layer 2: Dimensional Models (`01_beginner/`, `02_intermediate/`, `03_advanced/`)
+
 **Purpose:** Analytics-ready queries organized by complexity.  
-**Materialization:** `view` (default, queries re-execute on demand)
+**Materialization:** `table` (default from dbt_project.yml, no override)  
+**Re-execution:** Entire table rebuilt on each `dbt run`
 
 #### Beginner (Simple Filters)
-- `dim_all_active_patients` — Patients with `active = true`
-- `dim_encounters_per_specific_patient` — Encounters for a given patient
-- `dim_observations_per_specific_patient` — Vitals for a given patient
+- `dim_all_active_patients` — Patients with `active = true` (single table scan)
+- `dim_encounters_per_specific_patient` — Encounters for a given patient (filter + select)
+- `dim_observations_per_specific_patient` — Vitals for a given patient (filter + select)
 
 #### Intermediate (Joins & Aggregations)
-- `dim_patient_multi_practitioners` — Patients seen by 2+ practitioners
-- `dim_practictioner_no_prescriptions` — Practitioners with zero prescriptions
-- `dim_recent_patient_encounters` — Encounters in last 30 days
-- `dim_top_3_prescriptions` — Most common medications prescribed
+- `dim_patient_multi_practitioners` — Patients seen by 2+ practitioners (GROUP BY + HAVING)
+- `dim_practictioner_no_prescriptions` — Practitioners with zero prescriptions (LEFT JOIN + filter)
+- `dim_recent_patient_encounters` — Encounters in last 30 days (time-based filter)
+- `dim_top_3_prescriptions` — Most common medications prescribed (GROUP BY + ORDER BY LIMIT)
 
 #### Advanced (Cohort Analysis & Window Functions)
-- `dim_avg_encounter_per_patient` — Average encounters per patient
-- `dim_patient_prescription_wo_encounter` — Prescriptions without recorded encounters
-- `dim_patient_retention_per_cohort` — Retention rates by first-encounter month (6-month window)
+- `dim_avg_encounter_per_patient` — Average encounters per patient (aggregation)
+- `dim_patient_prescription_wo_encounter` — Prescriptions without recorded encounters (anti-join)
+- `dim_patient_retention_per_cohort` — Retention rates by first-encounter month (cohort analysis with 6-month window)
 
 ## FHIR Data Model
 
@@ -214,22 +214,31 @@ dbt docs serve  # View at http://localhost:8000
 
 **Key Constraints:**
 - All IDs are UUID primary keys with `gen_random_uuid()` default
-- Patient.identifier and Practitioner.identifier are unique
-- Encounter references Patient and Practitioner
-- Observation references Patient and Encounter
-- MedicationRequest references Patient and Practitioner
+- Patient.identifier and Practitioner.identifier are UNIQUE
+- Encounter references Patient and Practitioner via foreign keys
+- Observation references Patient and Encounter via foreign keys
+- MedicationRequest references Patient and Practitioner via foreign keys
 - All tables include `created_at` timestamps
+- Table creation is idempotent: `init_db.py` adds `CREATE TABLE IF NOT EXISTS`
 
 ## Development Workflows
 
 ### Running Specific Models
 
 ```bash
+cd dbt
+
 # Run only staging models
 dbt run -m staging
 
 # Run beginner queries
 dbt run -m 01_beginner
+
+# Run intermediate queries
+dbt run -m 02_intermediate
+
+# Run advanced queries
+dbt run -m 03_advanced
 
 # Run model + downstream dependents
 dbt run --models +dim_all_active_patients+
@@ -238,6 +247,8 @@ dbt run --models +dim_all_active_patients+
 ### Debugging
 
 ```bash
+cd dbt
+
 # Compile & show generated SQL
 dbt compile --models 02_intermediate
 
@@ -249,13 +260,16 @@ dbt parse
 
 # Show model lineage
 dbt dag
+
+# View compiled SQL without running
+dbt compile -m dim_patient_retention_per_cohort
 ```
 
 ### Adding New Models
 
 1. Create SQL file in appropriate layer: `dbt/models/02_intermediate/dim_new_metric.sql`
 2. Reference staging models: `FROM {{ ref('stg_patients') }}`
-3. Use dbt_utils macros if needed (installed): `{{ dbt_utils.get_relations_by_pattern(...) }}`
+3. Use dbt_utils macros if needed (installed): `{{ dbt_utils.deduplicate(...) }}`
 4. Run: `dbt run -m dim_new_metric`
 5. Document in `schema.yml` (optional)
 
@@ -281,7 +295,29 @@ Deployment includes:
 - PostgreSQL 16 on port 5432
 - pgAdmin 4 on port 80 (for UI management)
 - Persistent volume claim (5Gi)
-- Liveness & readiness probes
+- Liveness & readiness probes (pg_isready)
+
+## Tilt Orchestration
+
+At project root, `Tiltfile` orchestrates setup:
+
+```bash
+tilt up
+```
+
+**Orchestration steps:**
+
+1. **Deploy Kubernetes manifests** — PostgreSQL + pgAdmin via `postgres.yaml` and `postgres-secret.yaml`
+2. **init_schema** — Manually trigger `init_db.py` to create FHIR schema (auto-adds IF NOT EXISTS)
+3. **seed_db** — Manually trigger `main.py` to generate Faker test data
+
+Manual triggers allow control over execution order. After triggering both:
+
+```bash
+cd tilt-docker-dbt/dbt
+dbt run
+dbt test
+```
 
 ## Troubleshooting
 
@@ -295,27 +331,33 @@ dbt debug
 docker compose -f docker-compose.dev.yml ps
 
 # Verify credentials in ~/.dbt/profiles.yml and docker/.env match
+cat ~/.dbt/profiles.yml
+cat docker/.env
 ```
 
 ### FHIR schema not created
 
 ```bash
-# Re-run DDL
-docker exec -i $(docker compose -f docker-compose.dev.yml ps -q db) \
-  psql -U user -d postgres -f /path/to/fhir_database.sql
-
-# Or manually connect and check tables
+# Check tables exist
 docker compose -f docker-compose.dev.yml exec db psql -U user -d postgres -c "\dt"
+
+# Re-run schema initialization
+cd src && python init_db.py
+
+# Or use Docker exec
+docker exec -i $(docker compose -f docker-compose.dev.yml ps -q db) \
+  psql -U user -d postgres -c "CREATE TABLE IF NOT EXISTS \"Patient\" (...)"
 ```
 
 ### Test data not inserted
 
 ```bash
-# Verify dbt staging models reference correct schema
-# Check fake_data source definition in dbt/models/staging/schema.yml
-
 # Re-generate test data
 cd src && python main.py
+
+# Verify insertion
+docker compose -f docker-compose.dev.yml exec db psql -U user -d postgres \
+  -c "SELECT COUNT(*) FROM \"Patient\""
 ```
 
 ### dbt docs not generating
@@ -326,5 +368,58 @@ dbt parse
 
 # Regenerate docs
 dbt docs generate --no-serve
-dbt docs serve
+dbt docs serve  # http://localhost:8000
 ```
+
+### Models materialized incorrectly
+
+```bash
+# Check dbt_project.yml for model config
+cat dbt/dbt_project.yml
+
+# Default: table materialization (rebuild entire table on run)
+# Staging models should ideally be view (currently table by default)
+
+# To override for staging, add to dbt_project.yml:
+# models:
+#   chorus_data_engineer_interview:
+#     staging:
+#       +materialized: view
+```
+
+### Docker container exits unexpectedly
+
+```bash
+# View logs
+docker compose -f docker-compose.dev.yml logs db
+
+# Check exit code (137 = OOM, 1 = error)
+docker compose -f docker-compose.dev.yml ps db
+
+# Restart and check health
+docker compose -f docker-compose.dev.yml restart
+docker compose -f docker-compose.dev.yml ps db  # healthcheck status
+```
+
+## Best Practices
+
+### dbt Development
+- Run `dbt debug` to verify profile connectivity before running models
+- Use `dbt compile` to check SQL syntax without executing
+- Use `dbt test` after changes to verify data quality
+- Document models in `schema.yml` with column descriptions and tests
+
+### Data Generation
+- Run `init_db.py` once to initialize schema (idempotent with IF NOT EXISTS)
+- Run `main.py` to generate fresh test data each time (truncates and re-inserts)
+- Adjust `NUM_PATIENTS`, `NUM_PRACTITIONERS`, etc. in `main.py` for larger datasets
+
+### Docker
+- Use `docker compose ps` to verify container health
+- Use `docker compose logs` for debugging
+- Use `docker compose down -v` to clean up volumes and reset database
+
+### Kubernetes (Optional)
+- pgAdmin accessible via NodePort after `kubectl port-forward`
+- PVC persists data across pod restarts
+- Secrets store database credentials securely
