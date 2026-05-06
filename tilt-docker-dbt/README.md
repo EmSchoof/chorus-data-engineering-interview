@@ -215,21 +215,21 @@ Tiltfile
 │   ├── Port forwards: 5432:5432 (postgres), 5050:80 (pgAdmin)
 │   └── Links: http://localhost:5050/ (pgAdmin UI)
 │
-├── local_resource('init_schema')    # Manual trigger
+├── local_resource('init_schema')  
 │   ├── Command: pip install -q -r requirements.txt && python init_db.py
 │   ├── Resource dep: db (waits for db to be ready)
-│   └── Trigger mode: MANUAL (click in UI to run)
+│   └── Trigger mode: CLI (runs when `main.py` is executed, not automatically on `tilt up`)
 │
-└── local_resource('seed_db')        # Manual trigger
+└── local_resource('seed_db')
     ├── Command: pip install -q -r requirements.txt && python main.py
     ├── Resource dep: init_schema (waits for schema)
-    └── Trigger mode: MANUAL (click in UI to run)
+    └── Trigger mode: CLI (runs when `main.py` is executed, not automatically on `tilt up`)
 ```
 
 ### CLI Trigger Workflow
 1. **`tilt up`** → Deploys K8s resources (db)
 2. **`ipython tilt-docker-dbt/src/main.py `** → Triggers `init_schema` (creates tables) → Triggers `seed_db` (inserts test data)
-4. **`cd ../dbt/ && dbt run`** → Query data and build models
+4. **`ipython export_to_csv.py `** → Query data, build models, and output to CSV files
 
 ### Checking Resource Status in Tilt UI
 - **Green** — Resource is healthy
