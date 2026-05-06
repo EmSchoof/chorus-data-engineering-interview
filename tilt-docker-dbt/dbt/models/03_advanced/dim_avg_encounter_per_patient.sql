@@ -6,7 +6,7 @@ WITH encounter_counts AS (
     SELECT
         patient_id,
         COUNT(*) AS encounter_count
-    FROM {{ source('fake_data', 'Encounter') }}
+    FROM {{ ref('stg_encounters') }}
     GROUP BY patient_id
 )
 

@@ -8,7 +8,7 @@ first_encounters AS (
     SELECT
         patient_id,
         MIN(encounter_date) AS first_encounter_date
-    FROM {{ source('fake_data', 'Encounter') }}
+    FROM {{ ref('stg_encounters') }}
     GROUP BY patient_id
 ),
 
@@ -19,7 +19,7 @@ retained_patients AS (
         DATE_TRUNC('month', fe.first_encounter_date) AS first_encounter_month,
         MAX(e.encounter_date) AS last_encounter_date
     FROM first_encounters fe
-    JOIN {{ source('fake_data', 'Encounter') }} e ON fe.patient_id = e.patient_id
+    JOIN {{ ref('stg_encounters') }} e ON fe.patient_id = e.patient_id
     WHERE e.encounter_date >= fe.first_encounter_date
     GROUP BY fe.patient_id, fe.first_encounter_date
 )

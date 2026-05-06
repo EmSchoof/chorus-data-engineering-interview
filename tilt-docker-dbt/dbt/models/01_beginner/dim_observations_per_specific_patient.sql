@@ -9,16 +9,15 @@ SELECT
   value,
   unit,
   recorded_at
-FROM {{ source('fake_data', 'Observation') }}
-WHERE {{ source('fake_data', 'Observation') }}.patient_id = {var('patient_id')}
+FROM {{ ref('stg_observations') }}
+WHERE {{ ref('stg_observations') }}.patient_id = {var('patient_id')}
 */
 
 SELECT
   patient_id,
-  type,
   value,
   unit,
   recorded_at
-FROM {{ source('fake_data', 'Observation') }}
-WHERE patient_id IN (SELECT DISTINCT patient_id FROM {{ source('fake_data', 'Observation') }})
+FROM {{ ref('stg_observations') }}
+WHERE patient_id IN (SELECT DISTINCT patient_id FROM {{ ref('stg_observations') }})
 ORDER BY patient_id, recorded_at
