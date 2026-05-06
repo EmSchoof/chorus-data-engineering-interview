@@ -1,4 +1,4 @@
-task_id,task_name,cadence,max_occurrences,start_date,created_at
-1,Monthly Reporting,monthly,12,2025-05-01,2025-05-01 10:00:00
-2,One-Time Data Migration,once,1,2025-07-15,2025-07-15 10:00:00
-3,Daily Data Quality Check,daily,30,2025-10-01,2025-10-01 10:00:00
+task_id,task_name,cadence,start_date,max_occurrences,created_at
+1,Task 1,monthly,2026-01-01,12,2026-01-01 00:00:00
+2,Task 2,weekly,2026-01-05,8,2026-01-05 00:00:00
+3,Task 3,daily,2026-01-01,30,2026-01-01 00:00:00

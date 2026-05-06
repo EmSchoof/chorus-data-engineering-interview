@@ -3,4 +3,4 @@ SELECT
   task_id,
   person_id,
   assigned_date
-FROM {{ ref('task_assignment') }}
+FROM {{ ref('stg_task_assignments') }}
