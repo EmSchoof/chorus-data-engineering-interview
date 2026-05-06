@@ -25,8 +25,8 @@ retained_patients AS (
 )
 
 SELECT
-    first_encounter_month,
-    COUNT(DISTINCT patient_id) AS retained_patients_count
+    first_encounter_month AS cohort_month,
+    COUNT(DISTINCT patient_id) AS retained_patients_after_6_months_count
 FROM retained_patients
 WHERE last_encounter_date >= first_encounter_date + INTERVAL '6 months'
 GROUP BY first_encounter_month

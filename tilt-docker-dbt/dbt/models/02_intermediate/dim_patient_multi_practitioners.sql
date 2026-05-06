@@ -11,6 +11,6 @@ WITH practitioner_counts AS (
 )
 
 SELECT
-    patient_id
+    patient_id AS patient_id_with_multiple_practitioners
 FROM practitioner_counts
 WHERE distinct_practitioners > 1

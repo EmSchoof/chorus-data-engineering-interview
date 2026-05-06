@@ -9,7 +9,7 @@ WITH prescribing_practitioners AS (
 
 SELECT
     id AS practitioner_id,
-    name,
-    specialty
+    name AS practitioner_fullname,
+    specialty AS practitioner_specialty
 FROM {{ ref('stg_practitioners') }}
 WHERE id NOT IN (SELECT practitioner_id FROM prescribing_practitioners)

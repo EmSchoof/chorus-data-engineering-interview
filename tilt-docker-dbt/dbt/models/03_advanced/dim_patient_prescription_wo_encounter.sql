@@ -15,6 +15,6 @@ patients_with_encounters AS (
 )
 
 SELECT
-    patient_id
+    patient_id AS patient_id_with_prescriptions_no_encounters
 FROM patients_with_medication_requests
 WHERE patient_id NOT IN (SELECT patient_id FROM patients_with_encounters)
