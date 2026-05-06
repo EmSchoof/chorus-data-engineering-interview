@@ -10,7 +10,7 @@ WORKDIR /app
 RUN groupadd -r appuser && useradd -r -g appuser appuser
 
 COPY --from=builder /root/.local /home/appuser/.local
-COPY --chown=appuser:appuser . .
+COPY --chown=appuser:appuser .. .
 
 USER appuser
 ENV PATH=/home/appuser/.local/bin:$PATH

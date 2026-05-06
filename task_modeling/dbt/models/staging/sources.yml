@@ -1,0 +1,143 @@
+version: 2
+
+seeds:
+  - name: people
+    description: People reference data loaded from CSV
+    columns:
+      - name: person_id
+        description: Unique person identifier
+        tests:
+          - unique
+          - not_null
+      - name: person_name
+        description: Person full name
+        tests:
+          - not_null
+      - name: created_at
+        description: Timestamp of when the person record was created
+        tests:
+          - not_null
+      - name: updated_at
+        description: Timestamp of the last update to the person record
+
+  - name: tasks
+    description: Task definitions with recurrence patterns loaded from CSV
+    columns:
+      - name: task_id
+        description: Unique task identifier
+        tests:
+          - unique
+          - not_null
+      - name: task_name
+        description: Name of the task
+        tests:
+          - not_null
+      - name: cadence
+        description: Recurrence pattern (daily, weekly, monthly)
+        tests:
+          - not_null
+      - name: start_date
+        description: Date when the task starts
+        tests:
+          - not_null
+      - name: max_occurrences
+        description: Maximum number of occurrences for the task
+        tests:
+          - not_null
+
+  - name: task_assignment
+    description: Assignment of tasks to people loaded from CSV
+    columns:
+      - name: task_id
+        description: Unique task identifier
+        tests:
+          - not_null
+      - name: person_id
+        description: Unique person identifier
+        tests:
+          - not_null
+      - name: assigned_date
+        description: Timestamp of when the task was assigned to the person
+        tests:
+          - not_null
+
+  - name: task_occurance
+    description: Reference task occurrences loaded from CSV
+    columns:
+      - name: task_occurrence_id
+        description: Unique task occurrence identifier
+        tests:
+          - unique
+          - not_null
+      - name: task_id
+        description: Reference to task
+        tests:
+          - not_null
+      - name: person_id
+        description: Reference to person
+        tests:
+          - not_null
+
+  - name: task_occurance_status
+    description: Task occurrence status tracking loaded from CSV
+    columns:
+      - name: task_occurrence_id
+        description: Reference to task occurrence
+        tests:
+          - unique
+          - not_null
+      - name: status
+        description: Current status of the task occurrence
+        tests:
+          - not_null
+      - name: updated_at
+        description: When the status was last updated
+        tests:
+          - not_null
+
+models:
+  - name: stg_people
+    description: Staging layer for people
+    columns:
+      - name: person_id
+        tests:
+          - unique
+          - not_null
+      - name: person_name
+        tests:
+          - not_null
+
+  - name: stg_tasks
+    description: Staging layer for tasks
+    columns:
+      - name: task_id
+        tests:
+          - unique
+          - not_null
+      - name: task_name
+        tests:
+          - not_null
+
+  - name: stg_task_assignments
+    description: Staging layer for task assignments
+    columns:
+      - name: task_id
+        tests:
+          - not_null
+      - name: person_id
+        tests:
+          - not_null
+
+  - name: stg_task_occurrences
+    description: Staging layer for task occurrences
+    columns:
+      - name: task_occurrence_id
+        tests:
+          - unique
+          - not_null
+      - name: task_id
+        tests:
+          - not_null
+      - name: person_id
+        tests:
+          - not_null

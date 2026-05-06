@@ -1,0 +1,93 @@
+version: 2
+
+models:
+  - name: dim_people
+    description: "persons who are assigned to tasks"
+    columns:
+       - name: person_id
+         data_type: integer
+         description: "primary key for person"
+       - name: person_name
+         data_type: character varying
+         description: "stored name of the person"
+
+  - name: dim_tasks
+    description: "tasks that are assigned to people, with recurrence patterns"
+    columns:
+      - name: task_id
+        data_type: integer
+        description: "primary key for task"
+      - name: task_name
+        data_type: character varying
+        description: "stored name of the task"
+      - name: cadence
+        data_type: character varying
+        description: "recurrence pattern (daily, weekly, monthly)"
+      - name: start_date
+        data_type: date
+        description: "date when the task starts"
+      - name: max_occurrences
+        data_type: integer
+        description: "maximum number of occurrences for the task"
+
+  - name: fct_task_occurrences
+    description: "fact table that generates task occurrences based on the tasks and their recurrence patterns, and tracks the status of each occurrence over time"
+    columns:
+      - name: task_occurrence_id
+        data_type: text
+        description: "primary key for task occurrence, generated as task_id + occurrence_number"
+      - name: task_id
+        data_type: integer
+        description: "primary key for task from dim_tasks"
+      - name: task_name
+        data_type: character varying
+        description: "stored name of the task from dim_tasks, denormalized for easier querying"
+      - name: person_id
+        data_type: integer
+        description: "primary key for person from dim_people, assigned to this task occurrence"
+      - name: person_name
+        data_type: character varying
+        description: "stored name of the person from dim_people, denormalized for easier querying"
+      - name: occurrence_number
+        data_type: integer
+        description: "occurrence number for this task, starting at 1 and incrementing based on the cadence and start_date of the task"
+      - name: occurrence_date
+        data_type: timestamp without time zone
+        description: "date and time when this task occurrence is scheduled to occur, calculated based on the cadence and start_date of the task"
+      - name: status
+        data_type: character varying
+        description: "current status of the task occurrence ('not started', 'in progress', 'completed')"
+      - name: last_updated
+        data_type: timestamp with time zone
+        description: "timestamp of the last update to this task occurrence, used for tracking when status changes occur"
+      - name: is_completed
+        data_type: integer
+        description: "boolean flag (0 or 1) indicating whether the task occurrence is completed, used for easier filtering in queries"
+
+  - name: fct_task_occurrence_summary
+    description: "Summary of task occurrences by person and task, showing completion rate and status"
+    columns:
+      - name: person_id
+        data_type: integer
+        description: "Primary key for person"
+      - name: person_name
+        data_type: character varying
+        description: "Person name"
+      - name: task_id
+        data_type: integer
+        description: "Primary key for task"
+      - name: task_name
+        data_type: character varying
+        description: "Task name"
+      - name: total_occurrences
+        data_type: integer
+        description: "Total number of occurrences for this person-task pair"
+      - name: completed_occurrences
+        data_type: integer
+        description: "Number of completed occurrences"
+      - name: last_scheduled_date
+        data_type: timestamp without time zone
+        description: "Latest scheduled date for this person-task pair"
+      - name: completion_status
+        data_type: character varying
+        description: "Overall status (All Completed, Overdue, In Progress)"
