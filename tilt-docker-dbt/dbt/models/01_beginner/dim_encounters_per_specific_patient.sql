@@ -9,6 +9,11 @@ SELECT
   encounter_date
 FROM {{ ref('stg_encounters') }}
 WHERE {{ ref('stg_encounters') }}.patient_id = {var('patient_id')}
+
+
+This is the TRUE way to filter based on a specific patient_id, but dbt does not allow for variables to be used in the WHERE clause of a model.
+However, for the sake of using dbt to run queries, we will use a subquery to filter the encounters for all patients
+An additional filter down to a specific patient in a separate step.
 */
 
 SELECT

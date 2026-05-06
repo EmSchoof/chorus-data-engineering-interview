@@ -28,15 +28,8 @@ DB_CONFIG = {
     "port": os.getenv("POSTGRES_PORT", "5432")
 }
 
-# Models to export (organized by layer)
+# Models to export categorized by layer
 MODELS = {
-    "staging": [
-        "stg_patients",
-        "stg_practitioners",
-        "stg_encounters",
-        "stg_observations",
-        "stg_medication_requests"
-    ],
     "01_beginner": [
         "dim_all_active_patients",
         "dim_encounters_per_specific_patient",
