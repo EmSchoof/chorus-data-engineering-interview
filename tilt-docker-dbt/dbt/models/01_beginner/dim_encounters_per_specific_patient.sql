@@ -7,8 +7,8 @@ SELECT
   patient_id,
   status,
   encounter_date
-FROM {{ source('fake_data', 'Encounter') }}
-WHERE {{ source('fake_data', 'Encounter') }}.patient_id = {var('patient_id')}
+FROM {{ ref('stg_encounters') }}
+WHERE {{ ref('stg_encounters') }}.patient_id = {var('patient_id')}
 */
 
 SELECT
