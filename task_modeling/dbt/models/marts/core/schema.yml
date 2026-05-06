@@ -10,6 +10,7 @@ models:
        - name: person_name
          data_type: character varying
          description: "stored name of the person"
+
   - name: dim_tasks
     description: "tasks that are assigned to people, with recurrence patterns"
     columns:
@@ -28,6 +29,7 @@ models:
       - name: max_occurrences
         data_type: integer
         description: "maximum number of occurrences for the task"
+
   - name: fct_task_occurrences
     description: "fact table that generates task occurrences based on the tasks and their recurrence patterns, and tracks the status of each occurrence over time"
     columns:
@@ -61,12 +63,31 @@ models:
       - name: is_completed
         data_type: integer
         description: "boolean flag (0 or 1) indicating whether the task occurrence is completed, used for easier filtering in queries"
-  - name: bridge_task_occurrence_assignments
-    description: " bridge table to handle many-to-many relationships between task occurrences and people, in case a task occurrence can be assigned to multiple people or a person can have multiple task occurrences"
+
+  - name: fct_task_occurrence_summary
+    description: "Summary of task occurrences by person and task, showing completion rate and status"
     columns:
-      - name: task_occurrence_id
-        data_type: text
-        description: "primary key for task occurrence from fct_task_occurrences, indicating which task occurrence is being assigned"
       - name: person_id
         data_type: integer
-        description: "primary key for person from dim_people, indicating which person is assigned to this task occurrence"
+        description: "Primary key for person"
+      - name: person_name
+        data_type: character varying
+        description: "Person name"
+      - name: task_id
+        data_type: integer
+        description: "Primary key for task"
+      - name: task_name
+        data_type: character varying
+        description: "Task name"
+      - name: total_occurrences
+        data_type: integer
+        description: "Total number of occurrences for this person-task pair"
+      - name: completed_occurrences
+        data_type: integer
+        description: "Number of completed occurrences"
+      - name: last_scheduled_date
+        data_type: timestamp without time zone
+        description: "Latest scheduled date for this person-task pair"
+      - name: completion_status
+        data_type: character varying
+        description: "Overall status (All Completed, Overdue, In Progress)"

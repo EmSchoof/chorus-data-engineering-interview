@@ -15,3 +15,10 @@ clean-targets:
 
 models:
   chorus_data_engineer_interview:
+    staging:
+      +materialized: view
+      tags: ["staging"]
+    marts:
+      core:
+        +materialized: table
+        tags: ["marts", "core"]

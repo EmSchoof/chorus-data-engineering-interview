@@ -5,4 +5,4 @@ SELECT
   max_occurrences,
   start_date,
   created_at
-FROM {{ source('task_tracking', 'Task') }}
+FROM {{ ref('tasks') }}

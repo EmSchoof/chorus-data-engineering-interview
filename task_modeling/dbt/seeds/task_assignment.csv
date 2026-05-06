@@ -1,4 +1,4 @@
-task_assignment_id,task_id,person_id,assignment_date
+task_assignment_id,task_id,person_id,assigned_date
 1,1,1,2026-01-01 09:00:00
 2,1,2,2026-01-01 09:05:00
 3,2,3,2026-01-12 10:00:00

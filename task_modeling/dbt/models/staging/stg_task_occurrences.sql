@@ -1,5 +1,5 @@
--- Create task occurrences from task definitions
--- Handles daily, weekly, monthly recurrence
+-- Simple task occurrences generated from staging models
+-- Business logic moved to marts layer
 
 WITH task_dates AS (
   SELECT
@@ -28,19 +28,17 @@ WITH task_dates AS (
     ON t.task_id = ta.task_id 
     AND p.person_id = ta.person_id
   WHERE n.n < t.max_occurrences
-),
-task_occurrences AS (
-  SELECT
-    gen_random_uuid()::text AS task_occurrence_id,
-    task_id,
-    task_name,
-    person_id,
-    person_name,
-    occurrence_number,
-    occurrence_date,
-    'Not Started' AS status,
-    CURRENT_TIMESTAMP AS created_at,
-    NULL AS updated_at
-  FROM task_dates
 )
-SELECT * FROM task_occurrences
+
+SELECT
+  gen_random_uuid()::text AS task_occurrence_id,
+  task_id,
+  task_name,
+  person_id,
+  person_name,
+  occurrence_number,
+  occurrence_date,
+  'Not Started' AS status,
+  CURRENT_TIMESTAMP AS created_at,
+  NULL AS updated_at
+FROM task_dates

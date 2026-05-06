@@ -1,14 +1,7 @@
 /*
-Task occurrence status tracking mart
-Allows people to track completion of recurring tasks
-
-Output Columns:
-task_occurrence_id
-task_id
-occurrence_number
-occurrence_date
-status
- */
+Task occurrence fact table with status enrichment
+Combines generated task occurrences with their tracked status
+*/
 
 SELECT
   task_occur.task_occurrence_id,
@@ -25,6 +18,5 @@ SELECT
     ELSE 0
   END AS is_completed
 FROM {{ ref('stg_task_occurrences') }} task_occur
-LEFT JOIN {{ source('task_tracking', 'TaskOccurrenceStatus') }} task_stat
+LEFT JOIN {{ ref('task_occurance_status') }} task_stat
   ON task_occur.task_occurrence_id::uuid = task_stat.task_occurrence_id
-ORDER BY task_occur.person_id, task_occur.task_id, task_occur.occurrence_date
