@@ -1,9 +1,7 @@
 # Chorus Data Engineering Interview
-
 Two separate data domains in one repository:
 
 ## 1. Task Modeling (`task_modeling/`)
-
 dbt data modeling for a task tracking system with recurring task generation and completion tracking.
 
 **Highlights:**
@@ -15,7 +13,6 @@ dbt data modeling for a task tracking system with recurring task generation and 
 **See:** [`task_modeling/README.md`](./task_modeling/README.md)
 
 ## 2. FHIR Healthcare Pipeline (`tilt-docker-dbt/`)
-
 Local development environment for healthcare data analytics with FHIR schema, Docker, Kubernetes, PostgreSQL, and dbt.
 
 **Highlights:**
@@ -29,47 +26,9 @@ Local development environment for healthcare data analytics with FHIR schema, Do
 
 ## Quick Start
 
-### Task Modeling (No Prerequisites)
-
-```bash
-cd task_modeling/dbt
-
-# Configure dbt profile (~/.dbt/profiles.yml)
-# Load seed data
-dbt seed
-
-# Run models (staging → marts)
-dbt run
-
-# Test data quality
-dbt test
-```
-
 ### FHIR Pipeline (Docker Required)
 
-#### Option 1: Docker Compose (Manual)
-
-```bash
-cd tilt-docker-dbt/docker
-
-# Start PostgreSQL
-docker compose -f docker-compose.dev.yml up -d
-
-# Initialize schema
-cd ../src
-psql -h 127.0.0.1 -U user -d postgres -f ../fhir/ddl/fhir_database.sql
-# When prompted, enter: password
-
-# Generate test data
-pip install -r requirements.txt
-python main.py
-
-# Then run dbt
-cd ../dbt
-dbt run && dbt test
-```
-
-#### Option 2: Tilt (Automated)
+#### Tilt + Kubernetes
 
 ```bash
 # From project root
@@ -85,7 +44,6 @@ dbt run && dbt test
 ```
 
 ## Repository Structure
-
 ```
 .
 ├── README.md                          # This file
@@ -170,16 +128,11 @@ dbt run && dbt test
 
 ### Task Modeling
 - **dbt** 1.11+ (local development)
-- **PostgreSQL** (local instance or Docker)
-- **Python** (optional, for advanced dbt extensions)
 
 ### FHIR Healthcare Pipeline
-- **Docker** / Docker Compose
-- **PostgreSQL** 16-alpine
-- **Python** 3.11 (Faker for test data)
 - **dbt** 1.11+
-- **Kubernetes** (manifests for Postgres + pgAdmin deployment)
 - **Tilt** (orchestration)
+- **Kubernetes** (manifests for Postgres)
 - **K3s or Docker Desktop** (for Kubernetes)
 
 ## Prerequisites
@@ -272,13 +225,9 @@ chorus_data_engineer_interview:
     dev:
       type: postgres
       host: localhost
-      user: user                    # or postgres for local
-      password: password            # your password
+      user: <_user_>                   # or postgres for local
+      password: <_password_>           # your password
       port: 5432
-      dbname: postgres              # or healthcare_db
-      schema: public                # or task_tracking
-      threads: 4
-      keepalives_idle: 0
   target: dev
 ```
 
@@ -292,25 +241,11 @@ dbt debug
 ```
 
 ### Tilt Setup (Optional)
-
 `Tiltfile` at project root orchestrates the FHIR pipeline:
 
 1. **Deploys Kubernetes manifests** — PostgreSQL + pgAdmin
 2. **init_schema** — Runs `init_db.py` to create FHIR schema
 3. **seed_db** — Runs `main.py` to generate fake test data
-
-Manual triggers allow control over execution order.
-
-### Docker Credentials (FHIR Pipeline)
-
-From `tilt-docker-dbt/docker/.env`:
-```
-POSTGRES_USER=user
-POSTGRES_PASSWORD=password
-POSTGRES_DB=postgres
-```
-
-Use these when connecting via psql or dbt profile.
 
 ## Testing & Documentation
 
@@ -328,81 +263,10 @@ dbt test --show
 
 ### Generate Documentation
 ```bash
-dbt docs generate
-dbt docs serve  # http://localhost:8000
-```
-
-### Compile Models Without Running
-```bash
-dbt compile
-dbt compile -m staging
-```
-
-## Troubleshooting
-
-### dbt connection fails
-
-```bash
-# Verify profile
-dbt debug
-
-# Check PostgreSQL is running
-docker compose ps  # FHIR pipeline
-# or verify local instance
-```
-
-### Docker issues
-
-```bash
-# View logs
-docker compose -f tilt-docker-dbt/docker/docker-compose.dev.yml logs db
-
-# Restart
-docker compose -f tilt-docker-dbt/docker/docker-compose.dev.yml restart
-
-# Clean up
-docker compose -f tilt-docker-dbt/docker/docker-compose.dev.yml down -v
-```
-
-### Tilt issues
-
-```bash
-# View Tilt logs
-tilt logs
-
-# Restart Tilt
-tilt down
-tilt up
-```
-
-### Schema not initialized
-
-Verify `init_db.py` ran successfully:
-```bash
-docker exec -it $(docker compose -f tilt-docker-dbt/docker/docker-compose.dev.yml ps -q db) \
-  psql -U user -d postgres -c "\dt"  # List tables
-```
-
-Should show FHIR tables: Patient, Practitioner, Encounter, Observation, MedicationRequest.
-
-### Test data not seeded
-
-Manually trigger in Tilt or run directly:
-```bash
-cd tilt-docker-dbt/src
-python main.py
+dbt docs generate && dbt docs serve  # http://localhost:8000
 ```
 
 ## Next Steps
-
 - **Task Modeling**: Extend marts with additional business logic, add incremental models
 - **FHIR Pipeline**: Deploy to cloud (AWS RDS + dbt Cloud), add CI/CD via GitHub Actions
 - **Both**: Set up monitoring, data quality checks, automated testing
-
-## Resources
-
-- [dbt Documentation](https://docs.getdbt.com)
-- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
-- [Tilt Documentation](https://docs.tilt.dev)
-- [Docker Compose Documentation](https://docs.docker.com/compose)
-- [Kubernetes Documentation](https://kubernetes.io/docs)

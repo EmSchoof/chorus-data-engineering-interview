@@ -1,9 +1,7 @@
 # Task Modeling
-
 dbt data modeling for task tracking system with recurring task generation, assignment tracking, and status updates.
 
 ## Structure
-
 ```
 task_modeling/
 ├── dbt/                               # dbt project root
@@ -45,32 +43,25 @@ task_modeling/
 ### 1. Configure dbt Profile
 
 Create `~/.dbt/profiles.yml`:
-
 ```yaml
 chorus_data_engineer_interview:
   outputs:
     dev:
       type: postgres
       host: localhost
-      user: user
-      password: password
+      user: <_user_>
+      password: <_password_>
       port: 5432
-      dbname: postgres
-      schema: task_tracking
-      threads: 4
-      keepalives_idle: 0
   target: dev
 ```
 
 Verify connection:
-
 ```bash
 cd dbt
 dbt debug
 ```
 
 ### 2. Load Seed Data
-
 ```bash
 dbt seed
 ```
@@ -82,7 +73,6 @@ This loads CSV data from `seeds/` into the database:
 - `task_occurance_status` — Status tracking for occurrences
 
 ### 3. Install dbt Packages
-
 ```bash
 dbt deps
 ```
@@ -90,7 +80,6 @@ dbt deps
 Installs `dbt_utils` and `codegen`.
 
 ### 4. Run Models
-
 ```bash
 dbt run
 ```
@@ -111,20 +100,17 @@ dbt run
    - `fct_task_occurrence_summary` — Aggregated completion rates by person-task
 
 ### 5. Test & Document
-
 ```bash
 # Run data quality tests (source & model tests defined in YAML)
 dbt test
 
 # Generate documentation
-dbt docs generate
-dbt docs serve  # View at http://localhost:8000
+dbt docs generate && dbt docs serve  # View at http://localhost:8000
 ```
 
 ## Data Model
 
 ### Seeds (Reference Data)
-
 | Seed | Rows | Purpose |
 |------|------|---------|
 | `people` | 3 | Sample people (Ricardo, Shanaya, Daniel) |
@@ -133,9 +119,7 @@ dbt docs serve  # View at http://localhost:8000
 | `task_occurance_status` | 10+ | Status updates for each occurrence |
 
 ### Staging Layer
-
 All staging models are `view` materialization and reference seeds:
-
 - `stg_people(person_id, person_name, created_at, updated_at)`
 - `stg_tasks(task_id, task_name, cadence, start_date, max_occurrences, created_at)`
 - `stg_task_assignments(task_assignment_id, task_id, person_id, assigned_date)`
@@ -180,85 +164,10 @@ models:
         tags: ["marts", "core"]
 ```
 
-## Development
-
-### Running Specific Models
-
-```bash
-# Run only staging
-dbt run -m staging
-
-# Run only marts
-dbt run -m marts.core
-
-# Run specific model
-dbt run -m fct_task_occurrences
-
-# Run + downstream models
-dbt run --models +fct_task_occurrences+
-```
-
-### Testing
-
-```bash
-# Run all tests (unique, not_null constraints from YAML)
-dbt test
-
-# Test specific model
-dbt test -m stg_people
-
-# Test seed data
-dbt test -m people
-```
-
-### Debugging
-
-```bash
-# Compile SQL (show generated query)
-dbt compile --models fct_task_occurrences
-
-# Show model DAG
-dbt dag
-
-# Parse for errors
-dbt parse
-```
-
-### Adding New Models
-
-1. Create SQL file: `dbt/models/marts/core/dim_new_entity.sql`
-2. Reference staging: `FROM {{ ref('stg_tasks') }}`
-3. Add to `schema.yml` with column descriptions
-4. Run: `dbt run -m dim_new_entity`
-
-## Seeds
-
-Reference data loaded from CSV:
-
-### people.csv
-```
-person_id, person_name, created_at, updated_at
-1, Ricardo, 2026-03-01 11:00:00, 2026-03-01 11:00:00
-2, Shanaya, 2026-04-01 15:00:00, 2026-04-01 15:00:00
-3, Daniel, 2026-05-01 09:00:00, 2026-05-01 09:00:00
-```
-
-### tasks.csv
-```
-task_id, task_name, cadence, start_date, max_occurrences, created_at
-1, Task 1, monthly, 2026-01-01, 12, 2026-01-01 00:00:00
-2, Task 2, weekly, 2026-01-05, 8, 2026-01-05 00:00:00
-3, Task 3, daily, 2026-01-01, 30, 2026-01-01 00:00:00
-```
-
-Task occurrences are **generated dynamically** in `fct_task_occurrences` based on cadence and max_occurrences.
-
 ## Key Models Explained
 
 ### fct_task_occurrences (Fact Table)
-
 Generates all task occurrences based on task recurrence patterns:
-
 ```sql
 -- Example logic
 WITH task_occurrences AS (
@@ -274,7 +183,6 @@ WITH task_occurrences AS (
   JOIN stg_people p ON a.person_id = p.person_id
 )
 ```
-
 **Key features:**
 - Generates all occurrences up to `max_occurrences`
 - Occurrence dates calculated from cadence (daily → 1 day, weekly → 7 days, monthly → 1 month)
@@ -282,9 +190,7 @@ WITH task_occurrences AS (
 - Denormalized person/task names for analytics
 
 ### fct_task_occurrence_summary (Aggregation)
-
 Summarizes completion by person-task pair:
-
 ```sql
 SELECT
   person_id,
@@ -299,48 +205,4 @@ SELECT
   END AS completion_status
 FROM fct_task_occurrences
 GROUP BY person_id, task_id
-```
-
-## Troubleshooting
-
-### dbt seed fails
-
-```bash
-# Check CSV format (no trailing commas, consistent columns)
-dbt seed --show
-
-# Drop and reload
-dbt seed --drop-existing
-```
-
-### Model compilation fails
-
-```bash
-# Check staging model SQL references
-dbt compile --models staging
-
-# Ensure seeds are loaded first
-dbt seed
-dbt run --models staging
-```
-
-### Tests fail
-
-```bash
-# View test output
-dbt test --show
-
-# Check unique/not_null constraints in sources.yml
-cat dbt/models/staging/sources.yml
-```
-
-### Task occurrences not generating
-
-```bash
-# Verify tasks & assignments exist
-dbt run -m dim_tasks
-dbt run -m dim_task_assignment
-
-# Check fct_task_occurrences SQL for GENERATE_SERIES or equivalent
-dbt compile -m fct_task_occurrences
 ```

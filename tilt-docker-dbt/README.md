@@ -1,6 +1,6 @@
 # FHIR Healthcare Data Pipeline
 
-Local development environment for healthcare data analytics with FHIR schema, PostgreSQL, Docker, and dbt.
+Tilt-orchestrated local development environment for healthcare data analytics with FHIR schema, PostgreSQL, Docker, Kubernetes, and dbt.
 
 ## Structure
 
@@ -36,14 +36,14 @@ tilt-docker-dbt/
 │   ├── packages.yml                   # dbt-utils, codegen
 │   ├── package-lock.yml
 │   └── profiles.yml                   # (not tracked; create locally)
-├── docker/                            # Docker Compose setup
+├── docker/                            # Docker Compose setup (optional, standalone)
 │   ├── Dockerfile                     # Multi-stage Python build (data gen)
-│   ├── docker-compose.dev.yml         # PostgreSQL service
+│   ├── docker-compose.dev.yml         # PostgreSQL service (alternative to Tilt)
 │   └── .env                           # Database credentials (user, password, db)
 ├── fhir/
 │   └── ddl/
 │       └── fhir_database.sql          # FHIR schema creation script
-├── k8s/                               # Kubernetes manifests
+├── k8s/                               # Kubernetes manifests (used by Tilt)
 │   ├── postgres.yaml                  # Postgres + pgAdmin Deployment, Service, PVC
 │   └── postgres-secret.yaml           # Kubernetes Secret
 ├── src/                               # Python initialization
@@ -56,110 +56,93 @@ tilt-docker-dbt/
 └── README.md                          # This file
 ```
 
-## Quick Start
+## Quick Start (Tilt + Kubernetes)
 
-### 1. Start PostgreSQL
+Tilt orchestrates PostgreSQL deployment via Kubernetes manifests and automates schema initialization and data seeding.
 
+### Prerequisites
+
+- **Tilt** installed: https://docs.tilt.dev/install.html
+- **Docker** installed (Docker Desktop with Kubernetes, or separate K3s/Kubernetes cluster)
+- **kubectl** available (for K8s cluster access)
+
+### 1. Start Tilt
+From project root (where `Tiltfile` is located):
 ```bash
-cd docker
-docker compose -f docker-compose.dev.yml up -d
+tilt up
 ```
 
-Credentials from `.env`:
-- **User:** `user`
-- **Password:** `password`
-- **Database:** `postgres`
-- **Port:** `5432`
+This will:
+1. Load K8s manifests (`postgres.yaml`, `postgres-secret.yaml`)
+2. Deploy PostgreSQL 16 + pgAdmin to your K8s cluster
+3. Set up port forwards: `5432:5432` (PostgreSQL), `5050:80` (pgAdmin)
+4. Create the `db` resource (tracked in Tilt UI)
 
-Verify the container is running:
+**Tilt UI** opens at `http://localhost:10350/`.
 
+### 2. Initialize FHIR Schema and Generate Test Data
 ```bash
-docker compose -f docker-compose.dev.yml logs db
+ipython tilt-docker-dbt/src/main.py
 ```
+This will trigger the following in Tilt UI:
 
-### 2. Initialize FHIR Database Schema
+1. Executes `init_db.py`, which: 
+- Runs `init_schema` resource
+- Installs Python dependencies (`psycopg2`, `faker`, `python-dotenv`)
+- Reads `fhir/ddl/fhir_database.sql`
+- Runs DDL with `CREATE TABLE IF NOT EXISTS` (idempotent)
+- Creates all FHIR tables: Patient, Practitioner, Encounter, Observation, MedicationRequest
 
-Option A: Using Docker exec
-```bash
-docker exec -i $(docker compose -f docker-compose.dev.yml ps -q db) \
-  psql -U user -d postgres < ../fhir/ddl/fhir_database.sql
-```
+Check logs in Tilt UI for `✅ Schema initialized successfully!`
 
-Option B: Using Python script (auto-adds IF NOT EXISTS)
-```bash
-cd ../src
-pip install -r requirements.txt
-python init_db.py
-```
-
-Option C: Manual psql
-```bash
-psql -h 127.0.0.1 -U user -d postgres -f ../fhir/ddl/fhir_database.sql
-# When prompted, enter: password
-```
-
-### 3. Generate Test Data
-
-```bash
-cd src
-python main.py
-```
-
-The script generates:
+2. Creates `seed_db` resource in PostGreSQL, which generates:
 - 10 patients
 - 5 practitioners
 - 15 encounters
 - 20 observations
 - 10 medication requests
 
-### 4. Configure dbt Profile
+Check logs in Tilt UI for `✅ Test data inserted successfully!`
+
+### 3. Configure dbt Profile
 
 Create `~/.dbt/profiles.yml`:
-
 ```yaml
 chorus_data_engineer_interview:
   outputs:
     dev:
       type: postgres
       host: localhost
-      user: user
-      password: password
+      user: <_user_>
+      password: <_password_>
       port: 5432
-      dbname: postgres
-      schema: public
-      threads: 4
-      keepalives_idle: 0
   target: dev
 ```
 
 Verify connection:
-
 ```bash
-cd dbt
+cd tilt-docker-dbt/dbt
 dbt debug
 ```
 
 ### 5. Run dbt
 
 ```bash
-# Install dependencies
-dbt deps
+cd tilt-docker-dbt/dbt
 
-# Run models (staging → dimensional)
-dbt run
+# Install dependencies and run models
+dbt deps && dbt run 
 
 # Test data quality (source tests + model tests)
 dbt test
 
 # Generate documentation
-dbt docs generate
-dbt docs serve  # View at http://localhost:8000
+dbt docs generate && dbt docs serve  # View at http://localhost:8000
 ```
 
 ## dbt Model Architecture
 
 ### Layer 1: Staging (`staging/`)
-
 **Purpose:** Canonicalize raw FHIR tables.  
 **Materialization:** `view` (default, no override in config)  
 **Sources:** Defined in `schema.yml`
@@ -179,7 +162,6 @@ dbt docs serve  # View at http://localhost:8000
 - `stg_medication_requests` — Select all columns from MedicationRequest
 
 ### Layer 2: Dimensional Models (`01_beginner/`, `02_intermediate/`, `03_advanced/`)
-
 **Purpose:** Analytics-ready queries organized by complexity.  
 **Materialization:** `table` (default from dbt_project.yml, no override)  
 **Re-execution:** Entire table rebuilt on each `dbt run`
@@ -201,7 +183,6 @@ dbt docs serve  # View at http://localhost:8000
 - `dim_patient_retention_per_cohort` — Retention rates by first-encounter month (cohort analysis with 6-month window)
 
 ## FHIR Data Model
-
 **Tables (defined in `fhir/ddl/fhir_database.sql`):**
 
 | Table | Columns | Notes |
@@ -221,205 +202,68 @@ dbt docs serve  # View at http://localhost:8000
 - All tables include `created_at` timestamps
 - Table creation is idempotent: `init_db.py` adds `CREATE TABLE IF NOT EXISTS`
 
-## Development Workflows
+## Tilt Workflow
 
-### Running Specific Models
-
-```bash
-cd dbt
-
-# Run only staging models
-dbt run -m staging
-
-# Run beginner queries
-dbt run -m 01_beginner
-
-# Run intermediate queries
-dbt run -m 02_intermediate
-
-# Run advanced queries
-dbt run -m 03_advanced
-
-# Run model + downstream dependents
-dbt run --models +dim_all_active_patients+
+### Tilt Resources
+```
+Tiltfile
+├── k8s_yaml()
+│   ├── postgres-secret.yaml     # Kubernetes Secret (user, password)
+│   └── postgres.yaml            # PostgreSQL 16 Deployment + pgAdmin
+│
+├── k8s_resource('db')           # Tracks K8s deployment
+│   ├── Port forwards: 5432:5432 (postgres), 5050:80 (pgAdmin)
+│   └── Links: http://localhost:5050/ (pgAdmin UI)
+│
+├── local_resource('init_schema')    # Manual trigger
+│   ├── Command: pip install -q -r requirements.txt && python init_db.py
+│   ├── Resource dep: db (waits for db to be ready)
+│   └── Trigger mode: MANUAL (click in UI to run)
+│
+└── local_resource('seed_db')        # Manual trigger
+    ├── Command: pip install -q -r requirements.txt && python main.py
+    ├── Resource dep: init_schema (waits for schema)
+    └── Trigger mode: MANUAL (click in UI to run)
 ```
 
-### Debugging
+### CLI Trigger Workflow
+1. **`tilt up`** → Deploys K8s resources (db)
+2. **`ipython tilt-docker-dbt/src/main.py `** → Triggers `init_schema` (creates tables) → Triggers `seed_db` (inserts test data)
+4. **`cd ../dbt/ && dbt run`** → Query data and build models
 
+### Checking Resource Status in Tilt UI
+- **Green** — Resource is healthy
+- **Yellow** — In progress
+- **Red** — Error (check logs)
+- **Gray** — Pending (waiting for dependency)
+
+## Kubernetes Access (Via Tilt)
+Tilt manages port forwarding automatically:
+
+**PostgreSQL:**
 ```bash
-cd dbt
-
-# Compile & show generated SQL
-dbt compile --models 02_intermediate
-
-# Test specific model columns
-dbt test -m stg_patients
-
-# Parse for syntax errors
-dbt parse
-
-# Show model lineage
-dbt dag
-
-# View compiled SQL without running
-dbt compile -m dim_patient_retention_per_cohort
+# Connect directly (port-forward active)
+psql -h localhost -U user -d postgres
+# Password: password
 ```
 
-### Adding New Models
-
-1. Create SQL file in appropriate layer: `dbt/models/02_intermediate/dim_new_metric.sql`
-2. Reference staging models: `FROM {{ ref('stg_patients') }}`
-3. Use dbt_utils macros if needed (installed): `{{ dbt_utils.deduplicate(...) }}`
-4. Run: `dbt run -m dim_new_metric`
-5. Document in `schema.yml` (optional)
-
-## Kubernetes Deployment (Optional)
-
-Manifests in `k8s/`:
-
+**pgAdmin (UI):**
 ```bash
-# Create secret
-kubectl create secret generic postgres-secret \
-  --from-literal=user=user \
-  --from-literal=password=password
-
-# Deploy
-kubectl apply -f k8s/postgres.yaml
-
-# Access pgAdmin
-kubectl port-forward svc/pgadmin-service 8080:80
-# Then visit http://localhost:8080
+# Visit http://localhost:5050/
+# Login: fake@gmail.com / password (from K8s secret)
 ```
 
-Deployment includes:
-- PostgreSQL 16 on port 5432
-- pgAdmin 4 on port 80 (for UI management)
-- Persistent volume claim (5Gi)
-- Liveness & readiness probes (pg_isready)
-
-## Tilt Orchestration
-
-At project root, `Tiltfile` orchestrates setup:
+## Stopping & Cleanup
 
 ```bash
-tilt up
+# Stop Tilt (keeps K8s resources running)
+tilt down
+
+# Stop all resources and delete volumes (full reset)
+kubectl delete all --all
+kubectl delete pvc --all
+
+# Or use Docker Compose if running standalone
+cd docker
+docker compose -f docker-compose.dev.yml down -v
 ```
-
-**Orchestration steps:**
-
-1. **Deploy Kubernetes manifests** — PostgreSQL + pgAdmin via `postgres.yaml` and `postgres-secret.yaml`
-2. **init_schema** — Manually trigger `init_db.py` to create FHIR schema (auto-adds IF NOT EXISTS)
-3. **seed_db** — Manually trigger `main.py` to generate Faker test data
-
-Manual triggers allow control over execution order. After triggering both:
-
-```bash
-cd tilt-docker-dbt/dbt
-dbt run
-dbt test
-```
-
-## Troubleshooting
-
-### dbt connection fails
-
-```bash
-# Test profile
-dbt debug
-
-# Check PostgreSQL is running
-docker compose -f docker-compose.dev.yml ps
-
-# Verify credentials in ~/.dbt/profiles.yml and docker/.env match
-cat ~/.dbt/profiles.yml
-cat docker/.env
-```
-
-### FHIR schema not created
-
-```bash
-# Check tables exist
-docker compose -f docker-compose.dev.yml exec db psql -U user -d postgres -c "\dt"
-
-# Re-run schema initialization
-cd src && python init_db.py
-
-# Or use Docker exec
-docker exec -i $(docker compose -f docker-compose.dev.yml ps -q db) \
-  psql -U user -d postgres -c "CREATE TABLE IF NOT EXISTS \"Patient\" (...)"
-```
-
-### Test data not inserted
-
-```bash
-# Re-generate test data
-cd src && python main.py
-
-# Verify insertion
-docker compose -f docker-compose.dev.yml exec db psql -U user -d postgres \
-  -c "SELECT COUNT(*) FROM \"Patient\""
-```
-
-### dbt docs not generating
-
-```bash
-# Ensure schema.yml is well-formed (no YAML syntax errors)
-dbt parse
-
-# Regenerate docs
-dbt docs generate --no-serve
-dbt docs serve  # http://localhost:8000
-```
-
-### Models materialized incorrectly
-
-```bash
-# Check dbt_project.yml for model config
-cat dbt/dbt_project.yml
-
-# Default: table materialization (rebuild entire table on run)
-# Staging models should ideally be view (currently table by default)
-
-# To override for staging, add to dbt_project.yml:
-# models:
-#   chorus_data_engineer_interview:
-#     staging:
-#       +materialized: view
-```
-
-### Docker container exits unexpectedly
-
-```bash
-# View logs
-docker compose -f docker-compose.dev.yml logs db
-
-# Check exit code (137 = OOM, 1 = error)
-docker compose -f docker-compose.dev.yml ps db
-
-# Restart and check health
-docker compose -f docker-compose.dev.yml restart
-docker compose -f docker-compose.dev.yml ps db  # healthcheck status
-```
-
-## Best Practices
-
-### dbt Development
-- Run `dbt debug` to verify profile connectivity before running models
-- Use `dbt compile` to check SQL syntax without executing
-- Use `dbt test` after changes to verify data quality
-- Document models in `schema.yml` with column descriptions and tests
-
-### Data Generation
-- Run `init_db.py` once to initialize schema (idempotent with IF NOT EXISTS)
-- Run `main.py` to generate fresh test data each time (truncates and re-inserts)
-- Adjust `NUM_PATIENTS`, `NUM_PRACTITIONERS`, etc. in `main.py` for larger datasets
-
-### Docker
-- Use `docker compose ps` to verify container health
-- Use `docker compose logs` for debugging
-- Use `docker compose down -v` to clean up volumes and reset database
-
-### Kubernetes (Optional)
-- pgAdmin accessible via NodePort after `kubectl port-forward`
-- PVC persists data across pod restarts
-- Secrets store database credentials securely
