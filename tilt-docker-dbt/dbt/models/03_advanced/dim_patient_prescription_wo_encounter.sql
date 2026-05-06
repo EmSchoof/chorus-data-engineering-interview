@@ -6,12 +6,12 @@ WITH
 
 patients_with_medication_requests AS (
     SELECT DISTINCT patient_id
-    FROM {{ source('fake_data', 'MedicationRequest') }}
+    FROM {{ ref('stg_medication_requests') }}
 ),
 
 patients_with_encounters AS (
     SELECT DISTINCT patient_id
-    FROM {{ source('fake_data', 'Encounter') }}
+    FROM {{ ref('stg_encounters') }}
 )
 
 SELECT

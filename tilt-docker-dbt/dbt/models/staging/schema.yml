@@ -64,3 +64,36 @@ sources:
             tests:
               - unique
               - not_null
+
+models:
+  - name: stg_patients
+    description: Staging layer for patient data
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_practitioners
+    description: Staging layer for practitioner data
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_encounters
+    description: Staging layer for encounter data
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_observations
+    description: Staging layer for observation data
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null

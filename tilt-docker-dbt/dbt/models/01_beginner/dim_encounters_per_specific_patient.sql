@@ -15,6 +15,6 @@ SELECT
   patient_id,
   status,
   encounter_date
-FROM {{ source('fake_data', 'Encounter') }}
-WHERE patient_id IN (SELECT DISTINCT patient_id FROM {{ source('fake_data', 'Encounter') }})
+FROM {{ ref('stg_encounters') }}
+WHERE patient_id IN (SELECT DISTINCT patient_id FROM {{ ref('stg_encounters') }})
 ORDER BY patient_id, encounter_date

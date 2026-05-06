@@ -6,7 +6,7 @@ WITH practitioner_counts AS (
     SELECT
         patient_id,
         COUNT(DISTINCT practitioner_id) AS distinct_practitioners
-    FROM {{ source('fake_data', 'Encounter') }}
+    FROM {{ ref('stg_encounters') }}
     GROUP BY patient_id
 )
 

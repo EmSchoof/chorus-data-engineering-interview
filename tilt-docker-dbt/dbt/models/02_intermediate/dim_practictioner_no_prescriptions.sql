@@ -4,12 +4,12 @@
 
 WITH prescribing_practitioners AS (
     SELECT DISTINCT practitioner_id
-    FROM {{ source('fake_data', 'MedicationRequest') }}
+    FROM {{ ref('stg_medication_requests') }}
 )
 
 SELECT
     id AS practitioner_id,
     name,
     specialty
-FROM {{ source('fake_data', 'Practitioner') }}
+FROM {{ ref('stg_practitioners') }}
 WHERE id NOT IN (SELECT practitioner_id FROM prescribing_practitioners)

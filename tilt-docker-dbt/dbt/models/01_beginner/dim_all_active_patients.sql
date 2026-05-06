@@ -4,5 +4,5 @@ SELECT
   id,
   identifier,
   gender
-FROM {{ source('fake_data', 'Patient') }}
+FROM {{ ref('stg_patients') }}
 WHERE active = true
