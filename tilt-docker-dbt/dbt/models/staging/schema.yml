@@ -1,0 +1,66 @@
+version: 2
+
+sources:
+  - name: fake_data
+    description: Source of synthetic healthcare data
+    database: postgres
+    schema: public
+    tables:
+      - name: Patient
+        description: Patient demographic data
+        columns:
+          - name: id
+            description: Unique patient identifier
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: Patient full name
+            tests:
+              - not_null
+          - name: gender
+            description: Patient gender (Male, Female, Other)
+
+      - name: Practitioner
+        description: Healthcare practitioner information
+        columns:
+          - name: id
+            description: Unique practitioner identifier
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: Practitioner full name
+            tests:
+              - not_null
+
+      - name: Encounter
+        description: Patient encounters with practitioners
+        columns:
+          - name: id
+            description: Unique encounter identifier
+            tests:
+              - unique
+              - not_null
+          - name: patient_id
+            description: Reference to Patient
+            tests:
+              - not_null
+
+      - name: Observation
+        description: Clinical observations (vitals, measurements)
+        columns:
+          - name: id
+            description: Unique observation identifier
+            tests:
+              - unique
+              - not_null
+
+      - name: MedicationRequest
+        description: Medication prescriptions
+        columns:
+          - name: id
+            description: Unique request identifier
+            tests:
+              - unique
+              - not_null
