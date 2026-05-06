@@ -19,4 +19,4 @@ SELECT
   END AS is_completed
 FROM {{ ref('stg_task_occurrences') }} task_occur
 LEFT JOIN {{ ref('task_occurance_status') }} task_stat
-  ON task_occur.task_occurrence_id::uuid = task_stat.task_occurrence_id
+  ON task_occur.task_occurrence_id::integer = task_stat.task_occurrence_id
