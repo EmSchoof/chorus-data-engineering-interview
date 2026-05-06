@@ -20,12 +20,12 @@ WITH task_occurrences AS (
         (t.start_date + (n.n || ' months')::interval)
     END AS occurrence_date,
     CURRENT_TIMESTAMP AS created_at
-  FROM {{ ref('stg_tasks') }} t
-  CROSS JOIN {{ ref('stg_people') }} p
+  FROM {{ ref('dim_tasks') }} t
+  CROSS JOIN {{ ref('dim_people') }} p
   CROSS JOIN LATERAL (
     SELECT generate_series(0, t.max_occurrences - 1) AS n
   ) n
-  INNER JOIN {{ ref('stg_task_assignments') }} ta
+  INNER JOIN {{ ref('dim_task_assignment') }} ta
     ON t.task_id = ta.task_id 
     AND p.person_id = ta.person_id
   WHERE n.n < t.max_occurrences
@@ -46,5 +46,5 @@ SELECT
     ELSE 0
   END AS is_completed
 FROM task_occurrences occ
-LEFT JOIN {{ ref('task_occurance_status') }} stat
+LEFT JOIN {{ ref('dim_task_occurance_status') }} stat
   ON occ.task_occurrence_id = stat.task_occurrence_id

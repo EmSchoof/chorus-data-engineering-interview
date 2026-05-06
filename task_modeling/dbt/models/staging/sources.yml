@@ -48,6 +48,11 @@ seeds:
   - name: task_assignment
     description: Assignment of tasks to people loaded from CSV
     columns:
+      - name: task_assignment_id
+        description: Unique identifier for each task assignment
+        tests:
+          - unique
+          - not_null
       - name: task_id
         description: Unique task identifier
         tests:
@@ -97,7 +102,7 @@ seeds:
 
 models:
   - name: stg_people
-    description: Staging layer for people
+    description: Staging layer for people (from people seed)
     columns:
       - name: person_id
         tests:
@@ -108,7 +113,7 @@ models:
           - not_null
 
   - name: stg_tasks
-    description: Staging layer for tasks
+    description: Staging layer for tasks (from tasks seed)
     columns:
       - name: task_id
         tests:
@@ -119,11 +124,22 @@ models:
           - not_null
 
   - name: stg_task_assignments
-    description: Staging layer for task assignments
+    description: Staging layer for task assignments (from task_assignment seed)
     columns:
       - name: task_id
         tests:
           - not_null
       - name: person_id
+        tests:
+          - not_null
+
+  - name: stg_task_occurance_status
+    description: Staging layer for task occurrence status (from task_occurance_status seed)
+    columns:
+      - name: task_occurrence_id
+        tests:
+          - unique
+          - not_null
+      - name: status
         tests:
           - not_null
