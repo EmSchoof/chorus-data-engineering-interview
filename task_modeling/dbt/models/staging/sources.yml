@@ -127,17 +127,3 @@ models:
       - name: person_id
         tests:
           - not_null
-
-  - name: stg_task_occurrences
-    description: Staging layer for task occurrences
-    columns:
-      - name: task_occurrence_id
-        tests:
-          - unique
-          - not_null
-      - name: task_id
-        tests:
-          - not_null
-      - name: person_id
-        tests:
-          - not_null
