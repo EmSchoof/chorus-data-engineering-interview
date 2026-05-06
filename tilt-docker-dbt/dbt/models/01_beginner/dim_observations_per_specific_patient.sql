@@ -14,9 +14,10 @@ WHERE {{ ref('stg_observations') }}.patient_id = {var('patient_id')}
 */
 
 SELECT
+  id AS observation_id,
   patient_id,
-  value,
-  unit,
+  value AS observation_value,
+  unit AS observation_measurement_unit,
   recorded_at
 FROM {{ ref('stg_observations') }}
 WHERE patient_id IN (SELECT DISTINCT patient_id FROM {{ ref('stg_observations') }})
