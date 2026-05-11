@@ -49,8 +49,9 @@ task-modeling-docker-dbt/
 ## Quick Start
 
 ### 1. Configure dbt Profile
+**`cd task-modeling-docker-dbt/`**
 
-Create `~/.dbt/profiles.yml`:
+Create `task-modeling-docker/profiles.yml`:
 ```yaml
 chorus_data_engineer_interview:
   outputs:
@@ -114,6 +115,9 @@ dbt test
 # Generate documentation
 dbt docs generate && dbt docs serve  # View at http://localhost:8000
 ```
+
+### 6. Write to CSV (for demo)
+**`ipython export_to_csv.py `** → Query data, build models, and output to CSV files
 
 ## Data Model
 
