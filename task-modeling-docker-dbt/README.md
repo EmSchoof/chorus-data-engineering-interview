@@ -3,7 +3,7 @@ dbt data modeling for task tracking system with recurring task generation, assig
 
 ## Structure
 ```
-task_modeling/
+task-modeling-docker-dbt/
 ├── dbt/                               # dbt project root
 │   ├── models/
 │   │   ├── staging/                  # Staging layer (views, from seeds)
@@ -26,6 +26,13 @@ task_modeling/
 │   │   ├── tasks.csv                 # 3 tasks with cadence (monthly, weekly, daily)
 │   │   ├── task_assignment.csv       # Task-person assignments
 │   │   └── task_occurance_status.csv # Task occurrence status tracking
+│   ├── exports/                       # Output data (CSV)
+│   │   ├── dim_people.csv                  # output of dim_people model
+│   │   ├── dim_tasks.csv                   # output of dim_tasks model
+│   │   ├── dim_task_assignment.csv         # output of dim_task_assignment model
+│   │   ├── dim_task_occurance_status.csv   # output of dim_task 
+│   │   ├── fct_task_occurrences.csv        # output of fct_task_occurrences model
+│   │   └── fct_task_occurence_summary.csv  # output of fct_task_occurrence_summary model
 │   ├── target/                       # Compiled & executed models (generated)
 │   ├── dbt_packages/                 # Installed packages
 │   │   ├── dbt_utils/
@@ -35,6 +42,7 @@ task_modeling/
 │   ├── package-lock.yml
 │   ├── dbt_task_data_model_lineage.png
 │   └── profiles.yml                  # (not tracked; create locally)
+├── export_to_csv.py                  # Script to export model outputs to CSV
 └── README.md
 ```
 
@@ -57,8 +65,7 @@ chorus_data_engineer_interview:
 
 Verify connection:
 ```bash
-cd dbt
-dbt debug
+cd dbt && dbt debug
 ```
 
 ### 2. Load Seed Data
@@ -171,16 +178,22 @@ Generates all task occurrences based on task recurrence patterns:
 ```sql
 -- Example logic
 WITH task_occurrences AS (
+  -- Generate task occurrences based on cadence and max occurrences for each assigned task
   SELECT
+    ROW_NUMBER() OVER (ORDER BY t.task_id, t.person_id, n)::integer AS task_occurrence_id,
     t.task_id,
     t.task_name,
-    a.person_id,
-    p.person_name,
-    GENERATE_SERIES(...) AS occurrence_date,  -- Based on cadence
-    ROW_NUMBER() OVER (PARTITION BY t.task_id) AS occurrence_number
-  FROM stg_tasks t
-  JOIN stg_task_assignments a ON t.task_id = a.task_id
-  JOIN stg_people p ON a.person_id = p.person_id
+    t.person_id,
+    t.person_name,
+    n AS occurrence_number,
+    CASE t.cadence
+      WHEN 'daily' THEN t.start_date + (n || ' days')::interval
+      WHEN 'weekly' THEN t.start_date + (n * 7 || ' days')::interval
+      WHEN 'monthly' THEN t.start_date + (n || ' months')::interval
+    END AS occurrence_date,
+    CURRENT_TIMESTAMP AS created_at
+  FROM assigned_tasks t
+  CROSS JOIN LATERAL generate_series(0, t.max_occurrences - 1) AS n
 )
 ```
 **Key features:**
