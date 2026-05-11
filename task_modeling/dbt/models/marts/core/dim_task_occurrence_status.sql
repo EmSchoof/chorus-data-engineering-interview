@@ -2,4 +2,4 @@ SELECT
   task_occurrence_id,
   status,
   updated_at
-FROM {{ ref('task_occurance_status') }}
+FROM {{ ref('stg_task_occurrences_status') }}
