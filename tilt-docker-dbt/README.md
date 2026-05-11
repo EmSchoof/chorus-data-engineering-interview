@@ -228,7 +228,7 @@ Tiltfile
 
 ### CLI Trigger Workflow
 1. **`tilt up`** → Deploys K8s resources (db)
-2. **`ipython tilt-docker-dbt/src/main.py `** → Triggers `init_schema` (creates tables) → Triggers `seed_db` (inserts test data)
+2. **`cd tilt-docker-dbt/ && ipython src/main.py `** → Triggers `init_schema` (creates tables) → Triggers `seed_db` (inserts test data)
 4. **`ipython export_to_csv.py `** → Query data, build models, and output to CSV files
 
 ### Checking Resource Status in Tilt UI

@@ -32,8 +32,8 @@ DB_CONFIG = {
 MODELS = {
     "01_beginner": [
         "dim_all_active_patients",
-        "dim_encounters_per_specific_patient",
-        "dim_observations_per_specific_patient"
+        "dim_encounters_by_patient",
+        "dim_observations_by_patient"
     ],
     "02_intermediate": [
         "dim_patient_multi_practitioners",
