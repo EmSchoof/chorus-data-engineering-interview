@@ -11,9 +11,9 @@ __pycache__/
 dbt/target/
 dbt/logs/
 dbt/dbt_packages/
-task_modeling/dbt/target/
-task_modeling/dbt/logs/
-task_modeling/dbt/dbt_packages/
+task-modeling-docker-dbt/dbt/target/
+task-modeling-docker-dbt/dbt/logs/
+task-modeling-docker-dbt/dbt/dbt_packages/
 tilt-docker-dbt/dbt/target/
 tilt-docker-dbt/dbt/logs/
 tilt-docker-dbt/dbt/dbt_packages/

@@ -1,0 +1,4 @@
+task_id,task_name,cadence,max_occurrences,start_date,created_at
+1,Task 1,monthly,12,2026-01-01,2026-01-01
+2,Task 2,weekly,8,2026-01-05,2026-01-05
+3,Task 3,daily,30,2026-01-01,2026-01-01
