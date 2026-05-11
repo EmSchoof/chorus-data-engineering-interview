@@ -1,7 +1,7 @@
 # Chorus Data Engineering Interview
 Two separate data domains in one repository:
 
-## 1. Task Modeling (`task_modeling/`)
+## 1. Task Modeling (`task-modeling-docker-dbt/`)
 dbt data modeling for a task tracking system with recurring task generation and completion tracking.
 
 **Highlights:**
@@ -10,7 +10,7 @@ dbt data modeling for a task tracking system with recurring task generation and 
 - Task occurrence tracking with status updates
 - Sample data: 3 people, 3 tasks, task assignments
 
-**See:** [`task_modeling/README.md`](./task_modeling/README.md)
+**See:** [`task-modeling-docker-dbt/README.md`](task-modeling-docker-dbt/README.md)
 
 ## 2. FHIR Healthcare Pipeline (`tilt-docker-dbt/`)
 Local development environment for healthcare data analytics with FHIR schema, Docker, Kubernetes, PostgreSQL, and dbt.
@@ -31,7 +31,7 @@ Local development environment for healthcare data analytics with FHIR schema, Do
 ├── Tiltfile                           # Tilt orchestration (FHIR pipeline)
 ├── img.png
 │
-├── task_modeling/                     # Task tracking dbt project
+├── task-modeling-docker-dbt/                     # Task tracking dbt project
 │   ├── dbt/
 │   │   ├── seeds/                    # CSV reference data
 │   │   │   ├── people.csv
@@ -126,7 +126,7 @@ chorus_data_engineer_interview:
 
 Verify with:
 ```bash
-cd task_modeling/dbt && dbt debug
+cd task-modeling-docker-dbt/dbt && dbt debug
 
 cd tilt-docker-dbt/dbt && dbt debug
 ```

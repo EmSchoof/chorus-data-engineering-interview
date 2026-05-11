@@ -66,7 +66,7 @@ seeds:
         tests:
           - not_null
 
-  - name: task_occurance
+  - name: task_occurrence
     description: Reference task occurrences loaded from CSV
     columns:
       - name: task_occurrence_id
@@ -83,7 +83,7 @@ seeds:
         tests:
           - not_null
 
-  - name: task_occurance_status
+  - name: task_occurrence_status
     description: Task occurrence status tracking loaded from CSV
     columns:
       - name: task_occurrence_id
@@ -133,8 +133,8 @@ models:
         tests:
           - not_null
 
-  - name: stg_task_occurance_status
-    description: Staging layer for task occurrence status (from task_occurance_status seed)
+  - name: stg_task_occurrences_status
+    description: Staging layer for task occurrence status (from task_occurrence_status seed)
     columns:
       - name: task_occurrence_id
         tests:
